@@ -1,0 +1,13 @@
+import 'package:dartz/dartz.dart';
+import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
+import 'package:projeto_csa_app/app/modules/home/domain/repository/home_repository.dart';
+import 'package:projeto_csa_app/app/shared/error/failure.dart';
+
+class GetPacientesUseCase {
+  final HomeRepository homeRepository;
+  GetPacientesUseCase(this.homeRepository);
+
+  Future<Either<Failure,List<Paciente>>> call() async {
+    return await homeRepository.getPacientes();
+  }
+}

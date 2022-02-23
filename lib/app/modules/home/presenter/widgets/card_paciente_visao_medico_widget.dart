@@ -12,8 +12,9 @@ class CardPacienteVisaoMedicoWidget extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(22)
         ),
-        child: Row(
-          children: [
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
             FlutterLogo(),
             Text('aaa')
           ],

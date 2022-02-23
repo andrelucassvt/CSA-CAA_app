@@ -41,6 +41,9 @@ dependencies:
   ##Error handling
   dartz: ^0.10.1
 
+  ##Inject Dependecy
+  get_it: ^7.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
