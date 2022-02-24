@@ -26,87 +26,87 @@ class _AuthPacienteCpfPageState extends State<AuthPacienteCpfPage> {
             end: Alignment.centerLeft,
             colors: [
               Colors.white,
-              Colors.blue,
+              Colors.blue
             ]
           )
         ),
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  height: 70,
-                ),
-                const Center(
-                  child: FlutterLogo(
-                    size: 100,
-                  ),
-                ),
-                const Spacer(),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5)
-                  ),
-                  child: TextFormField(
-                    controller: textEditingController,
-                    inputFormatters: [
-                      FilteringTextInputFormatter.digitsOnly,
-                      CpfInputFormatter(),
-                    ],
-                    decoration: const InputDecoration(
-                      hintText: 'Digite seu cpf',
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: 10, 
-                        vertical: 0.0
+            child: BlocConsumer<LoginCubit, LoginState>(
+              bloc: controller,
+              listener: (context, state) {
+                if (state is LoginFailure) {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    backgroundColor: Colors.red,
+                    content:Text('Error ao fazer login. Tente novamente'),
+                  ));
+                  return;
+                }
+                if (state is LoginDataisEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    backgroundColor: Colors.red,
+                    content: Text('Preencha todos os campos'),
+                  ));
+                  return;
+                }
+                if (state is LoginSucess) {
+                  Navigator.of(context).pushReplacementNamed('/home');
+                  return;
+                }
+              },
+              builder: (context, state) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(
+                      height: 70,
+                    ),
+                    const Center(
+                      child: FlutterLogo(
+                        size: 100,
+                      ),
+                    ),
+                    const Spacer(),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(
+                          color: state is LoginDataisEmpty  || state is LoginFailure ? Colors.red : Colors.transparent,
+                          width: state is LoginDataisEmpty  || state is LoginFailure ? 2 : 0
+                        )
+                      ),
+                      child: TextFormField(
+                        controller: textEditingController,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                          CpfInputFormatter(),
+                        ],
+                        decoration: const InputDecoration(
+                          hintText: 'Digite seu cpf',
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: 10, 
+                            vertical: 0.0,
+                          )
+                        ),
                       )
-                     ),
-                  )
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                BlocConsumer<LoginCubit, LoginState>(
-                  bloc: controller,
-                  listener: (context, state) {
-                    if (state is LoginFailure) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          backgroundColor: Colors.red,
-                          content: Text('Error ao fazer login. Tente novamente'),
-                        )
-                      );
-                      return;
-                    }
-                    if (state is LoginCpfisEmpty) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          backgroundColor: Colors.red,
-                          content: Text('Preencha o campo de cpf'),
-                        )
-                      );
-                      return;
-                    }
-                    if (state is LoginSucess) {
-                      Navigator.of(context).pushReplacementNamed('/home');
-                      return;
-                    }
-                  },
-                  builder: (context, state) {
-                    return DefaultButtonApp(
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    DefaultButtonApp(
                       textButton: 'Avançar',
                       textColor: Colors.white,
                       width: double.infinity,
                       isLoading: state is LoginLoading,
                       actionButton: () => controller.loginPaciente(textEditingController.text),
-                    );
-                  },
-                ),
-                const Spacer()
-              ],
+                    ),
+                    const Spacer()
+                  ],
+                );
+              },
             ),
           ),
         ),

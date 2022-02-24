@@ -17,7 +17,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> loginPaciente(String cpf) async {
     emit(LoginLoading());
-    if (cpf.isEmpty || cpf.length < 14) return emit(LoginCpfisEmpty());
+    if (cpf.isEmpty || cpf.length < 14) return emit(LoginDataisEmpty());
     var result = await loginPacienteUsecase(cpf);
     await Future.delayed(const Duration(seconds: 2));
     emit(result.fold(
@@ -28,6 +28,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> loginMedico({required String email, required String senha}) async {
     emit(LoginLoading());
+    if(email.isEmpty || senha.isEmpty) return emit(LoginDataisEmpty());
     var result = await loginMedicoUsecase(email: email,senha: senha);
     await Future.delayed(const Duration(seconds: 2));
     emit(result.fold(

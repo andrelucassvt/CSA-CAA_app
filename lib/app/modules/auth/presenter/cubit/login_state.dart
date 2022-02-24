@@ -9,7 +9,7 @@ class LoginLoading extends LoginState {}
 
 class LoginSucess extends LoginState {}
 
-class LoginCpfisEmpty extends LoginState {}
+class LoginDataisEmpty extends LoginState {}
 
 class LoginFailure extends LoginState {
   final Failure error;
