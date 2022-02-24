@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:projeto_csa_app/app/modules/home/presenter/blocs/interacoes_medico_paciente/interacoes_medico_pacientes_cubit.dart';
-import 'package:projeto_csa_app/app/modules/home/presenter/widgets/card_paciente_visao_medico_widget.dart';
+import 'package:projeto_csa_app/app/modules/home/presenter/cubit/home_interacoes_cubit.dart';
+import 'package:projeto_csa_app/app/modules/home/presenter/widgets/card_grid_widget.dart';
 
 class MedicoComandosBody extends StatefulWidget {
   const MedicoComandosBody({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class MedicoComandosBody extends StatefulWidget {
 }
 
 class _MedicoComandosBodyState extends State<MedicoComandosBody> {
-  final controller = GetIt.I.get<InteracoesMedicoPacientesCubit>();
+  final controller = GetIt.I.get<HomeInteracoesCubit>();
 
   @override
   void initState() {
@@ -25,16 +25,16 @@ class _MedicoComandosBodyState extends State<MedicoComandosBody> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: BlocBuilder<InteracoesMedicoPacientesCubit, InteracoesMedicoPacientesState>(
+        child: BlocBuilder<HomeInteracoesCubit, HomeInteracoesState>(
           bloc: controller,
           builder: (context, state) {
-            if (state is InteracoesMedicoPacientesLoading) {
+            if (state is HomeInteracoesLoading) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
             }
 
-            if (state is InteracoesMedicoPacientesFailure) {
+            if (state is HomeInteracoesFailure) {
               return const Center(
                 child: Text('Error ao carregar dados'),
               );
@@ -42,7 +42,6 @@ class _MedicoComandosBodyState extends State<MedicoComandosBody> {
 
             if (state is InteracoesMedicoPacientesSucess) {
               var dados = state.list;
-              print(dados.length);
               return GridView.builder(
                 itemCount: dados.length,
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -52,22 +51,16 @@ class _MedicoComandosBodyState extends State<MedicoComandosBody> {
                   mainAxisSpacing: 20
                 ),
                 itemBuilder: (context, index) {
-                  return const CardPacienteVisaoMedicoWidget();
+                  return CardGridWidget(
+                    dados: dados[index],
+                    interface: cardInterface.medico,
+                  );
                 }
               );
             }
             return const Text('oi');
           },
         ),
-/*         child: GridView.count(
-          crossAxisCount: 5,
-          crossAxisSpacing: 13,
-          children: const [
-            CardPacienteVisaoMedicoWidget(),
-            CardPacienteVisaoMedicoWidget(),
-            CardPacienteVisaoMedicoWidget(),
-          ],
-        ), */
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},

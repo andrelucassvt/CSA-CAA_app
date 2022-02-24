@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_csa_app/app/modules/auth/presenter/pages/auth_page.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/pages/home_page.dart';
-import 'package:projeto_csa_app/app/modules/perfil/presenter/pages/paciente_perfil_page.dart';
+import 'package:projeto_csa_app/app/modules/perfil/presenter/pages/perfil_page.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -10,9 +12,18 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
+      builder: (context, widget) => ResponsiveWrapper.builder(
+        BouncingScrollWrapper.builder(context, widget!),
+        minWidth: 370,
+        defaultScale: true,
+        breakpoints: const [
+          ResponsiveBreakpoint.resize(370, name: MOBILE),
+        ],
+      ),
       routes: {
-        '/': (BuildContext context) => const HomePage(),
-        '/perfilPaciente': (BuildContext context) => const PacientePerfilPage(),
+        '/': (BuildContext context) => const AuthPage(),
+        '/home': (BuildContext context) => const HomePage(),
+        '/perfil': (BuildContext context) => const PerfilPage(),
       },
     );
   }

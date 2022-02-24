@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
         centerTitle: false,
         actions: [
           IconButton(
-            onPressed: (){}, 
+            onPressed: () => Navigator.pushNamed(context, '/perfil'), 
             icon: const Icon(Icons.person),
           )
         ],
