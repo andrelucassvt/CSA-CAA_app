@@ -58,7 +58,7 @@ class _MedicoComandosBodyState extends State<MedicoComandosBody> {
                 }
               );
             }
-            return const Text('oi');
+            return const SizedBox.shrink();
           },
         ),
       ),

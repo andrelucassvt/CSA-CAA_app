@@ -46,7 +46,7 @@ class _AuthPacienteCpfPageState extends State<AuthPacienteCpfPage> {
                 if (state is LoginDataisEmpty) {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     backgroundColor: Colors.red,
-                    content: Text('Preencha todos os campos'),
+                    content: Text('Preencha todo o campo'),
                   ));
                   return;
                 }

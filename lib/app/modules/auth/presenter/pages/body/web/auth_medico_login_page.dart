@@ -50,7 +50,7 @@ class _AuthMedicoLoginPageState extends State<AuthMedicoLoginPage> {
         if (state is LoginDataisEmpty) {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             backgroundColor: Colors.red,
-            content: Text('Preencha o campo do e-mail'),
+            content: Text('Preencha todos os campos'),
           ));
           return;
         }

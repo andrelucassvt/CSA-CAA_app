@@ -18,6 +18,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(kIsWeb ? 'Pacientes' :'Comandos'),
         centerTitle: false,
+        automaticallyImplyLeading: false,
         actions: [
           IconButton(
             onPressed: () => Navigator.pushNamed(context, '/perfil'), 

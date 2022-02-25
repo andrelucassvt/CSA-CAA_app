@@ -12,8 +12,17 @@ class _MedicoPerfilPageState extends State<MedicoPerfilPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Central'),
-        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        title: const Text(
+          'Central',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 20
+          ),
+        ),
+        automaticallyImplyLeading: false,
+        centerTitle: false,
+        elevation: 0.0,
       ),
     );
   }
