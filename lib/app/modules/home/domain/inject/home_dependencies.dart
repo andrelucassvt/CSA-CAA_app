@@ -5,7 +5,9 @@ import 'package:projeto_csa_app/app/modules/home/domain/usecases/get_pacientes.d
 import 'package:projeto_csa_app/app/modules/home/external/datasource/home_datasource_impl.dart';
 import 'package:projeto_csa_app/app/modules/home/infra/datasource/home_datasource.dart';
 import 'package:projeto_csa_app/app/modules/home/infra/repository/home_repository_impl.dart';
-import 'package:projeto_csa_app/app/modules/home/presenter/cubit/home_interacoes_cubit.dart';
+import 'package:projeto_csa_app/app/modules/home/presenter/blocs/home_interacoes/home_interacoes_cubit.dart';
+import 'package:projeto_csa_app/app/modules/home/presenter/blocs/player_audio/player_audio_cubit.dart';
+import 'package:projeto_csa_app/app/shared/util/player_audio_local_impl.dart';
 
 class HomeDependencies {
   
@@ -31,6 +33,9 @@ class HomeDependencies {
     //Controllers
     getIt.registerLazySingleton<HomeInteracoesCubit>(
       () => HomeInteracoesCubit(getIt(),getIt())
+    );
+    getIt.registerFactory<PlayerAudioCubit>(
+      () => PlayerAudioCubit(PlayerAudioLocalImpl())
     );
   }
 }
