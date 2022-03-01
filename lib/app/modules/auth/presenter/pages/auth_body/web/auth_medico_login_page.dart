@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -19,7 +21,7 @@ class _AuthMedicoLoginPageState extends State<AuthMedicoLoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: LayoutBuilder(builder: (context, constraints) {
-        if (constraints.maxWidth < 920) {
+        if (constraints.maxWidth < 860) {
           return Center(child: _build());
         }
         return Row(
@@ -75,6 +77,18 @@ class _AuthMedicoLoginPageState extends State<AuthMedicoLoginPage> {
                 ),
               ),
               const Spacer(),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Informe seu cadastro:',
+                  style: TextStyle(
+                    fontSize: 16
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -84,9 +98,9 @@ class _AuthMedicoLoginPageState extends State<AuthMedicoLoginPage> {
                   controller: textEmail,
                   style: const TextStyle(color: Colors.black),
                   decoration: const InputDecoration(
-                    hintText: 'Digite seu e-mail',
+                    hintText: 'E-mail',
                     hintStyle: TextStyle(color: Colors.black),
-                    border: InputBorder.none,
+                    //border: InputBorder.,
                     contentPadding: EdgeInsets.symmetric(
                       horizontal: 10, 
                       vertical: 0.0,
@@ -106,9 +120,9 @@ class _AuthMedicoLoginPageState extends State<AuthMedicoLoginPage> {
                   controller: textSenha,
                   obscureText: true,
                   decoration: const InputDecoration(
-                    hintText: 'Digite sua senha',
+                    hintText: 'Senha',
                     hintStyle: TextStyle(color: Colors.black),
-                    border: InputBorder.none,
+                    //border: InputBorder.none,
                     contentPadding: EdgeInsets.symmetric(
                       horizontal: 10, 
                       vertical: 0.0,

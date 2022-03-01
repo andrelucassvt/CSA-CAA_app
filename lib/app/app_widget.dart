@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_csa_app/app/modules/auth/presenter/pages/auth_page.dart';
+import 'package:projeto_csa_app/app/modules/home/presenter/pages/details_paciente_web_page.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/pages/home_page.dart';
 import 'package:projeto_csa_app/app/modules/perfil/presenter/pages/perfil_page.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -23,6 +24,7 @@ class AppWidget extends StatelessWidget {
         '/': (BuildContext context) => const AuthPage(),
         '/home': (BuildContext context) => const HomePage(),
         '/perfil': (BuildContext context) => const PerfilPage(),
+        '/DetalhesPaciente': (BuildContext context) => const DetailsPacienteWebPage()
       },
     );
   }

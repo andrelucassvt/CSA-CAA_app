@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:projeto_csa_app/app/modules/home/presenter/pages/body/mobile/paciente_comandos_body.dart';
-import 'package:projeto_csa_app/app/modules/home/presenter/pages/body/web/medico_comandos_body.dart';
+import 'package:projeto_csa_app/app/modules/home/presenter/pages/home_body/mobile/paciente_comandos_body.dart';
+import 'package:projeto_csa_app/app/modules/home/presenter/pages/home_body/web/medico_comandos_body.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

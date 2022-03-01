@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_csa_app/app/modules/perfil/presenter/components/ajuda_page.dart';
-import 'package:projeto_csa_app/app/modules/perfil/presenter/widgets/info_user_title_subtitle.dart';
+import 'package:projeto_csa_app/app/shared/widget/info_user_title_subtitle.dart';
 
 class PacientePerfilPage extends StatefulWidget {
   const PacientePerfilPage({Key? key}) : super(key: key);

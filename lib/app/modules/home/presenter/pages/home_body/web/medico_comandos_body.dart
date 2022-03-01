@@ -53,7 +53,6 @@ class _MedicoComandosBodyState extends State<MedicoComandosBody> {
                 itemBuilder: (context, index) {
                   return CardGridWidget(
                     dados: dados[index],
-                    interface: cardInterface.medico,
                   );
                 }
               );

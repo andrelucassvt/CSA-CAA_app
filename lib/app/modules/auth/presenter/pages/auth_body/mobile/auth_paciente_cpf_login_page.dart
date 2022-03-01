@@ -85,7 +85,7 @@ class _AuthPacienteCpfPageState extends State<AuthPacienteCpfPage> {
                         ],
                         decoration: const InputDecoration(
                           hintText: 'Digite seu cpf',
-                          border: InputBorder.none,
+                          //border: InputBorder.none,
                           contentPadding: EdgeInsets.symmetric(
                             horizontal: 10, 
                             vertical: 0.0,
