@@ -23,8 +23,8 @@ class AppWidget extends StatelessWidget {
       routes: {
         '/': (BuildContext context) => const AuthPage(),
         '/home': (BuildContext context) => const HomePage(),
-        '/perfil': (BuildContext context) => const PerfilPage(),
-        '/DetalhesPaciente': (BuildContext context) => const DetailsPacienteWebPage()
+        '/home/DetalhesPaciente': (BuildContext context) => const DetailsPacienteWebPage(),
+        '/home/perfil': (BuildContext context) => const PerfilPage(),
       },
     );
   }

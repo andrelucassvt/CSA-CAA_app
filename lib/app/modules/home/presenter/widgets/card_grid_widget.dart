@@ -22,7 +22,7 @@ class CardGridWidget extends StatelessWidget {
       onTap: () async {
         if (dados is Paciente) {
           Navigator.of(context).pushNamed(
-            '/DetalhesPaciente',
+            '/home/DetalhesPaciente',
             arguments: dados as Paciente
           );
           return;
