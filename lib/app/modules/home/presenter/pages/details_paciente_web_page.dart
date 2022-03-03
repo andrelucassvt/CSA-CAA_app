@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_csa_app/app/modules/home/domain/entity/interacao.dart';
+import 'package:projeto_csa_app/app/modules/home/presenter/widgets/card_grid_add_e_remover.dart';
 import 'package:projeto_csa_app/app/shared/widget/info_user_title_subtitle.dart';
 
 class DetailsPacienteWebPage extends StatefulWidget {
@@ -30,6 +32,7 @@ class _DetailsPacienteWebPageState extends State<DetailsPacienteWebPage> {
       ),
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(
@@ -60,7 +63,21 @@ class _DetailsPacienteWebPageState extends State<DetailsPacienteWebPage> {
               ],
             ),
           ),
-          const VerticalDivider()
+          const VerticalDivider(),
+          Expanded(
+            child: GridView.builder(
+              itemCount: 15,
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 200,
+                childAspectRatio: 3 / 2,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20
+              ),
+              itemBuilder: (context, index){
+                return CardGridAddeRemoverWidget(interacao: Interacao(nome: 'testee'));
+              }
+            ),
+          ),
         ],
       ),
     );

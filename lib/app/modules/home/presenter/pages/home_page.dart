@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:projeto_csa_app/app/modules/home/presenter/pages/home_body/mobile/paciente_comandos_body.dart';
+import 'package:projeto_csa_app/app/modules/home/presenter/pages/home_body/mobile/paciente_interacoes_body.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/pages/home_body/web/medico_comandos_body.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(kIsWeb ? 'Pacientes' :'Comandos'),
+        title: Text(kIsWeb ? 'Pacientes' :'Interações'),
         centerTitle: false,
         automaticallyImplyLeading: false,
         actions: [
@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: kIsWeb ?  const MedicoComandosBody() : const PacienteComandosBody(),
+      body: kIsWeb ?  const MedicoComandosBody() : const PacienteInteracoesBody(),
     );
   }
 }

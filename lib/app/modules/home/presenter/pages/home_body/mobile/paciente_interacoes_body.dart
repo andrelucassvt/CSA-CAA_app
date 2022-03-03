@@ -4,14 +4,14 @@ import 'package:get_it/get_it.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/home_interacoes/home_interacoes_cubit.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/widgets/card_grid_widget.dart';
 
-class PacienteComandosBody extends StatefulWidget {
-  const PacienteComandosBody({Key? key}) : super(key: key);
+class PacienteInteracoesBody extends StatefulWidget {
+  const PacienteInteracoesBody({Key? key}) : super(key: key);
 
   @override
-  _PacienteComandosBodyState createState() => _PacienteComandosBodyState();
+  _PacienteInteracoesBodyState createState() => _PacienteInteracoesBodyState();
 }
 
-class _PacienteComandosBodyState extends State<PacienteComandosBody> {
+class _PacienteInteracoesBodyState extends State<PacienteInteracoesBody> {
   final controller = GetIt.I.get<HomeInteracoesCubit>();
 
   @override
@@ -55,7 +55,7 @@ class _PacienteComandosBodyState extends State<PacienteComandosBody> {
               }
             );
           }
-          return const Text('oi');
+          return const SizedBox.shrink();
         },
       ),
     );
