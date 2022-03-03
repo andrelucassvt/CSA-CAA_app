@@ -7,6 +7,7 @@ class Medico {
   String? cargo;
   String? foto;
   String? sexo;
+  String? hospital;
   List<Paciente>? pacientes;
 
   Medico({
@@ -15,6 +16,7 @@ class Medico {
     this.cargo,
     this.foto,
     this.sexo,
+    this.hospital,
     this.pacientes
   });
 }

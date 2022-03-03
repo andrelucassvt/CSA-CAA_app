@@ -6,12 +6,19 @@ class PerfilDatasourceImpl implements PerfilDatasource {
 
   @override
   Future<Medico> getPerfilMedico() async {
-    return Medico();
+    return Medico(
+      nome: 'Dr. Bernardo',
+      hospital: 'Hospital amazonia'
+    );
   }
 
   @override
   Future<Paciente> getPerfilPaciente() async {
-    return Paciente();
+    return Paciente(
+      nome: 'André Lucas Barbosa Salvador',
+      responsavel: 'Tatiane Almeida Barbosa',
+      medico: 'Dr. Bernardo'
+    );
   }
   
 }

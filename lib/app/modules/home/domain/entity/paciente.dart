@@ -5,18 +5,20 @@ class Paciente implements DadosSemelhantesCardGridInterface{
 
   String? nome;
   String? cpf;
-  String? laudoMedico;
+  String? medico;
   String? foto;
   String? sexo;
+  String? responsavel;
   List<Interacao>? interacoes;
 
   Paciente({
     this.nome,
     this.cpf,
-    this.laudoMedico,
+    this.medico,
     this.foto,
     this.sexo,
-    this.interacoes
+    this.responsavel,
+    this.interacoes,
   });
 
   @override

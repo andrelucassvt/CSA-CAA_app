@@ -79,6 +79,7 @@ class _AuthPacienteCpfPageState extends State<AuthPacienteCpfPage> {
                       ),
                       child: TextFormField(
                         controller: textEditingController,
+                        keyboardType: TextInputType.number,
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly,
                           CpfInputFormatter(),

@@ -25,6 +25,7 @@ class PerfilCubit extends Cubit<PerfilState> {
       (sucess) => PerfilPacienteSucess(sucess)
     ));
   }
+
   Future<void> getPerfilMedico() async {
     emit(PerfilLoading());
     var result = await getPerfilMedicoUsecase();
@@ -33,4 +34,5 @@ class PerfilCubit extends Cubit<PerfilState> {
       (sucess) => PerfilMedicoSucess(sucess)
     ));
   }
+  
 }

@@ -30,8 +30,7 @@ class DefaultButtonApp extends StatelessWidget {
         minimumSize: MaterialStateProperty.all<Size>(
           Size(width ?? 280, height ?? 55),
         ),
-        backgroundColor:
-            MaterialStateProperty.all<Color>(backgroundColor ?? Theme.of(context).primaryColor),
+        backgroundColor: MaterialStateProperty.all<Color>(backgroundColor ?? Theme.of(context).primaryColor),
         shape: MaterialStateProperty.all<OutlinedBorder>(
           RoundedRectangleBorder(
             side: BorderSide(

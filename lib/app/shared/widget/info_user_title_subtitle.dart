@@ -3,16 +3,18 @@ import 'package:flutter/material.dart';
 class InfoUserTitleSubTitleWidget extends StatelessWidget {
   final String title;
   final String subtitle;
+  final CrossAxisAlignment? crossAxisAlignment;
   const InfoUserTitleSubTitleWidget({
     Key? key,
     required this.title,
     required this.subtitle,
+    this.crossAxisAlignment
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
       children: [
         Text(
           title,
