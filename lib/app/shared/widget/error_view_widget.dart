@@ -22,6 +22,7 @@ class ErrorViewWidget extends StatelessWidget {
           ),
           DefaultButtonApp(
             textButton: 'Recarregar', 
+            textColor: Colors.white,
             actionButton: () async => actionButton
           ),
         ],
