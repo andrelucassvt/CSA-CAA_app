@@ -76,7 +76,7 @@ class CardGridAddeRemoverWidget extends StatelessWidget {
                         child: const Text('Não'),
                       ),
                       TextButton(
-                        onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false), 
+                        onPressed: () {}, 
                         child: const Text(
                           'Sim',
                           style: TextStyle(

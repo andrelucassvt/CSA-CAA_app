@@ -15,7 +15,6 @@ class DetailsPacienteWebPage extends StatefulWidget {
 class _DetailsPacienteWebPageState extends State<DetailsPacienteWebPage> {
   @override
   Widget build(BuildContext context) {
-    //final args = ModalRoute.of(context)?.settings.arguments as Paciente;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,

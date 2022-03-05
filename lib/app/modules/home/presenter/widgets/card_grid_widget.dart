@@ -5,6 +5,7 @@ import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
 
 import 'package:projeto_csa_app/app/modules/home/domain/interface/dados_semelhantes_card_grid_interface.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/player_audio/player_audio_cubit.dart';
+import 'package:projeto_csa_app/app/shared/routes/routes.dart';
 
 class CardGridWidget extends StatelessWidget {
   final DadosSemelhantesCardGridInterface dados;
@@ -22,13 +23,11 @@ class CardGridWidget extends StatelessWidget {
       onTap: () async {
         if (dados is Paciente) {
           Navigator.of(context).pushNamed(
-            '/home/DetalhesPaciente',
+            RoutesApp.homeDetalhesPaciente,
             arguments: dados as Paciente
           );
-          return;
-        }
-        if (dados is Interacao) {
-          return await playerAudio.playerAudio('audios/teste.mp3');
+        } else if (dados is Interacao){
+          await playerAudio.playerAudio('audios/teste.mp3');
         }
       },
       child: Card(
