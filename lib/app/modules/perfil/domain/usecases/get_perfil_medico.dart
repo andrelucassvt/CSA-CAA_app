@@ -9,7 +9,7 @@ class GetPerfilMedicoUsecase {
     required this.perfilRepository,
   });
   
-  Future<Either<Failure,Medico>> call() async {
+  Future<Either<Failure,MedicoEntity>> call() async {
     return await perfilRepository.getPerfilMedico();
   }
 }

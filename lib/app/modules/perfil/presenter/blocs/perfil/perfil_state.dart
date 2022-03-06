@@ -8,12 +8,12 @@ class PerfilInitial extends PerfilState {}
 class PerfilLoading extends PerfilState {}
 
 class PerfilPacienteSucess extends PerfilState {
-  final Paciente paciente;
+  final PacienteEntity paciente;
   PerfilPacienteSucess(this.paciente);
 }
 
 class PerfilMedicoSucess extends PerfilState {
-  final Medico medico;
+  final MedicoEntity medico;
   PerfilMedicoSucess(this.medico);
 }
 

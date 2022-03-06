@@ -73,7 +73,7 @@ class _DetailsPacienteWebPageState extends State<DetailsPacienteWebPage> {
                 mainAxisSpacing: 20
               ),
               itemBuilder: (context, index){
-                return CardGridAddeRemoverWidget(interacao: Interacao(nome: 'testee'));
+                return CardGridAddeRemoverWidget(interacao: InteracaoEntity(nome: 'testee'));
               }
             ),
           ),

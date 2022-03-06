@@ -56,7 +56,7 @@ class _PacientePerfilPageState extends State<PacientePerfilPage> {
                 );
               }
               if (state is PerfilPacienteSucess) {
-                Paciente dados = state.paciente;
+                PacienteEntity dados = state.paciente;
                 return Column(
                   children: [
                     const SizedBox(

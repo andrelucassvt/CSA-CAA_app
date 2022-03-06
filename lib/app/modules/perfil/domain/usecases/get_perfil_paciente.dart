@@ -10,7 +10,7 @@ class GetPerfilPacienteUsecase {
     required this.perfilRepository,
   });
   
-  Future<Either<Failure,Paciente>> call() async {
+  Future<Either<Failure,PacienteEntity>> call() async {
     return await perfilRepository.getPerfilPaciente();
   }
 }

@@ -8,12 +8,12 @@ class HomeInteracoesInitial extends HomeInteracoesState {}
 class HomeInteracoesLoading extends HomeInteracoesState  {}
 
 class InteracoesPacienteSonsSucess extends HomeInteracoesState  {
-  final List<Interacao> list;
+  final List<InteracaoEntity> list;
   InteracoesPacienteSonsSucess(this.list);
 }
 
 class InteracoesMedicoPacientesSucess extends HomeInteracoesState {
-  final List<Paciente> list;
+  final List<PacienteEntity> list;
   InteracoesMedicoPacientesSucess(this.list);
 }
 

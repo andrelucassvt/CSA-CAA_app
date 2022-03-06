@@ -21,12 +21,12 @@ class CardGridWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        if (dados is Paciente) {
+        if (dados is PacienteEntity) {
           Navigator.of(context).pushNamed(
             RoutesApp.homeDetalhesPaciente,
-            arguments: dados as Paciente
+            arguments: dados as PacienteEntity
           );
-        } else if (dados is Interacao){
+        } else if (dados is InteracaoEntity){
           await playerAudio.playerAudio('audios/teste.mp3');
         }
       },

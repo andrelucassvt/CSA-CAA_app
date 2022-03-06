@@ -5,51 +5,51 @@ import 'package:projeto_csa_app/app/modules/home/infra/datasource/home_datasourc
 class HomeDatasourceImpl implements HomeDatasource{
   
   @override
-  Future<List<Interacao>> getInteracoesDoPaciente() async {
+  Future<List<InteracaoEntity>> getInteracoesDoPaciente() async {
     return [
-      Interacao(
+      InteracaoEntity(
         nome: 'Quero dormir'
       ),
-      Interacao(
+      InteracaoEntity(
         nome: 'Quero comer'
       ),
-      Interacao(
+      InteracaoEntity(
         nome: 'Quero dormir'
       ),
-      Interacao(
+      InteracaoEntity(
         nome: 'Quero dormir'
       ),
-      Interacao(
+      InteracaoEntity(
         nome: 'Quero dormir'
       ),
-      Interacao(
+      InteracaoEntity(
         nome: 'Quero dormir'
       ),
-      Interacao(
+      InteracaoEntity(
         nome: 'Quero dormir'
       ),
-      Interacao(
+      InteracaoEntity(
         nome: 'Quero dormir'
       ),
     ];
   }
 
   @override
-  Future<List<Paciente>> getPacientes() async {
+  Future<List<PacienteEntity>> getPacientes() async {
     return [
-      Paciente(
+      PacienteEntity(
         nome: 'André Lucas'
       ),
-      Paciente(
+      PacienteEntity(
         nome: 'André Lucas'
       ),
-      Paciente(
+      PacienteEntity(
         nome: 'André Lucas'
       ),
-      Paciente(
+      PacienteEntity(
         nome: 'André Lucas'
       ),
-      Paciente(
+      PacienteEntity(
         nome: 'André Lucas'
       ),
     ];

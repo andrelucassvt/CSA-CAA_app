@@ -10,7 +10,7 @@ class HomeRepositoryImpl implements HomeRepository {
   HomeRepositoryImpl(this.homeDatasource);
 
   @override
-  Future<Either<Failure, List<Interacao>>> getInteracoesDoPaciente() async {
+  Future<Either<Failure, List<InteracaoEntity>>> getInteracoesDoPaciente() async {
     try {
       var result = await homeDatasource.getInteracoesDoPaciente();
       return Right(result);
@@ -20,7 +20,7 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<Either<Failure, List<Paciente>>> getPacientes() async {
+  Future<Either<Failure, List<PacienteEntity>>> getPacientes() async {
     try {
       var result = await homeDatasource.getPacientes();
       return Right(result);

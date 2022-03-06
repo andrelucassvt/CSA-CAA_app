@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/interacao.dart';
 
 class CardGridAddeRemoverWidget extends StatelessWidget {
-  final Interacao interacao;
+  final InteracaoEntity interacao;
   const CardGridAddeRemoverWidget({
     Key? key,
     required this.interacao,

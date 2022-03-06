@@ -7,7 +7,7 @@ class GetPacientesUseCase {
   final HomeRepository homeRepository;
   GetPacientesUseCase(this.homeRepository);
 
-  Future<Either<Failure,List<Paciente>>> call() async {
+  Future<Either<Failure,List<PacienteEntity>>> call() async {
     return await homeRepository.getPacientes();
   }
 }

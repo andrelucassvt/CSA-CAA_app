@@ -10,7 +10,7 @@ class PerfilRepositoryImpl implements PerfilRepository {
   PerfilRepositoryImpl(this.perfilDatasource);
 
   @override
-  Future<Either<Failure, Medico>> getPerfilMedico() async {
+  Future<Either<Failure, MedicoEntity>> getPerfilMedico() async {
     try {
       var result = await perfilDatasource.getPerfilMedico();
       return Right(result);
@@ -20,7 +20,7 @@ class PerfilRepositoryImpl implements PerfilRepository {
   }
 
   @override
-  Future<Either<Failure, Paciente>> getPerfilPaciente() async {
+  Future<Either<Failure, PacienteEntity>> getPerfilPaciente() async {
     try {
       var result = await perfilDatasource.getPerfilPaciente();
       return Right(result);

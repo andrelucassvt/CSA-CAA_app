@@ -1,6 +1,6 @@
 import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
 
-class Medico {
+class MedicoEntity {
 
   String? nome;
   String? cpf;
@@ -8,9 +8,9 @@ class Medico {
   String? foto;
   String? sexo;
   String? hospital;
-  List<Paciente>? pacientes;
+  List<PacienteEntity>? pacientes;
 
-  Medico({
+  MedicoEntity({
     this.nome,
     this.cpf,
     this.cargo,

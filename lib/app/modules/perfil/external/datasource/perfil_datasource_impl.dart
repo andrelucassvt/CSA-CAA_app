@@ -5,16 +5,16 @@ import 'package:projeto_csa_app/app/modules/perfil/infra/datasource/perfil_datas
 class PerfilDatasourceImpl implements PerfilDatasource {
 
   @override
-  Future<Medico> getPerfilMedico() async {
-    return Medico(
+  Future<MedicoEntity> getPerfilMedico() async {
+    return MedicoEntity(
       nome: 'Dr. Bernardo',
       hospital: 'Hospital amazonia'
     );
   }
 
   @override
-  Future<Paciente> getPerfilPaciente() async {
-    return Paciente(
+  Future<PacienteEntity> getPerfilPaciente() async {
+    return PacienteEntity(
       nome: 'André Lucas Barbosa Salvador',
       responsavel: 'Tatiane Almeida Barbosa',
       medico: 'Dr. Bernardo'
