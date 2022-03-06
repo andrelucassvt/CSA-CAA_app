@@ -1,8 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:projeto_csa_app/app/modules/home/presenter/blocs/home_interacoes/home_interacoes_cubit.dart';
-import 'package:projeto_csa_app/app/modules/home/presenter/pages/cadastrar_paciente_web_page.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/pages/home_body/mobile/paciente_interacoes_body.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/pages/home_body/web/medico_comandos_body.dart';
 import 'package:projeto_csa_app/app/shared/routes/routes.dart';

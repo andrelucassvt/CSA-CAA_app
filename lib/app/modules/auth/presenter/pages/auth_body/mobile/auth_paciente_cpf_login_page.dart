@@ -69,31 +69,39 @@ class _AuthPacienteCpfPageState extends State<AuthPacienteCpfPage> {
                       ),
                     ),
                     const Spacer(),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(
-                          color: state is LoginDataisEmpty  || state is LoginFailure ? Colors.red : Colors.transparent,
-                          width: state is LoginDataisEmpty  || state is LoginFailure ? 2 : 0
-                        )
-                      ),
-                      child: TextFormField(
-                        controller: textEditingController,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly,
-                          CpfInputFormatter(),
-                        ],
-                        decoration: const InputDecoration(
-                          hintText: 'Digite seu cpf',
-                          //border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(
-                            horizontal: 10, 
-                            vertical: 0.0,
-                          )
+                    TextFormField(
+                      autofocus: false,
+                      controller: textEditingController,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                        CpfInputFormatter(),
+                      ],
+                      decoration: InputDecoration(
+                        hintText: 'Digite seu CPF',
+                        filled: true,
+                        fillColor: Colors.white,
+                        labelStyle: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 22
                         ),
-                      )
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 10, 
+                          vertical: 0.0,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: state is LoginFailure || state is LoginDataisEmpty ? Colors.red : Colors.green, 
+                              width: 3.0
+                            ),
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.grey, 
+                              width: 3.0
+                            ),
+                          ),
+                      ),
                     ),
                     const SizedBox(
                       height: 20,
