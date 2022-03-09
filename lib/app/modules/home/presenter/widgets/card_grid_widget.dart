@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:projeto_csa_app/app/modules/home/domain/entity/interacao.dart';
-import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
-
 import 'package:projeto_csa_app/app/modules/home/domain/interface/dados_semelhantes_card_grid_interface.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/player_audio/player_audio_cubit.dart';
-import 'package:projeto_csa_app/app/shared/routes/routes.dart';
 
 class CardGridWidget extends StatelessWidget {
   final DadosSemelhantesCardGridInterface dados;
+  final Function() actionCard;
 
   CardGridWidget({
     Key? key,
     required this.dados,
+    required this.actionCard,
   }) : super(key: key);
 
   final playerAudio = GetIt.I.get<PlayerAudioCubit>();
@@ -20,16 +18,7 @@ class CardGridWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () async {
-        if (dados is PacienteEntity) {
-          Navigator.of(context).pushNamed(
-            RoutesApp.homeDetalhesPaciente,
-            arguments: dados as PacienteEntity
-          );
-        } else if (dados is InteracaoEntity){
-          await playerAudio.playerAudio('audios/teste.mp3');
-        }
-      },
+      onTap: actionCard,
       child: Card(
         elevation: 10.0,
         shape: RoundedRectangleBorder(
