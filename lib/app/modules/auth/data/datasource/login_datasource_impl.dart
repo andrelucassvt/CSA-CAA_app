@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:projeto_csa_app/app/modules/auth/domain/datasource/login_datasource.dart';
 import 'package:projeto_csa_app/app/modules/auth/domain/error/login_error.dart';
-import 'package:projeto_csa_app/app/modules/auth/infra/datasource/login_datasource.dart';
 
-class LoginDatasourceImpl implements LoginDatasource{
+class LoginDatasourceImpl implements LoginDatasource {
   final Dio dio;
   LoginDatasourceImpl(this.dio);
 

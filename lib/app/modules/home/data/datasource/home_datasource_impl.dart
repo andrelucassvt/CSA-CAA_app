@@ -1,8 +1,8 @@
+import 'package:projeto_csa_app/app/modules/home/domain/datasource/home_datasource.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/interacao.dart';
-import 'package:projeto_csa_app/app/modules/home/infra/datasource/home_datasource.dart';
 
-class HomeDatasourceImpl implements HomeDatasource{
+class HomeDatasourceImpl implements HomeDatasource {
   
   @override
   Future<List<InteracaoEntity>> getInteracoesDoPaciente() async {
