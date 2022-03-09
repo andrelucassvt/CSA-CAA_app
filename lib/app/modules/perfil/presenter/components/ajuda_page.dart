@@ -37,7 +37,7 @@ class AjudaPage extends StatelessWidget {
               left: 10
             ),
             child: Text(
-              'Ao clicar em avançar, você será direcionado ao número de contato da APAE Brasil (Associação de Pais e Amigos dos Excepcionais)',
+              'Ao clicar em alguns dos botões, você será direcionado ao número de contato de ajuda oferecido pelo serviço',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 20
@@ -45,10 +45,19 @@ class AjudaPage extends StatelessWidget {
             ),
           ),
           DefaultButtonApp(
-            textButton: 'Avançar',
+            textButton: 'APAE Brasil',
+            textColor: Colors.blue,
+            backgroundColor: Colors.yellow, 
+            actionButton: () => _makePhoneCall('(061) 3224-9922'),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          DefaultButtonApp(
+            textButton: 'Contato da clínica',
             textColor: Colors.white, 
             actionButton: () => _makePhoneCall('(061) 3224-9922'),
-          )
+          ),
         ],
       ),
     );

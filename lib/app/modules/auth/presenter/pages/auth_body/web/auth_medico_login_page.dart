@@ -23,13 +23,21 @@ class _AuthMedicoLoginPageState extends State<AuthMedicoLoginPage> {
     return Scaffold(
       body: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth < 860) {
-          return Center(child: _build());
+          return Center(
+            child: _build(),
+          );
         }
         return Row(
           children: [
             Expanded(
               child: Container(
+                decoration: const BoxDecoration(
                 color: Colors.blue,
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage('assets/images/autismo.jpg')
+                  )
+                ),
               ),
             ),
             _build()

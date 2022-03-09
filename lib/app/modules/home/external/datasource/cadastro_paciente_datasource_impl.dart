@@ -4,9 +4,8 @@ import 'package:projeto_csa_app/app/modules/home/infra/datasource/cadastro_pacie
 class CadastroPacienteDatasourceImpl implements CadastroPacienteDatasource{
   
   @override
-  Future<void> cadastroDePaciente(PacienteEntity dadosDoPaciente) {
-    // TODO: implement cadastroDePaciente
-    throw UnimplementedError();
+  Future<void> cadastroDePaciente(PacienteEntity pacienteEntity) async {
+ 
   }
   
 }

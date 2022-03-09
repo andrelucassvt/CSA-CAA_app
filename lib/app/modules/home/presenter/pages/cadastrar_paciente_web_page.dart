@@ -84,6 +84,56 @@ class _CadastrarPacienteWebPageState extends State<CadastrarPacienteWebPage> {
                   width: 500,
                   child: TextFormField(
                     decoration: const InputDecoration(
+                      labelText: 'E-mail para contato',
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.blue, 
+                          width: 2.0
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.grey, 
+                          width: 1.0
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 100,
+                ),
+               SizedBox(
+                  width: 500,
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      labelText: 'Telefone para contato',
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.blue, 
+                          width: 2.0
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.grey, 
+                          width: 1.0
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 500,
+                  child: TextFormField(
+                    decoration: const InputDecoration(
                       labelText: 'CPF do paciente',
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -103,35 +153,45 @@ class _CadastrarPacienteWebPageState extends State<CadastrarPacienteWebPage> {
                 const SizedBox(
                   width: 100,
                 ),
-                SizedBox(
-                  width: 200,
-                  child: ListTile(
-                    title: const Text('Masculino'),
-                    leading: Radio<SexoDoPaciente>(
-                      value: SexoDoPaciente.masculino,
-                      groupValue: _character,
-                      onChanged: (SexoDoPaciente? value) {
-                        setState(() {
-                          _character = value;
-                        });
-                      },
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text('Gênero:'),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 200,
+                          child: ListTile(
+                            title: const Text('Masculino'),
+                            leading: Radio<SexoDoPaciente>(
+                              value: SexoDoPaciente.masculino,
+                              groupValue: _character,
+                              onChanged: (SexoDoPaciente? value) {
+                                setState(() {
+                                  _character = value;
+                                });
+                              },
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 200,
+                          child: ListTile(
+                            title: const Text('Feminino'),
+                            leading: Radio<SexoDoPaciente>(
+                              value: SexoDoPaciente.feminino,
+                              groupValue: _character,
+                              onChanged: (SexoDoPaciente? value) {
+                                setState(() {
+                                  _character = value;
+                                });
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ),
-                SizedBox(
-                  width: 200,
-                  child: ListTile(
-                    title: const Text('Feminino'),
-                    leading: Radio<SexoDoPaciente>(
-                      value: SexoDoPaciente.feminino,
-                      groupValue: _character,
-                      onChanged: (SexoDoPaciente? value) {
-                        setState(() {
-                          _character = value;
-                        });
-                      },
-                    ),
-                  ),
+                  ],
                 ),
               ],
             ),

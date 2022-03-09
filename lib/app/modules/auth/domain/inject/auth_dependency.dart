@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:projeto_csa_app/app/modules/auth/domain/repository/login_repository.dart';
 import 'package:projeto_csa_app/app/modules/auth/domain/usecases/login_medico_usecase.dart';
@@ -11,10 +12,12 @@ class AuthDependencies {
 
   static void init(){
     final getIt = GetIt.instance;
+    
+    getIt.registerFactory<Dio>(() => Dio());
 
     //Datasource
     getIt.registerFactory<LoginDatasource>(
-      () => LoginDatasourceImpl());
+      () => LoginDatasourceImpl(getIt()));
 
     //Repository
     getIt.registerFactory<LoginRepository>(
