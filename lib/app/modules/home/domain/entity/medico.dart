@@ -4,19 +4,15 @@ class MedicoEntity {
 
   String? nome;
   String? cpf;
-  String? cargo;
-  String? foto;
-  String? sexo;
-  String? hospital;
-  List<PacienteEntity>? pacientes;
+  String? afiliacao;
+	String? email;
+	String? phone;
 
   MedicoEntity({
     this.nome,
     this.cpf,
-    this.cargo,
-    this.foto,
-    this.sexo,
-    this.hospital,
-    this.pacientes
+    this.afiliacao,
+    this.email,
+    this.phone,
   });
 }

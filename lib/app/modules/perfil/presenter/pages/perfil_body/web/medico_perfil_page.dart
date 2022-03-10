@@ -71,8 +71,8 @@ class _MedicoPerfilPageState extends State<MedicoPerfilPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                 ),
                 InfoUserTitleSubTitleWidget(
-                  title: 'Hospital:',
-                  subtitle: dados.hospital ?? 'Sem informação',
+                  title: 'Afiliação:',
+                  subtitle: dados.afiliacao ?? 'Sem informação',
                   crossAxisAlignment: CrossAxisAlignment.center,
                 ),
                 const SizedBox(
