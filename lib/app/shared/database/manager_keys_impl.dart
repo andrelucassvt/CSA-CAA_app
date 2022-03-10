@@ -1,7 +1,7 @@
-import 'package:projeto_csa_app/app/shared/database/save_keys.dart';
+import 'package:projeto_csa_app/app/shared/database/manager_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SaveKeysImpl implements SaveKeys {
+class ManagerKeysImpl implements ManagerKeys {
 
   @override
   Future<String> getToken() async {

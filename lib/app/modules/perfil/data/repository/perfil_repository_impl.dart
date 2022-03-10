@@ -15,7 +15,7 @@ class PerfilRepositoryImpl implements PerfilRepository {
       var result = await perfilDatasource.getPerfilMedico();
       return Right(result);
     } on Failure catch (e) {
-      throw Left(e);
+      return Left(e);
     }
   }
 
@@ -25,7 +25,7 @@ class PerfilRepositoryImpl implements PerfilRepository {
       var result = await perfilDatasource.getPerfilPaciente();
       return Right(result);
     } on Failure catch (e) {
-      throw Left(e);
+      return Left(e);
     }
   }
   

@@ -1,6 +1,8 @@
 import 'dart:ui';
 
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:projeto_csa_app/app/modules/auth/presenter/cubit/login_cubit.dart';
@@ -106,8 +108,12 @@ class _AuthMedicoLoginPageState extends State<AuthMedicoLoginPage> {
                 child: TextFormField(
                   controller: textEmail,
                   style: const TextStyle(color: Colors.black),
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                    CpfInputFormatter(),
+                  ],
                   decoration: const InputDecoration(
-                    hintText: 'E-mail',
+                    hintText: 'CPF',
                     hintStyle: TextStyle(color: Colors.black),
                     //border: InputBorder.,
                     contentPadding: EdgeInsets.symmetric(

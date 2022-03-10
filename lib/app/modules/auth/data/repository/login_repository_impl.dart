@@ -12,7 +12,7 @@ class LoginRepositoryImpl implements LoginRepository {
     try {
       return Right(await loginDatasource.loginMedico(email: email, senha: senha));
     } on Failure catch (e) {
-      throw Left(e);
+      return Left(e);
     }
   }
 
@@ -21,7 +21,7 @@ class LoginRepositoryImpl implements LoginRepository {
     try {
       return Right(await loginDatasource.loginPaciente(cpf));
     } on Failure catch (e) {
-      throw Left(e);
+      return Left(e);
     }
   }
   

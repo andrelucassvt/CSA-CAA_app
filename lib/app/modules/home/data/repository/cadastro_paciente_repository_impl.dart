@@ -15,7 +15,7 @@ class CadastroPacienteRepositoryImpl implements CadastroPacienteRepository {
       var result = await cadastroPacienteDatasource.cadastroDePaciente(pacienteEntity);
       return Right(result);
     } on Failure catch (e) {
-      throw Left(e);
+      return Left(e);
     }
   }
   

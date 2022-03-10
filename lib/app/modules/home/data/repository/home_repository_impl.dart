@@ -15,7 +15,7 @@ class HomeRepositoryImpl implements HomeRepository {
       var result = await homeDatasource.getInteracoesDoPaciente();
       return Right(result);
     } on Failure catch (e) {
-      throw Left(e);
+      return Left(e);
     }
   }
 
@@ -25,7 +25,7 @@ class HomeRepositoryImpl implements HomeRepository {
       var result = await homeDatasource.getPacientes();
       return Right(result);
     } on Failure catch (e) {
-      throw Left(e);
+      return Left(e);
     }
   }
 }

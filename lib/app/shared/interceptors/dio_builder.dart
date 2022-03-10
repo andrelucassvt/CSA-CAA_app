@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:projeto_csa_app/app/shared/database/save_keys.dart';
+import 'package:projeto_csa_app/app/shared/database/manager_keys.dart';
 
 const urlBase = 'https://andre-tcc-node-api.herokuapp.com';
 
 class DioBuilder {
 
-  final SaveKeys saveKeys;
+  final ManagerKeys saveKeys;
   DioBuilder(this.saveKeys);
 
   Future<Dio> getDiobaseResquestPublic() async {
