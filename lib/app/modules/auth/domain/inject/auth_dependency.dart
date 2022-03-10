@@ -13,8 +13,7 @@ import 'package:projeto_csa_app/app/shared/interceptors/dio_builder.dart';
 
 class AuthDependencies {
 
-  static void init(){
-    final getIt = GetIt.instance;
+  static void init(GetIt getIt){
     
     //Dependecies
     getIt.registerFactory<ManagerKeys>(() => ManagerKeysImpl());

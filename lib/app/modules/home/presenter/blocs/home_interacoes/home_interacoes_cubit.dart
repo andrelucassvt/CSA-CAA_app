@@ -27,6 +27,7 @@ class HomeInteracoesCubit extends Cubit<HomeInteracoesState> {
   }
 
   Future<void> getPacientes() async {
+    print('oi');
     emit(HomeInteracoesLoading());
     var result = await getPacientesUseCase();
     emit(result.fold(

@@ -8,6 +8,6 @@ class GetInteracoesDoPacienteUsecase {
   GetInteracoesDoPacienteUsecase(this.homeRepository);
 
   Future<Either<Failure, List<InteracaoEntity>>> call() async {
-    return await homeRepository.getInteracoesDoPaciente();
+    return homeRepository.getInteracoesDoPaciente();
   }
 }

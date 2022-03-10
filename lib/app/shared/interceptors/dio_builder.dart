@@ -11,8 +11,8 @@ class DioBuilder {
   Future<Dio> getDiobaseResquestPublic() async {
     return Dio(BaseOptions(
       baseUrl: urlBase,
-      connectTimeout: 5000,
-      receiveTimeout: 5000,
+      connectTimeout: 1800,
+      receiveTimeout: 1800,
       headers: {
         'Content-Type': 'application/json',
       }
@@ -22,8 +22,8 @@ class DioBuilder {
     var token = await saveKeys.getToken();
     return Dio(BaseOptions(
       baseUrl: urlBase,
-      connectTimeout: 5000,
-      receiveTimeout: 5000,
+      connectTimeout: 1800,
+      receiveTimeout: 1800,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': token

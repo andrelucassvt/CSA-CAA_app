@@ -40,7 +40,7 @@ class _MedicoComandosBodyState extends State<MedicoComandosBody> {
           if (state is HomeInteracoesFailure) {
             return ErrorViewWidget(
               errorMessage: state.error.errorMessage, 
-              actionButton: () async => controller.getPacientes()
+              actionButton: () async => await controller.getPacientes()
             );
           }
 

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:projeto_csa_app/app/modules/auth/domain/datasource/login_datasource.dart';
 import 'package:projeto_csa_app/app/modules/auth/domain/error/login_error.dart';
@@ -13,11 +15,18 @@ class LoginDatasourceImpl implements LoginDatasource {
   Future<void> loginMedico({required String email, required String senha}) async {
     try {
       final Dio dio = await dioBuilder.getDiobaseResquestPublic();
-      var response = await dio.post("/doctorLogin");
-      print(response.data);
+      var response = await dio.post("/doctorLogin", data: {
+        "cpf": email,
+        "password": senha
+      });
+      await managerKeys.saveToken(response.data["token"]["tokenHash"]);
+      await managerKeys.saveInfoUser(json.encode(response.data["doctor"]));
     } on DioError catch (e,s) {
       if (e.type == DioErrorType.connectTimeout || e.type == DioErrorType.receiveTimeout) {
         throw LoginNoInternetConnection();
+      }
+      if (e.response?.statusCode == 404) {
+        throw LoginNoDataFound();
       }
       throw LoginUnkenError(message: e.message,stack: s);
     }

@@ -7,6 +7,28 @@ class ManagerKeysImpl implements ManagerKeys {
   Future<String> getToken() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var result = prefs.getString('token-user');
+    print("===get token =====");
+    print(result);
+    if (result != null) {
+      return result;
+    }
+    return "invalid";
+  }
+
+  @override
+  Future<void> saveToken(String token) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    print("======save token====");
+    print(token);
+    await prefs.setString('token-user', token);
+  }
+
+  @override
+  Future<String> getInfoUser() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var result = prefs.getString('info-user');
+    print("=====get info user=====");
+    print(result);
     if (result != null) {
       return result;
     }
@@ -14,9 +36,9 @@ class ManagerKeysImpl implements ManagerKeys {
   }
 
   @override
-  Future<void> saveToken(String token) async {
+  Future<void> saveInfoUser(String data) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('token-user', token);
+    await prefs.setString('info-user', data);
   }
   
 }

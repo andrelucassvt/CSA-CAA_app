@@ -9,8 +9,7 @@ import 'package:projeto_csa_app/app/modules/perfil/presenter/blocs/perfil/perfil
 
 class PerfilDependecies {
   
-  static void init(){
-    final getIt = GetIt.I;
+  static void init(GetIt getIt){
 
     //Datasource
     getIt.registerFactory<PerfilDatasource>(() => PerfilDatasourceImpl());

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:projeto_csa_app/app/modules/auth/domain/error/login_error.dart';
 import 'package:projeto_csa_app/app/modules/auth/presenter/cubit/login_cubit.dart';
 import 'package:projeto_csa_app/app/shared/routes/routes.dart';
 import 'package:projeto_csa_app/app/shared/widget/default_button.dart';
@@ -19,6 +20,7 @@ class AuthMedicoLoginPage extends StatefulWidget {
 class _AuthMedicoLoginPageState extends State<AuthMedicoLoginPage> {
   TextEditingController textEmail = TextEditingController();
   TextEditingController textSenha = TextEditingController();
+  bool showObscureText = true;
   final controller = GetIt.I.get<LoginCubit>();
   @override
   Widget build(BuildContext context) {
@@ -54,22 +56,25 @@ class _AuthMedicoLoginPageState extends State<AuthMedicoLoginPage> {
       bloc: controller,
       listener: (context, state) {
         if (state is LoginFailure) {
+          if (state.error is LoginNoDataFound) {
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              backgroundColor: Colors.red,
+              content:Text('Usuário não está cadastrado'),
+            ));
+            return;
+          }
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             backgroundColor: Colors.red,
             content:Text('Error ao fazer login. Tente novamente'),
           ));
-          return;
-        }
-        if (state is LoginDataisEmpty) {
+
+        } else if (state is LoginDataisEmpty){
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             backgroundColor: Colors.red,
             content: Text('Preencha todos os campos'),
           ));
-          return;
-        }
-        if (state is LoginSucess) {
+        } else if (state is LoginSucess) {
           Navigator.of(context).pushReplacementNamed(RoutesApp.home);
-          return;
         }
       },
       builder: (context, state) {
@@ -107,15 +112,14 @@ class _AuthMedicoLoginPageState extends State<AuthMedicoLoginPage> {
                 ),
                 child: TextFormField(
                   controller: textEmail,
-                  style: const TextStyle(color: Colors.black),
                   inputFormatters: [
                     FilteringTextInputFormatter.digitsOnly,
                     CpfInputFormatter(),
                   ],
+                  style: const TextStyle(color: Colors.black),
                   decoration: const InputDecoration(
-                    hintText: 'CPF',
+                    labelText: 'CPF',
                     hintStyle: TextStyle(color: Colors.black),
-                    //border: InputBorder.,
                     contentPadding: EdgeInsets.symmetric(
                       horizontal: 10, 
                       vertical: 0.0,
@@ -133,12 +137,23 @@ class _AuthMedicoLoginPageState extends State<AuthMedicoLoginPage> {
                 ),
                 child: TextFormField(
                   controller: textSenha,
-                  obscureText: true,
-                  decoration: const InputDecoration(
-                    hintText: 'Senha',
-                    hintStyle: TextStyle(color: Colors.black),
-                    //border: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(
+                  obscureText: showObscureText,
+                  decoration: InputDecoration(
+                    labelText: "Senha",
+                    hintStyle: const TextStyle(color: Colors.black),
+                    suffixIcon: IconButton(
+                      onPressed: (){
+                        setState(() {
+                          if (showObscureText) {
+                            showObscureText = false;
+                          } else {
+                            showObscureText = true;
+                          }
+                        });
+                      },
+                      icon: Icon(showObscureText ? Icons.visibility_off : Icons.visibility)
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
                       horizontal: 10, 
                       vertical: 0.0,
                     )
@@ -155,8 +170,8 @@ class _AuthMedicoLoginPageState extends State<AuthMedicoLoginPage> {
                 isLoading: state is LoginLoading,
                 width: double.infinity,
                 actionButton: () => controller.loginMedico(
-                  email: textEmail.text, 
-                  senha: textEmail.text,
+                  email: textEmail.text.replaceAll(RegExp(r'[.-]'), ""), 
+                  senha: textSenha.text,
                 )
               ),
               const Spacer()
