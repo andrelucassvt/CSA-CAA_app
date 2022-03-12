@@ -18,6 +18,11 @@ class _AuthPacienteCpfPageState extends State<AuthPacienteCpfPage> {
   TextEditingController textEditingController = TextEditingController();
   final controller = GetIt.I.get<LoginCubit>();
   @override
+  void initState() {
+    super.initState();
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(

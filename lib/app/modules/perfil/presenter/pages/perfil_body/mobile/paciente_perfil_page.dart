@@ -57,48 +57,50 @@ class _PacientePerfilPageState extends State<PacientePerfilPage> {
               }
               if (state is PerfilPacienteSucess) {
                 PacienteEntity dados = state.paciente;
-                return Column(
-                  children: [
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const Center(
-                      child: CircleAvatar(
-                        radius: 70,
+                return SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 20,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    InfoUserTitleSubTitleWidget(
-                      title: 'Nome:',
-                      subtitle: dados.nome ?? 'Sem informação',
-                    ),
-                    InfoUserTitleSubTitleWidget(
-                      title: 'Responsável:',
-                      subtitle: dados.responsavel ?? 'Sem informação',
-                    ),
-                    InfoUserTitleSubTitleWidget(
-                      title: 'Médico:',
-                      subtitle: dados.medico ?? 'Sem informação',
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Align(
-                      alignment: Alignment.bottomRight, 
-                      child: LogoutButton()
-                    ),
-                    Center(
-                      child: TextButton(
-                        onPressed: () => showModalBottomSheet(
-                          context: context,
-                          builder: (context) => const AjudaPage()
+                      const Center(
+                        child: CircleAvatar(
+                          radius: 70,
                         ),
-                        child: const Text('Precisa de ajuda ?')
                       ),
-                    ),
-                  ],
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      InfoUserTitleSubTitleWidget(
+                        title: 'Nome:',
+                        subtitle: dados.nome ?? 'Sem informação',
+                      ),
+                      InfoUserTitleSubTitleWidget(
+                        title: 'Responsável:',
+                        subtitle: dados.responsavel ?? 'Sem informação',
+                      ),
+                      InfoUserTitleSubTitleWidget(
+                        title: 'Médico:',
+                        subtitle: dados.medico ?? 'Sem informação',
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Align(
+                        alignment: Alignment.bottomRight, 
+                        child: LogoutButton()
+                      ),
+                      Center(
+                        child: TextButton(
+                          onPressed: () => showModalBottomSheet(
+                            context: context,
+                            builder: (context) => const AjudaPage()
+                          ),
+                          child: const Text('Precisa de ajuda ?')
+                        ),
+                      ),
+                    ],
+                  ),
                 );
               }
               return const SizedBox.shrink();

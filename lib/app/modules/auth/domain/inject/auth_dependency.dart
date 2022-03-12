@@ -16,12 +16,11 @@ class AuthDependencies {
   static void init(GetIt getIt){
     
     //Dependecies
-    getIt.registerFactory<ManagerKeys>(() => ManagerKeysImpl());
     getIt.registerFactory<DioBuilder>(() => DioBuilder(ManagerKeysImpl()));
 
     //Datasource
     getIt.registerFactory<LoginDatasource>(
-      () => LoginDatasourceImpl(getIt(),getIt()));
+      () => LoginDatasourceImpl(getIt()));
 
     //Repository
     getIt.registerFactory<LoginRepository>(

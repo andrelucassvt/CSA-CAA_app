@@ -30,7 +30,6 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginLoading());
     if(email.isEmpty || senha.isEmpty) return emit(LoginDataisEmpty());
     var result = await loginMedicoUsecase(email: email,senha: senha);
-    await Future.delayed(const Duration(seconds: 2));
     emit(result.fold(
       (failure) => LoginFailure(failure), 
       (sucess) => LoginSucess())

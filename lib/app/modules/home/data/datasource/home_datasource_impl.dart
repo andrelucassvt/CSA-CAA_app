@@ -14,11 +14,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeDatasourceImpl implements HomeDatasource {
   final DioBuilder dioBuilder;
-  final ManagerKeys managerKeys;
-  HomeDatasourceImpl(
-    this.dioBuilder,
-    this.managerKeys,
-  );
+  HomeDatasourceImpl(this.dioBuilder);
   
   @override
   Future<List<InteracaoEntity>> getInteracoesDoPaciente() async {
@@ -47,6 +43,24 @@ class HomeDatasourceImpl implements HomeDatasource {
       InteracaoEntity(
         nome: 'Quero dormir'
       ),
+      InteracaoEntity(
+        nome: 'Quero dormir'
+      ),
+      InteracaoEntity(
+        nome: 'Quero dormir'
+      ),
+      InteracaoEntity(
+        nome: 'Quero dormir'
+      ),
+      InteracaoEntity(
+        nome: 'Quero dormir'
+      ),
+      InteracaoEntity(
+        nome: 'Quero dormir'
+      ),
+      InteracaoEntity(
+        nome: 'Quero dormir'
+      ),
     ];
   }
 
@@ -54,7 +68,7 @@ class HomeDatasourceImpl implements HomeDatasource {
   Future<List<PacienteEntity>> getPacientes() async {
     try {
       final Dio dio = await dioBuilder.getDiobaseResquestPrivate();
-      var infoUser = await managerKeys.getInfoUser();
+      var infoUser = await dioBuilder.saveKeys.getInfoUser();
       LoginInfo user = LoginInfo.fromJson(infoUser);
 
       var response = await dio.get('/auth/patients',queryParameters: {

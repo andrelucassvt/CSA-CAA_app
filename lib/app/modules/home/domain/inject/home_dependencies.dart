@@ -16,7 +16,7 @@ class HomeDependencies {
   static void init(GetIt getIt){
     
     //Datasource
-    getIt.registerSingleton<HomeDatasource>(HomeDatasourceImpl(getIt(),getIt()));
+    getIt.registerSingleton<HomeDatasource>(HomeDatasourceImpl(getIt()));
 
     //Repository
     getIt.registerSingleton<HomeRepository>(

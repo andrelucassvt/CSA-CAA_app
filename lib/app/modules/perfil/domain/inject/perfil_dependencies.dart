@@ -12,7 +12,7 @@ class PerfilDependecies {
   static void init(GetIt getIt){
 
     //Datasource
-    getIt.registerFactory<PerfilDatasource>(() => PerfilDatasourceImpl(getIt(),getIt()));
+    getIt.registerFactory<PerfilDatasource>(() => PerfilDatasourceImpl(getIt()));
 
     //Repository
     getIt.registerFactory<PerfilRepository>(() => PerfilRepositoryImpl(getIt()));

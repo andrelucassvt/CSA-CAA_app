@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/home_interacoes/home_interacoes_cubit.dart';
@@ -20,48 +21,53 @@ class _PacienteInteracoesBodyState extends State<PacienteInteracoesBody> {
   @override
   void initState() {
     super.initState();
+    SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight]);
     controller.getInteracoesDoPaciente();
   }
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: BlocBuilder<HomeInteracoesCubit, HomeInteracoesState>(
-        bloc: controller,
-        builder: (context, state) {
-          if (state is HomeInteracoesLoading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: BlocBuilder<HomeInteracoesCubit, HomeInteracoesState>(
+          bloc: controller,
+          builder: (context, state) {
+            if (state is HomeInteracoesLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
 
-          if (state is HomeInteracoesFailure) {
-            return ErrorViewWidget(
-              errorMessage: state.error.errorMessage, 
-              actionButton: () async => controller.getInteracoesDoPaciente()
-            );
-          }
+            if (state is HomeInteracoesFailure) {
+              return ErrorViewWidget(
+                errorMessage: state.error.errorMessage, 
+                actionButton: () async => controller.getInteracoesDoPaciente()
+              );
+            }
 
-          if (state is InteracoesPacienteSonsSucess) {
-            var dados = state.list;
-            return GridView.builder(
-              itemCount: dados.length,
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200,
-                childAspectRatio: 3 / 2,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20
-              ),
-              itemBuilder: (context, index) {
-                return CardGridWidget(
-                  dados: dados[index],
-                  actionCard: () async => await playerAudio.playerAudio('audios/teste.mp3'),
-                );
-              }
-            );
-          }
-          return const SizedBox.shrink();
-        },
+            if (state is InteracoesPacienteSonsSucess) {
+              var dados = state.list;
+              return GridView.builder(
+                itemCount: dados.length,
+                scrollDirection: Axis.horizontal,
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 200,
+                  //childAspectRatio: 3 / 2,
+                  mainAxisExtent: 150,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 20
+                ),
+                itemBuilder: (context, index) {
+                  return CardGridWidget(
+                    dados: dados[index],
+                    actionCard: () async => await playerAudio.playerAudio('audios/teste.mp3'),
+                  );
+                }
+              );
+            }
+            return const SizedBox.shrink();
+          },
+        ),
       ),
     );
   }

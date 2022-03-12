@@ -10,14 +10,13 @@ import 'package:projeto_csa_app/app/shared/login_info/login_info.dart';
 
 class PerfilDatasourceImpl implements PerfilDatasource {
   final DioBuilder dioBuilder;
-  final ManagerKeys managerKeys;
-  PerfilDatasourceImpl(this.dioBuilder, this.managerKeys);
+  PerfilDatasourceImpl(this.dioBuilder);
 
   @override
   Future<MedicoEntity> getPerfilMedico() async {
     try {
       final Dio dio = await dioBuilder.getDiobaseResquestPublic();
-      var infoUser = await managerKeys.getInfoUser();
+      var infoUser = await dioBuilder.saveKeys.getInfoUser();
       LoginInfo user = LoginInfo.fromJson(infoUser);
 
       var response = await dio.get('/doctor',queryParameters: {

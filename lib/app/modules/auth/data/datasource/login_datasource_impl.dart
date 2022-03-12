@@ -3,13 +3,11 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:projeto_csa_app/app/modules/auth/domain/datasource/login_datasource.dart';
 import 'package:projeto_csa_app/app/modules/auth/domain/error/login_error.dart';
-import 'package:projeto_csa_app/app/shared/database/manager_keys.dart';
 import 'package:projeto_csa_app/app/shared/interceptors/dio_builder.dart';
 
 class LoginDatasourceImpl implements LoginDatasource {
   final DioBuilder dioBuilder;
-  final ManagerKeys managerKeys;
-  LoginDatasourceImpl(this.dioBuilder,this.managerKeys);
+  LoginDatasourceImpl(this.dioBuilder);
 
   @override
   Future<void> loginMedico({required String email, required String senha}) async {
@@ -19,8 +17,8 @@ class LoginDatasourceImpl implements LoginDatasource {
         "cpf": email,
         "password": senha
       });
-      await managerKeys.saveToken(response.data["token"]["tokenHash"]);
-      await managerKeys.saveInfoUser(json.encode(response.data["doctor"]));
+      await dioBuilder.saveKeys.saveToken(response.data["token"]["tokenHash"]);
+      await dioBuilder.saveKeys.saveInfoUser(json.encode(response.data["doctor"]));
     } on DioError catch (e,s) {
       if (e.type == DioErrorType.connectTimeout || e.type == DioErrorType.receiveTimeout) {
         throw LoginNoInternetConnection();
