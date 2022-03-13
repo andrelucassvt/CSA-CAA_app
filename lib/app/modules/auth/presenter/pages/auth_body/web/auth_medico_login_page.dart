@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:projeto_csa_app/app/modules/auth/domain/error/login_error.dart';
 import 'package:projeto_csa_app/app/modules/auth/presenter/cubit/login_cubit.dart';
+import 'package:projeto_csa_app/app/shared/error/common_errors.dart';
 import 'package:projeto_csa_app/app/shared/routes/routes.dart';
 import 'package:projeto_csa_app/app/shared/widget/default_button.dart';
 
@@ -56,7 +56,7 @@ class _AuthMedicoLoginPageState extends State<AuthMedicoLoginPage> {
       bloc: controller,
       listener: (context, state) {
         if (state is LoginFailure) {
-          if (state.error is LoginNoDataFound) {
+          if (state.error is CommonNoDataFoundError) {
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
               backgroundColor: Colors.red,
               content:Text('Usuário não está cadastrado'),

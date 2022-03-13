@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:projeto_csa_app/app/modules/auth/domain/datasource/login_datasource.dart';
-import 'package:projeto_csa_app/app/modules/auth/domain/error/login_error.dart';
+import 'package:projeto_csa_app/app/shared/error/common_errors.dart';
 import 'package:projeto_csa_app/app/shared/interceptors/dio_builder.dart';
 
 class LoginDatasourceImpl implements LoginDatasource {
@@ -21,12 +21,12 @@ class LoginDatasourceImpl implements LoginDatasource {
       await dioBuilder.saveKeys.saveInfoUser(json.encode(response.data["doctor"]));
     } on DioError catch (e,s) {
       if (e.type == DioErrorType.connectTimeout || e.type == DioErrorType.receiveTimeout) {
-        throw LoginNoInternetConnection();
+        throw CommonNoInternetConnectionError();
       }
       if (e.response?.statusCode == 404) {
-        throw LoginNoDataFound();
+        throw CommonNoDataFoundError();
       }
-      throw LoginUnkenError(message: e.message,stack: s);
+      throw CommonDesconhecidoError(message: e.message,stack: s);
     }
   }
 
@@ -36,9 +36,12 @@ class LoginDatasourceImpl implements LoginDatasource {
       
     } on DioError catch (e,s) {
       if (e.type == DioErrorType.connectTimeout || e.type == DioErrorType.receiveTimeout) {
-        throw LoginNoInternetConnection();
+        throw CommonNoInternetConnectionError();
       }
-      throw LoginUnkenError(message: e.message,stack: s);
+      if (e.response?.statusCode == 404) {
+        throw CommonNoDataFoundError();
+      }
+      throw CommonDesconhecidoError(message: e.message,stack: s);
     }
   }
 }
