@@ -7,8 +7,6 @@ import 'package:projeto_csa_app/app/modules/home/domain/usecases/get_interacoes_
 import 'package:projeto_csa_app/app/modules/home/domain/usecases/get_pacientes.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/home_interacoes/home_interacoes_cubit.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/player_audio/player_audio_cubit.dart';
-import 'package:projeto_csa_app/app/shared/database/manager_keys_impl.dart';
-import 'package:projeto_csa_app/app/shared/interceptors/dio_builder.dart';
 import 'package:projeto_csa_app/app/shared/util/player_audio_local_impl.dart';
 
 class HomeDependencies {

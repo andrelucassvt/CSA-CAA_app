@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:projeto_csa_app/app/modules/auth/presenter/cubit/login_cubit.dart';
+import 'package:projeto_csa_app/app/modules/auth/presenter/blocs/login/login_cubit.dart';
 import 'package:projeto_csa_app/app/shared/error/common_errors.dart';
 import 'package:projeto_csa_app/app/shared/routes/routes.dart';
+import 'package:projeto_csa_app/app/shared/util/snackbar_common/snackbar_common.dart';
 import 'package:projeto_csa_app/app/shared/widget/default_button.dart';
 
 class AuthMedicoLoginPage extends StatefulWidget {
@@ -57,22 +58,12 @@ class _AuthMedicoLoginPageState extends State<AuthMedicoLoginPage> {
       listener: (context, state) {
         if (state is LoginFailure) {
           if (state.error is CommonNoDataFoundError) {
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              backgroundColor: Colors.red,
-              content:Text('Usuário não está cadastrado'),
-            ));
+            SnackbarCommon.chamarSnackBarWeb(text: 'Usuário não está cadastrado', context: context);
             return;
           }
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: Colors.red,
-            content:Text('Error ao fazer login. Tente novamente'),
-          ));
-
+          SnackbarCommon.chamarSnackBarWeb(text: state.error.errorMessage, context: context);
         } else if (state is LoginDataisEmpty){
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: Colors.red,
-            content: Text('Preencha todos os campos'),
-          ));
+          SnackbarCommon.chamarSnackBarWeb(text: 'Preencha todos os campos', context: context);
         } else if (state is LoginSucess) {
           Navigator.of(context).pushReplacementNamed(RoutesApp.home);
         }

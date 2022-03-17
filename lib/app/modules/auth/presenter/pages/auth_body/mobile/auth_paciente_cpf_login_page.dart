@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:projeto_csa_app/app/modules/auth/presenter/cubit/login_cubit.dart';
+import 'package:projeto_csa_app/app/modules/auth/presenter/blocs/login/login_cubit.dart';
+import 'package:projeto_csa_app/app/shared/error/common_errors.dart';
 import 'package:projeto_csa_app/app/shared/routes/routes.dart';
+import 'package:projeto_csa_app/app/shared/util/snackbar_common/snackbar_common.dart';
 import 'package:projeto_csa_app/app/shared/widget/default_button.dart';
 
 class AuthPacienteCpfPage extends StatefulWidget {
@@ -43,22 +45,17 @@ class _AuthPacienteCpfPageState extends State<AuthPacienteCpfPage> {
               bloc: controller,
               listener: (context, state) {
                 if (state is LoginFailure) {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    backgroundColor: Colors.red,
-                    content:Text('Error ao fazer login. Tente novamente'),
-                  ));
-                  return;
-                }
-                if (state is LoginDataisEmpty) {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    backgroundColor: Colors.red,
-                    content: Text('Preencha todo o campo'),
-                  ));
-                  return;
-                }
-                if (state is LoginSucess) {
+                  SnackbarCommon.chamarSnackBarMobile(
+                    text: state.error.errorMessage, 
+                    context: context
+                  );
+                } else if (state is LoginDataisEmpty) {
+                  SnackbarCommon.chamarSnackBarMobile(
+                    text: 'Preencha todo o campo', 
+                    context: context
+                  );
+                } else if (state is LoginSucess) {
                   Navigator.of(context).pushReplacementNamed(RoutesApp.home);
-                  return;
                 }
               },
               builder: (context, state) {

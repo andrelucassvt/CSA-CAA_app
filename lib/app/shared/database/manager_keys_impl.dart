@@ -10,7 +10,7 @@ class ManagerKeysImpl implements ManagerKeys {
     if (result != null) {
       return result;
     }
-    return "invalid";
+    return "";
   }
 
   @override
@@ -26,7 +26,7 @@ class ManagerKeysImpl implements ManagerKeys {
     if (result != null) {
       return result;
     }
-    return "Invalid";
+    return "";
   }
 
   @override
