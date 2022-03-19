@@ -37,7 +37,7 @@ class AjudaPage extends StatelessWidget {
               left: 10
             ),
             child: Text(
-              'Ao clicar em alguns dos botões, você será direcionado ao número de contato de ajuda oferecido pelo serviço',
+              'Ao clicar em alguns dos botões você será direcionado ao número de contato de ajuda oferecido pelo serviço',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 20

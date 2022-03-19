@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:projeto_csa_app/app/modules/home/data/models/medico_model.dart';
+import 'package:projeto_csa_app/app/modules/home/data/models/paciente_model.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/medico.dart';
 import 'package:projeto_csa_app/app/modules/perfil/domain/datasource/perfil_datasource.dart';
@@ -32,11 +33,23 @@ class PerfilDatasourceImpl implements PerfilDatasource {
 
   @override
   Future<PacienteEntity> getPerfilPaciente() async {
-    return PacienteEntity(
-      nome: 'André Lucas Barbosa Salvador',
-      responsavel: 'Tatiane Almeida Barbosa',
-      medico: 'Dr. Bernardo'
-    );
+    try {
+      final Dio dio = await dioBuilder.getDiobaseResquestPublic();
+      var infoUser = await dioBuilder.saveKeys.getInfoUser();
+      LoginInfo user = LoginInfo.fromJson(infoUser);
+      final response =  await dio.get('/patient',queryParameters: {
+        "cpf": user.cpf,
+      });
+      return PacienteModel.fromMap(response.data);
+    } on DioError catch (e,s) {
+      if (e.type == DioErrorType.connectTimeout || e.type == DioErrorType.receiveTimeout) {
+        throw CommonNoInternetConnectionError();
+      }
+      if (e.response?.statusCode == 404) {
+        throw CommonNoDataFoundError(message: "Usuário não encontrado");
+      }
+      throw CommonDesconhecidoError(message: e.message,stack: s);
+    }
   }
   
 }

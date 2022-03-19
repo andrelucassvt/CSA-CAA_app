@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
 import 'package:projeto_csa_app/app/modules/perfil/presenter/blocs/perfil/perfil_cubit.dart';
-import 'package:projeto_csa_app/app/modules/perfil/presenter/components/ajuda_page.dart';
 import 'package:projeto_csa_app/app/modules/perfil/presenter/components/logout_button.dart';
+import 'package:projeto_csa_app/app/shared/routes/routes.dart';
 import 'package:projeto_csa_app/app/shared/widget/error_view_widget.dart';
 import 'package:projeto_csa_app/app/shared/widget/info_user_title_subtitle.dart';
 
@@ -91,10 +91,7 @@ class _PacientePerfilPageState extends State<PacientePerfilPage> {
                       ),
                       Center(
                         child: TextButton(
-                          onPressed: () => showModalBottomSheet(
-                            context: context,
-                            builder: (context) => const AjudaPage()
-                          ),
+                          onPressed: () => Navigator.pushNamed(context, RoutesApp.homePerfilAjuda),
                           child: const Text('Precisa de ajuda ?')
                         ),
                       ),

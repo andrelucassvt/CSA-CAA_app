@@ -37,8 +37,7 @@ class LoginDatasourceImpl implements LoginDatasource {
       final response =  await dio.get('/patient',queryParameters: {
         "cpf": cpf
       });
-/*       await dioBuilder.saveKeys.saveToken(response.data["token"]["tokenHash"]);
-      await dioBuilder.saveKeys.saveInfoUser(json.encode(response.data["doctor"])); */
+      await dioBuilder.saveKeys.saveInfoUser(json.encode(response.data));
     } on DioError catch (e,s) {
       if (e.type == DioErrorType.connectTimeout || e.type == DioErrorType.receiveTimeout) {
         throw CommonNoInternetConnectionError();

@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/home_interacoes/home_interacoes_cubit.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/player_audio/player_audio_cubit.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/widgets/card_grid_widget.dart';
+import 'package:projeto_csa_app/app/shared/error/common_errors.dart';
 import 'package:projeto_csa_app/app/shared/widget/error_view_widget.dart';
 
 class PacienteInteracoesBody extends StatefulWidget {
@@ -39,6 +40,11 @@ class _PacienteInteracoesBodyState extends State<PacienteInteracoesBody> {
             }
 
             if (state is HomeInteracoesFailure) {
+              if (state.error is CommonNoDataFoundError) {
+                return const Center(
+                  child: Text('Você não tem interações'),
+                );
+              }
               return ErrorViewWidget(
                 errorMessage: state.error.errorMessage, 
                 actionButton: () async => controller.getInteracoesDoPaciente()

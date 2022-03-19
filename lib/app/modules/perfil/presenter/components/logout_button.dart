@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_csa_app/app/shared/routes/routes.dart';
 
@@ -34,7 +35,7 @@ class LogoutButton extends StatelessWidget {
                     child: const Text('Não'),
                   ),
                   TextButton(
-                    onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(RoutesApp.inicial, (Route<dynamic> route) => false), 
+                    onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(kIsWeb ? RoutesApp.inicial : RoutesApp.auth, (Route<dynamic> route) => false), 
                     child: const Text(
                       'Sim',
                       style: TextStyle(

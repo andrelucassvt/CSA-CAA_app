@@ -11,7 +11,6 @@ class CadastroPacienteDatasourceImpl implements CadastroPacienteDatasource{
 
   @override
   Future<List<InteracaoEntity>> getAllInteracoes() {
-    // TODO: implement getAllInteracoes
     throw UnimplementedError();
   }
   

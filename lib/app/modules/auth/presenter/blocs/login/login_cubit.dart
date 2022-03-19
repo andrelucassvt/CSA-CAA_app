@@ -17,7 +17,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> loginPaciente(String cpf) async {
     emit(LoginLoading());
-    if (cpf.isEmpty || cpf.length < 14) return emit(LoginDataisEmpty());
+    if (cpf.isEmpty || cpf.length < 11) return emit(LoginDataisEmpty());
     var result = await loginPacienteUsecase(cpf);
     emit(result.fold(
       (failure) => LoginFailure(failure), 

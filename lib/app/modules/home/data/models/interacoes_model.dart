@@ -1,17 +1,15 @@
-import 'dart:convert';
-
 import 'package:projeto_csa_app/app/modules/home/domain/entity/interacao.dart';
 
 class InteracoesModel extends InteracaoEntity {
   
-  String? nome;
-  String? foto;
   
   InteracoesModel({
     this.nome,
     this.foto,
   });
 
+  String? nome;
+  String? foto;
 
   Map<String, dynamic> toMap() {
     return {
@@ -20,14 +18,16 @@ class InteracoesModel extends InteracaoEntity {
     };
   }
 
-  factory InteracoesModel.fromMap(Map<String, dynamic> map) {
+  factory InteracoesModel.fromJson(Map<String, dynamic> map) {
     return InteracoesModel(
       nome: map['nome'],
       foto: map['foto'],
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory InteracoesModel.fromJson(String source) => InteracoesModel.fromMap(json.decode(source));
+  static List<InteracoesModel> fromJsonList(List lista){
+    if (lista.isEmpty) {
+      return [];
+    }
+    return lista.map((e) => InteracoesModel.fromJson(e)).toList();
+  }
 }

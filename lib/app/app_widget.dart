@@ -6,6 +6,7 @@ import 'package:projeto_csa_app/app/modules/home/presenter/pages/cadastrar_pacie
 import 'package:projeto_csa_app/app/modules/home/presenter/pages/details_paciente_web_page.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/pages/escolher_interacoes_web_page.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/pages/home_page.dart';
+import 'package:projeto_csa_app/app/modules/perfil/presenter/components/ajuda_page.dart';
 import 'package:projeto_csa_app/app/modules/perfil/presenter/pages/perfil_page.dart';
 import 'package:projeto_csa_app/app/shared/routes/routes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -35,6 +36,7 @@ class AppWidget extends StatelessWidget {
         RoutesApp.home: (BuildContext context) => const HomePage(),
         RoutesApp.homeDetalhesPaciente: (BuildContext context) => const DetailsPacienteWebPage(),
         RoutesApp.homePerfil: (BuildContext context) => const PerfilPage(),
+        RoutesApp.homePerfilAjuda: (BuildContext context) => const AjudaPage(),
         RoutesApp.homeCadastrarPaciente: (BuildContext context) => const CadastrarPacienteWebPage(),
         RoutesApp.homeEscolherInteracoes: (BuildContext context) => const EscolherInteracoesWebPage()
       },

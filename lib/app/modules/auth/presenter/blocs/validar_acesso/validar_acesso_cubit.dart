@@ -9,8 +9,8 @@ class ValidarAcessoCubit extends Cubit<ValidarAcessoState> {
   ValidarAcessoCubit(this.managerKeys) : super(ValidarAcessoInitial());
 
   Future<void> validarAcesso() async {
-    String token = await managerKeys.getToken();
-    if (token.isEmpty || token == null) {
+    String infoUser = await managerKeys.getInfoUser();
+    if (infoUser.isEmpty) {
       emit(ValidarAcessoTelaDeLogin());
     } else {
       emit(ValidarAcessoHome());
