@@ -22,7 +22,7 @@ class _PacienteInteracoesBodyState extends State<PacienteInteracoesBody> {
   @override
   void initState() {
     super.initState();
-    SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight,DeviceOrientation.landscapeLeft]);
     controller.getInteracoesDoPaciente();
   }
   @override
@@ -58,7 +58,6 @@ class _PacienteInteracoesBodyState extends State<PacienteInteracoesBody> {
                 scrollDirection: Axis.horizontal,
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 200,
-                  //childAspectRatio: 3 / 2,
                   mainAxisExtent: 150,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 20
@@ -66,7 +65,7 @@ class _PacienteInteracoesBodyState extends State<PacienteInteracoesBody> {
                 itemBuilder: (context, index) {
                   return CardGridWidget(
                     dados: dados[index],
-                    actionCard: () async => await playerAudio.playerAudio('audios/teste.mp3'),
+                    actionCard: () async => await playerAudio.playerAudio(dados[index].nome!),
                   );
                 }
               );

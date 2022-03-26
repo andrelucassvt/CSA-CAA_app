@@ -19,13 +19,6 @@ class AjudaPage extends StatelessWidget {
         title: const Text('Atenção'),
         centerTitle: true,
         backgroundColor: Colors.red,
-        automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            onPressed: () => Navigator.of(context).pop(), 
-            icon: const Icon(Icons.cancel)
-          )
-        ],
       ),
       body: Column(
         children: [

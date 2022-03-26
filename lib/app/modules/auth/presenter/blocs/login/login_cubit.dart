@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
 import 'package:projeto_csa_app/app/modules/auth/domain/usecases/login_medico_usecase.dart';
@@ -15,8 +16,11 @@ class LoginCubit extends Cubit<LoginState> {
     this.loginPacienteUsecase,
   ) : super(LoginInitial());
 
+  final focusNode = FocusNode();
+
   Future<void> loginPaciente(String cpf) async {
     emit(LoginLoading());
+    focusNode.unfocus();
     if (cpf.isEmpty || cpf.length < 11) return emit(LoginDataisEmpty());
     var result = await loginPacienteUsecase(cpf);
     emit(result.fold(

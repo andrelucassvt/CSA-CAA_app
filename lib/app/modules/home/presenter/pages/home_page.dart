@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Text(kIsWeb ? 'Pacientes' :'Interações'),
+        title: const Text(kIsWeb ? 'Pacientes' :'Interações'),
         centerTitle: false,
         automaticallyImplyLeading: false,
         actions: [

@@ -7,13 +7,12 @@ class CardGridWidget extends StatelessWidget {
   final DadosSemelhantesCardGridInterface dados;
   final Function() actionCard;
 
-  CardGridWidget({
+  const CardGridWidget({
     Key? key,
     required this.dados,
     required this.actionCard,
   }) : super(key: key);
 
-  final playerAudio = GetIt.I.get<PlayerAudioCubit>();
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +37,12 @@ class CardGridWidget extends StatelessWidget {
               const FlutterLogo(
                 size: 40,
               ),
-              const Spacer(),
+              const SizedBox(
+                height: 20,
+              ),
               Text(
                 dados.nomeCard,
+                textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),

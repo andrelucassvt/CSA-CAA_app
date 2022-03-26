@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:projeto_csa_app/app/shared/database/manager_keys_impl.dart';
+import 'package:projeto_csa_app/app/shared/interceptors/dio_builder.dart';
 import 'package:projeto_csa_app/app/shared/routes/routes.dart';
 
 class LogoutButton extends StatelessWidget {
@@ -35,7 +37,16 @@ class LogoutButton extends StatelessWidget {
                     child: const Text('Não'),
                   ),
                   TextButton(
-                    onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(kIsWeb ? RoutesApp.inicial : RoutesApp.auth, (Route<dynamic> route) => false), 
+                    onPressed: () {
+                      Navigator.of(context)
+                        .pushNamedAndRemoveUntil(
+                          kIsWeb ? RoutesApp.inicial : RoutesApp.auth, 
+                          (Route<dynamic> route) => false,
+                        );
+                        DioBuilder(ManagerKeysImpl())
+                          ..saveKeys.saveToken("")
+                          ..saveKeys.saveInfoUser("");
+                    }, 
                     child: const Text(
                       'Sim',
                       style: TextStyle(

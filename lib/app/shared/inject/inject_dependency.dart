@@ -12,8 +12,8 @@ class InjectDependency {
     final getIt = GetIt.instance;
     
     //Dependecies
-    getIt.registerFactory<ManagerKeys>(() => ManagerKeysImpl());
-    getIt.registerFactory<DioBuilder>(() => DioBuilder(getIt()));
+    getIt.registerSingleton<ManagerKeys>(ManagerKeysImpl());
+    getIt.registerSingleton<DioBuilder>(DioBuilder(getIt()));
 
     AuthDependencies.init(getIt);
     HomeDependencies.init(getIt);

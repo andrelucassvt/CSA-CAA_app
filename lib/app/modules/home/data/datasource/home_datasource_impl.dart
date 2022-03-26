@@ -20,9 +20,7 @@ class HomeDatasourceImpl implements HomeDatasource {
       Dio dio = await dioBuilder.getDiobaseResquestPublic();
       var infoUser = await dioBuilder.saveKeys.getInfoUser();
       LoginInfo user = LoginInfo.fromJson(infoUser);
-      var response = await dio.get('/hasInteraction',queryParameters: {
-        'cpf': user.cpf
-      });
+      var response = await dio.get('/allInteractions');
       return InteracoesModel.fromJsonList(response.data);
     } on DioError catch (e,s) {
       if (e.type == DioErrorType.connectTimeout || e.type == DioErrorType.receiveTimeout) {

@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:projeto_csa_app/app/modules/auth/presenter/blocs/login/login_cubit.dart';
 import 'package:projeto_csa_app/app/shared/routes/routes.dart';
+import 'package:projeto_csa_app/app/shared/util/core/logos_app.dart';
 import 'package:projeto_csa_app/app/shared/util/snackbar_common/snackbar_common.dart';
 import 'package:projeto_csa_app/app/shared/widget/default_button.dart';
 
@@ -33,7 +34,7 @@ class _AuthPacienteCpfPageState extends State<AuthPacienteCpfPage> {
             end: Alignment.centerLeft,
             colors: [
               Colors.white,
-              Colors.blue
+              Colors.blue,
             ]
           )
         ),
@@ -64,14 +65,15 @@ class _AuthPacienteCpfPageState extends State<AuthPacienteCpfPage> {
                     const SizedBox(
                       height: 70,
                     ),
-                    const Center(
-                      child: FlutterLogo(
-                        size: 100,
+                    Center(
+                      child: SizedBox(
+                        height: 150,
+                        child: Image.asset(LogosApp.logoApp),
                       ),
                     ),
                     const Spacer(),
                     TextFormField(
-                      autofocus: false,
+                      focusNode: controller.focusNode,
                       controller: textEditingController,
                       keyboardType: TextInputType.number,
                       inputFormatters: [
@@ -88,16 +90,18 @@ class _AuthPacienteCpfPageState extends State<AuthPacienteCpfPage> {
                         ),
                         contentPadding: const EdgeInsets.symmetric(
                           horizontal: 10, 
-                          vertical: 0.0,
+                          vertical: 20.0,
                         ),
                         focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
                             borderSide: BorderSide(
                               color: state is LoginFailure || state is LoginDataisEmpty ? Colors.red : Colors.green, 
                               width: 3.0
                             ),
                           ),
-                          enabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(
                               color: Colors.grey, 
                               width: 3.0
                             ),

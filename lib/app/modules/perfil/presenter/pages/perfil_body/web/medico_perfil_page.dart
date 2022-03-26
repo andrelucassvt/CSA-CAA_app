@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:projeto_csa_app/app/modules/perfil/presenter/blocs/perfil/perfil_cubit.dart';
 import 'package:projeto_csa_app/app/modules/perfil/presenter/components/logout_button.dart';
+import 'package:projeto_csa_app/app/shared/util/core/logos_app.dart';
 import 'package:projeto_csa_app/app/shared/widget/error_view_widget.dart';
 import 'package:projeto_csa_app/app/shared/widget/info_user_title_subtitle.dart';
 
@@ -59,8 +60,11 @@ class _MedicoPerfilPageState extends State<MedicoPerfilPage> {
             var dados = state.medico;
             return Column(
               children: [
-                const CircleAvatar(
-                  radius: 70,
+                Center(
+                  child: SizedBox(
+                    height: 150,
+                    child: Image.asset(LogosApp.logoApp),
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
