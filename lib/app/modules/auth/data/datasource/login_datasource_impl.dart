@@ -24,7 +24,7 @@ class LoginDatasourceImpl implements LoginDatasource {
         throw CommonNoInternetConnectionError();
       }
       if (e.response?.statusCode == 404) {
-        throw CommonNoDataFoundError();
+        throw CommonNoDataFoundError(message: "Usuário não encontrado", stack: s);
       }
       throw CommonDesconhecidoError(message: e.message,stack: s);
     }

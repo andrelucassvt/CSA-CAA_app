@@ -4,15 +4,19 @@ class InteracoesModel extends InteracaoEntity {
   
   
   InteracoesModel({
+    this.id,
     this.nome,
     this.foto,
+    this.isSelect = false,
   });
-
-  String? nome;
-  String? foto;
+  final int? id;
+  final String? nome;
+  final String? foto;
+  final bool isSelect;
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'nome': nome,
       'foto': foto,
     };
@@ -20,6 +24,7 @@ class InteracoesModel extends InteracaoEntity {
 
   factory InteracoesModel.fromJson(Map<String, dynamic> map) {
     return InteracoesModel(
+      id: map['id'],
       nome: map['name'],
       foto: map['foto'],
     );

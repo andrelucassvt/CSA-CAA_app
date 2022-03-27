@@ -4,9 +4,11 @@ import 'package:projeto_csa_app/app/modules/home/domain/entity/interacao.dart';
 
 class CardGridAddeRemoverWidget extends StatelessWidget {
   final InteracaoEntity interacao;
+  final VoidCallback actionButton;
   const CardGridAddeRemoverWidget({
     Key? key,
     required this.interacao,
+    required this.actionButton,
   }) : super(key: key);
 
   @override
@@ -22,7 +24,7 @@ class CardGridAddeRemoverWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(22),
             border: Border.all(
               width: 2,
-              color: Colors.red
+              color: interacao.isSelect ? Colors.green : Colors.blue
             )
           ),
           child: Column(
@@ -44,64 +46,16 @@ class CardGridAddeRemoverWidget extends StatelessWidget {
         Align(
           alignment: Alignment.topRight,
           child: InkWell(
-          onTap: () => showDialog(
-            context: context, 
-            builder: (context) => SimpleDialog(
-              title: const Text(
-                'Atenção',
-                style: TextStyle(
-                  color: Colors.red
-                ),
-              ),
-              titlePadding: const EdgeInsets.only(
-                left: 20,
-                top: 20,
-              ),
-              contentPadding: const EdgeInsets.only(
-                left: 20,
-                top: 10
-              ),
-              children: [
-                const Text('Deseja remover essa interação da lista do paciente ?'),
-                const SizedBox(
-                  height: 15,
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      TextButton(
-                        onPressed: () => Navigator.of(context).pop(), 
-                        child: const Text('Não'),
-                      ),
-                      TextButton(
-                        onPressed: () {}, 
-                        child: const Text(
-                          'Sim',
-                          style: TextStyle(
-                            color: Colors.red
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-              ],
-            )
-          ),
+          onTap: actionButton,
             child: Container(
               padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
-                color: Colors.red,
+                color: interacao.isSelect? Colors.green : Colors.blue,
                 borderRadius: BorderRadius.circular(30)
               ),
-              child: const Text(
-                'Remover',
-                style: TextStyle(
+              child: Text(
+                interacao.isSelect ?  'Remover' : 'Adicionar',
+                style: const TextStyle(
                   color: Colors.white
                 ),
               ),

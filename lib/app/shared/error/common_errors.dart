@@ -9,14 +9,14 @@ class CommonNoInternetConnectionError extends Failure {
 
 class CommonNoDataFoundError extends Failure {
   CommonNoDataFoundError({message,stack}) : super(
-    errorMessage: message,
+    errorMessage: message ?? "Nenhum dado encontrado",
     stackTrace: stack,
   );
 }
 
 class CommonDesconhecidoError extends Failure {
   CommonDesconhecidoError({message,stack}) : super(
-    errorMessage: message,
+    errorMessage: message ?? "Erro desconhecido",
     stackTrace: stack,
   );
 }

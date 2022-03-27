@@ -55,10 +55,6 @@ class _AuthMedicoLoginPageState extends State<AuthMedicoLoginPage> {
       bloc: controller,
       listener: (context, state) {
         if (state is LoginFailure) {
-          if (state.error is CommonNoDataFoundError) {
-            SnackbarCommon.chamarSnackBarWeb(text: 'Usuário não está cadastrado', context: context);
-            return;
-          }
           SnackbarCommon.chamarSnackBarWeb(text: state.error.errorMessage, context: context);
         } else if (state is LoginDataisEmpty){
           SnackbarCommon.chamarSnackBarWeb(text: 'Preencha todos os campos', context: context);

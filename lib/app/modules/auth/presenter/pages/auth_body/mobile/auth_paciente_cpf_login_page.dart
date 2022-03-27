@@ -17,7 +17,7 @@ class AuthPacienteCpfPage extends StatefulWidget {
 }
 
 class _AuthPacienteCpfPageState extends State<AuthPacienteCpfPage> {
-  TextEditingController textEditingController = TextEditingController();
+  TextEditingController cpfText = TextEditingController();
   final controller = GetIt.I.get<LoginCubit>();
   @override
   void initState() {
@@ -74,7 +74,7 @@ class _AuthPacienteCpfPageState extends State<AuthPacienteCpfPage> {
                     const Spacer(),
                     TextFormField(
                       focusNode: controller.focusNode,
-                      controller: textEditingController,
+                      controller: cpfText,
                       keyboardType: TextInputType.number,
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly,
@@ -117,7 +117,7 @@ class _AuthPacienteCpfPageState extends State<AuthPacienteCpfPage> {
                       width: double.infinity,
                       isLoading: state is LoginLoading,
                       actionButton: () => controller.loginPaciente(
-                        textEditingController.text.replaceAll(RegExp(r'[.-]'), ""),
+                        cpfText.text.replaceAll(RegExp(r'[.-]'), ""),
                       ),
                     ),
                     const Spacer()
