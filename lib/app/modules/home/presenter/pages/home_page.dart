@@ -19,17 +19,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        title: const Text(kIsWeb ? 'Pacientes' :'Interações'),
-        centerTitle: false,
-        automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            onPressed: () => Navigator.pushNamed(context, RoutesApp.homePerfil), 
-            icon: const Icon(Icons.person),
-          )
-        ],
-      ),
       body: kIsWeb ?  const MedicoComandosBody() : const PacienteInteracoesBody(),
 
       floatingActionButton: kIsWeb 

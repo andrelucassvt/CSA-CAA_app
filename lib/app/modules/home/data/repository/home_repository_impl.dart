@@ -10,9 +10,9 @@ class HomeRepositoryImpl implements HomeRepository {
   HomeRepositoryImpl(this.homeDatasource);
 
   @override
-  Future<Either<Failure, List<InteracaoEntity>>> getInteracoesDoPaciente() async {
+  Future<Either<Failure, List<InteracaoEntity>>> getInteracoesDoPaciente({String? cpf}) async {
     try {
-      var result = await homeDatasource.getInteracoesDoPaciente();
+      var result = await homeDatasource.getInteracoesDoPaciente(cpf: cpf);
       return Right(result);
     } on Failure catch (e) {
       return Left(e);

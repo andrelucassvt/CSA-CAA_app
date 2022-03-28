@@ -15,7 +15,7 @@ class HomeDatasourceImpl implements HomeDatasource {
   HomeDatasourceImpl(this.dioBuilder);
   
   @override
-  Future<List<InteracaoEntity>> getInteracoesDoPaciente() async {
+  Future<List<InteracaoEntity>> getInteracoesDoPaciente({String? cpf}) async {
     try {
       Dio dio = await dioBuilder.getDiobaseResquestPublic();
       var infoUser = await dioBuilder.saveKeys.getInfoUser();
@@ -23,7 +23,7 @@ class HomeDatasourceImpl implements HomeDatasource {
       var response = await dio.get(
         '/hasInteraction',
         queryParameters: {
-          'cpf': user.cpf,
+          'cpf': cpf ?? user.cpf,
         }
       );
       return InteracoesModel.fromJsonList(response.data);

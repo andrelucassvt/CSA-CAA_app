@@ -7,7 +7,7 @@ class GetInteracoesDoPacienteUsecase {
   final HomeRepository homeRepository;
   GetInteracoesDoPacienteUsecase(this.homeRepository);
 
-  Future<Either<Failure, List<InteracaoEntity>>> call() async {
-    return homeRepository.getInteracoesDoPaciente();
+  Future<Either<Failure, List<InteracaoEntity>>> call({String? cpf}) async {
+    return homeRepository.getInteracoesDoPaciente(cpf: cpf);
   }
 }

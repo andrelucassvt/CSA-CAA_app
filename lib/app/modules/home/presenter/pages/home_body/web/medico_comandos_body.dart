@@ -24,49 +24,66 @@ class _MedicoComandosBodyState extends State<MedicoComandosBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: BlocBuilder<HomeInteracoesCubit, HomeInteracoesState>(
-        bloc: controller,
-        builder: (context, state) {
-          
-          if (state is HomeInteracoesLoading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Pacientes'),
+        centerTitle: false,
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            onPressed: () => Navigator.pushNamed(context, RoutesApp.homePerfil), 
+            icon: const Icon(Icons.person),
+          ),
+          IconButton(
+            onPressed: () async => controller.getPacientes(), 
+            icon: const Icon(Icons.restart_alt_outlined),
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: BlocBuilder<HomeInteracoesCubit, HomeInteracoesState>(
+          bloc: controller,
+          builder: (context, state) {
+            
+            if (state is HomeInteracoesLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
 
-          if (state is HomeInteracoesFailure) {
-            return ErrorViewWidget(
-              errorMessage: state.error.errorMessage, 
-              actionButton: () async => await controller.getPacientes()
-            );
-          }
+            if (state is HomeInteracoesFailure) {
+              return ErrorViewWidget(
+                errorMessage: state.error.errorMessage, 
+                actionButton: () async => await controller.getPacientes()
+              );
+            }
 
-          if (state is InteracoesMedicoPacientesSucess) {
-            var dados = state.list;
-            return GridView.builder(
-              itemCount: dados.length,
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200,
-                childAspectRatio: 3 / 2,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20
-              ),
-              itemBuilder: (context, index) {
-                return CardGridWidget(
-                  dados: dados[index],
-                  actionCard: () => Navigator.pushNamed(
-                    context, 
-                    RoutesApp.homeDetalhesPaciente,
-                    arguments: dados[index]
-                  ),
-                );
-              }
-            );
-          }
-          return const SizedBox.shrink();
-        },
+            if (state is InteracoesMedicoPacientesSucess) {
+              var dados = state.list;
+              return GridView.builder(
+                itemCount: dados.length,
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 200,
+                  childAspectRatio: 3 / 2,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20
+                ),
+                itemBuilder: (context, index) {
+                  return CardGridWidget(
+                    dados: dados[index],
+                    actionCard: () => Navigator.pushNamed(
+                      context, 
+                      RoutesApp.homeDetalhesPaciente,
+                      arguments: dados[index]
+                    ),
+                  );
+                }
+              );
+            }
+            return const SizedBox.shrink();
+          },
+        ),
       ),
     );
   }

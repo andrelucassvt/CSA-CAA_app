@@ -28,7 +28,7 @@ class PacienteModel extends PacienteEntity {
       cpf: map['cpf'],
       medico: map['doctorName'],
       foto: map['foto'],
-      sexo: map['sexo'],
+      sexo: map['gender'],
       responsavel: map['responsibleName'],
       interacoes: map['interacoes'] != null ? List<InteracaoEntity>.from(map['interacoes']?.map((x) => InteracoesModel.fromJson(x))) : null,
     );

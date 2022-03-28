@@ -12,6 +12,7 @@ import 'package:projeto_csa_app/app/modules/home/domain/usecases/get_interacoes_
 import 'package:projeto_csa_app/app/modules/home/domain/usecases/get_pacientes.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/usecases/post_cadastro_paciente_usecase.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/cadastro_paciente_event/cadastro_paciente_bloc.dart';
+import 'package:projeto_csa_app/app/modules/home/presenter/blocs/get_all_interacoes/get_all_interacoes_cubit.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/home_interacoes/home_interacoes_cubit.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/player_audio/player_audio_cubit.dart';
 import 'package:projeto_csa_app/app/shared/util/player_audio_local_impl.dart';
@@ -28,6 +29,7 @@ class HomeDependencies {
     getIt.registerFactory<HomeRepository>(
       () => HomeRepositoryImpl(getIt())
     );
+
     getIt.registerFactory<CadastroPacienteRepository>(
       () => CadastroPacienteRepositoryImpl(getIt())
     );
@@ -47,11 +49,14 @@ class HomeDependencies {
     );
 
     //Controllers
-    getIt.registerFactory<HomeInteracoesCubit>(
-      () => HomeInteracoesCubit(getIt(),getIt())
-    );
+    getIt.registerFactory<HomeInteracoesCubit>(()=>HomeInteracoesCubit(getIt(),getIt()));
+    
     getIt.registerFactory<CadastroPacienteBloc>(
-      () => CadastroPacienteBloc(getIt(),getIt())
+      () => CadastroPacienteBloc(getIt())
+    );
+    
+    getIt.registerFactory<GetAllInteracoesCubit>(
+      () => GetAllInteracoesCubit(getIt())
     );
     getIt.registerFactory<PlayerAudioCubit>(
       () => PlayerAudioCubit(PlayerAudioLocalImpl())

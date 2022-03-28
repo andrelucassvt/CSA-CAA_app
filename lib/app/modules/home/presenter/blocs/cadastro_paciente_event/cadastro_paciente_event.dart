@@ -8,6 +8,4 @@ class CadastrarPacienteEvent extends CadastropacienteEvent {
   final PacienteEntity pacienteEntity;
   CadastrarPacienteEvent(this.pacienteEntity);
 }
-
-class GetAllInteracoesEvent extends CadastropacienteEvent {}
   
