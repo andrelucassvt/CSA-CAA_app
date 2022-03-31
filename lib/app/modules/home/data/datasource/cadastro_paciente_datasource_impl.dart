@@ -3,7 +3,7 @@ import 'package:projeto_csa_app/app/modules/home/data/models/interacoes_model.da
 import 'package:projeto_csa_app/app/modules/home/domain/datasource/cadastro_paciente_datasource.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/interacao.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
-import 'package:projeto_csa_app/app/shared/error/common_errors.dart';
+import 'package:projeto_csa_app/app/shared/common/error/common_errors.dart';
 import 'package:projeto_csa_app/app/shared/interceptors/dio_builder.dart';
 import 'package:projeto_csa_app/app/shared/login_info/login_info.dart';
 
@@ -36,7 +36,6 @@ class CadastroPacienteDatasourceImpl implements CadastroPacienteDatasource{
       if (e.type == DioErrorType.connectTimeout || e.type == DioErrorType.receiveTimeout) {
         throw CommonNoInternetConnectionError();
       }
-      print(e.message);
       throw CommonDesconhecidoError(message: e.message,stack: s);
     }
   }

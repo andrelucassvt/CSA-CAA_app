@@ -6,7 +6,7 @@ import 'package:projeto_csa_app/app/modules/home/data/models/paciente_model.dart
 import 'package:projeto_csa_app/app/modules/home/domain/datasource/home_datasource.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/interacao.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
-import 'package:projeto_csa_app/app/shared/error/common_errors.dart';
+import 'package:projeto_csa_app/app/shared/common/error/common_errors.dart';
 import 'package:projeto_csa_app/app/shared/interceptors/dio_builder.dart';
 import 'package:projeto_csa_app/app/shared/login_info/login_info.dart';
 

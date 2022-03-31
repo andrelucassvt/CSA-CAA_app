@@ -6,8 +6,8 @@ import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/cadastro_paciente_event/cadastro_paciente_bloc.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/get_all_interacoes/get_all_interacoes_cubit.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/widgets/card_grid_add_e_remover.dart';
+import 'package:projeto_csa_app/app/shared/common/snackbar_common/snackbar_common.dart';
 import 'package:projeto_csa_app/app/shared/routes/routes.dart';
-import 'package:projeto_csa_app/app/shared/util/snackbar_common/snackbar_common.dart';
 import 'package:projeto_csa_app/app/shared/widget/error_view_widget.dart';
 
 class EscolherInteracoesWebPage extends StatefulWidget {

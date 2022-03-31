@@ -5,7 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/home_interacoes/home_interacoes_cubit.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/player_audio/player_audio_cubit.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/widgets/card_grid_widget.dart';
-import 'package:projeto_csa_app/app/shared/error/common_errors.dart';
+import 'package:projeto_csa_app/app/shared/common/error/common_errors.dart';
 import 'package:projeto_csa_app/app/shared/routes/routes.dart';
 import 'package:projeto_csa_app/app/shared/widget/error_view_widget.dart';
 
@@ -64,7 +64,7 @@ class _PacienteInteracoesBodyState extends State<PacienteInteracoesBody> {
                 );
               }
 
-              if (state is InteracoesPacienteSonsSucess) {
+              if (state is HomeInteracoesSucess) {
                 var dados = state.list;
                 return GridView.builder(
                   itemCount: dados.length,

@@ -2,11 +2,12 @@ import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
+import 'package:projeto_csa_app/app/shared/common/snackbar_common/snackbar_common.dart';
 import 'package:projeto_csa_app/app/shared/routes/routes.dart';
-import 'package:projeto_csa_app/app/shared/util/snackbar_common/snackbar_common.dart';
 import 'package:projeto_csa_app/app/shared/widget/default_button.dart';
 
 enum SexoDoPaciente { masculino, feminino }
+
 
 class CadastrarPacienteWebPage extends StatefulWidget {
   const CadastrarPacienteWebPage({ Key? key }) : super(key: key);
@@ -17,6 +18,7 @@ class CadastrarPacienteWebPage extends StatefulWidget {
 
 class _CadastrarPacienteWebPageState extends State<CadastrarPacienteWebPage> {
   SexoDoPaciente? _character = SexoDoPaciente.masculino;
+  int fasesDoPaciente = 1;
   TextEditingController nomePaciente = TextEditingController();
   TextEditingController nomeResponsavel = TextEditingController();
   TextEditingController email = TextEditingController();
@@ -171,50 +173,15 @@ class _CadastrarPacienteWebPageState extends State<CadastrarPacienteWebPage> {
                 const SizedBox(
                   width: 100,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text('Gênero:'),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 200,
-                          child: ListTile(
-                            title: const Text('Masculino'),
-                            leading: Radio<SexoDoPaciente>(
-                              value: SexoDoPaciente.masculino,
-                              groupValue: _character,
-                              onChanged: (SexoDoPaciente? value) {
-                                setState(() {
-                                  _character = value;
-                                });
-                              },
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 200,
-                          child: ListTile(
-                            title: const Text('Feminino'),
-                            leading: Radio<SexoDoPaciente>(
-                              value: SexoDoPaciente.feminino,
-                              groupValue: _character,
-                              onChanged: (SexoDoPaciente? value) {
-                                setState(() {
-                                  _character = value;
-                                });
-                              },
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                generoDoPaciente(),
               ],
             ),
             const SizedBox(
-              height: 100,
+              height: 40,
+            ),
+            fasesDoPacienteWidget(),
+            const SizedBox(
+              height: 50,
             ),
             DefaultButtonApp(
               textButton: 'Avançar',
@@ -244,6 +211,151 @@ class _CadastrarPacienteWebPageState extends State<CadastrarPacienteWebPage> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget generoDoPaciente(){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text('Gênero:'),
+        Row(
+          children: [
+            SizedBox(
+              width: 200,
+              child: ListTile(
+                title: const Text('Masculino'),
+                leading: Radio<SexoDoPaciente>(
+                  value: SexoDoPaciente.masculino,
+                  groupValue: _character,
+                  onChanged: (SexoDoPaciente? value) {
+                    setState(() {
+                      _character = value;
+                    });
+                  },
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 200,
+              child: ListTile(
+                title: const Text('Feminino'),
+                leading: Radio<SexoDoPaciente>(
+                  value: SexoDoPaciente.feminino,
+                  groupValue: _character,
+                  onChanged: (SexoDoPaciente? value) {
+                    setState(() {
+                      _character = value;
+                    });
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+  Widget fasesDoPacienteWidget(){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text('Fase do paciente:'),
+        Wrap(
+          children: [
+            SizedBox(
+              width: 200,
+              child: ListTile(
+                title: const Text('Fase: 1'),
+                leading: Radio<int>(
+                  value: 1,
+                  groupValue: fasesDoPaciente,
+                  onChanged: (value) {
+                    setState(() {
+                      fasesDoPaciente = value!;
+                    });
+                  },
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 200,
+              child: ListTile(
+                title: const Text('Fase: 2'),
+                leading: Radio<int>(
+                  value: 2,
+                  groupValue: fasesDoPaciente,
+                  onChanged: (value) {
+                    setState(() {
+                      fasesDoPaciente = value!;
+                    });
+                  },
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 200,
+              child: ListTile(
+                title: const Text('Fase: 3'),
+                leading: Radio<int>(
+                  value: 3,
+                  groupValue: fasesDoPaciente,
+                  onChanged: (value) {
+                    setState(() {
+                      fasesDoPaciente = value!;
+                    });
+                  },
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 200,
+              child: ListTile(
+                title: const Text('Fase: 4'),
+                leading: Radio<int>(
+                  value: 4,
+                  groupValue: fasesDoPaciente,
+                  onChanged: (value) {
+                    setState(() {
+                      fasesDoPaciente = value!;
+                    });
+                  },
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 200,
+              child: ListTile(
+                title: const Text('Fase: 5'),
+                leading: Radio<int>(
+                  value: 5,
+                  groupValue: fasesDoPaciente,
+                  onChanged: (value) {
+                    setState(() {
+                      fasesDoPaciente = value!;
+                    });
+                  },
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 200,
+              child: ListTile(
+                title: const Text('Fase: 6'),
+                leading: Radio<int>(
+                  value: 6,
+                  groupValue: fasesDoPaciente,
+                  onChanged: (value) {
+                    setState(() {
+                      fasesDoPaciente = value!;
+                    });
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

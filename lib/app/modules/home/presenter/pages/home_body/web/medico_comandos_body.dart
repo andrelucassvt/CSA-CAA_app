@@ -59,7 +59,7 @@ class _MedicoComandosBodyState extends State<MedicoComandosBody> {
               );
             }
 
-            if (state is InteracoesMedicoPacientesSucess) {
+            if (state is HomePacientesSucess) {
               var dados = state.list;
               return GridView.builder(
                 itemCount: dados.length,

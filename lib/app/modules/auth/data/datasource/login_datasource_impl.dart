@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:projeto_csa_app/app/modules/auth/domain/datasource/login_datasource.dart';
-import 'package:projeto_csa_app/app/shared/error/common_errors.dart';
+import 'package:projeto_csa_app/app/shared/common/error/common_errors.dart';
 import 'package:projeto_csa_app/app/shared/interceptors/dio_builder.dart';
 
 class LoginDatasourceImpl implements LoginDatasource {

@@ -17,12 +17,12 @@ class HomeInteracoesCubit extends Cubit<HomeInteracoesState> {
     this.getPacientesUseCase,
   ) : super(HomeInteracoesInitial());
 
-  Future<void> getInteracoesDoPaciente() async {
+  Future<void> getInteracoesDoPaciente({String? cpf}) async {
     emit(HomeInteracoesLoading());
-    var result = await getInteracoesDoPacienteUsecase();
+    var result = await getInteracoesDoPacienteUsecase(cpf: cpf);
     emit(result.fold(
       (failure) => HomeInteracoesFailure(failure), 
-      (sucess) => InteracoesPacienteSonsSucess(sucess))
+      (sucess) => HomeInteracoesSucess(sucess))
     );
   }
 
@@ -31,7 +31,7 @@ class HomeInteracoesCubit extends Cubit<HomeInteracoesState> {
     var result = await getPacientesUseCase();
     emit(result.fold(
       (failure) => HomeInteracoesFailure(failure), 
-      (sucess) => InteracoesMedicoPacientesSucess(sucess))
+      (sucess) => HomePacientesSucess(sucess))
     );
   }
 
