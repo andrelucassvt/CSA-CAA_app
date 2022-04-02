@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "227065696736",
+    "firebase_url": "https://projeto-csa-caa-default-rtdb.firebaseio.com",
+    "project_id": "projeto-csa-caa",
+    "storage_bucket": "projeto-csa-caa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:227065696736:android:1294b3e41b4bb74fe4db85",
+        "android_client_info": {
+          "package_name": "com.example.projeto_csa_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "227065696736-aaococnpog3s4vu0i2kq4mvlseg520s6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2tWWjP5A4ZsHtW-vOf5JOe1Ot084EGt8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "227065696736-aaococnpog3s4vu0i2kq4mvlseg520s6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

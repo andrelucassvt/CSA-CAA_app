@@ -57,6 +57,8 @@ class _AuthMedicoLoginPageState extends State<AuthMedicoLoginPage> {
           SnackbarCommon.chamarSnackBarWeb(text: state.error.errorMessage, context: context);
         } else if (state is LoginDataisEmpty){
           SnackbarCommon.chamarSnackBarWeb(text: 'Preencha todos os campos', context: context);
+        } else if (state is LoginEmailInvalid){
+          SnackbarCommon.chamarSnackBarWeb(text: 'Digite o email corretamente', context: context);
         } else if (state is LoginSucess) {
           Navigator.of(context).pushReplacementNamed(RoutesApp.home);
         }
@@ -96,13 +98,9 @@ class _AuthMedicoLoginPageState extends State<AuthMedicoLoginPage> {
                 ),
                 child: TextFormField(
                   controller: textEmail,
-                  inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly,
-                    CpfInputFormatter(),
-                  ],
                   style: const TextStyle(color: Colors.black),
                   decoration: const InputDecoration(
-                    labelText: 'CPF',
+                    labelText: 'E-mail',
                     hintStyle: TextStyle(color: Colors.black),
                     contentPadding: EdgeInsets.symmetric(
                       horizontal: 10, 
@@ -154,7 +152,7 @@ class _AuthMedicoLoginPageState extends State<AuthMedicoLoginPage> {
                 isLoading: state is LoginLoading,
                 width: double.infinity,
                 actionButton: () => controller.loginMedico(
-                  email: textEmail.text.replaceAll(RegExp(r'[.-]'), ""), 
+                  email: textEmail.text, 
                   senha: textSenha.text,
                 )
               ),

@@ -42,7 +42,10 @@ class _EscolherInteracoesWebPageState extends State<EscolherInteracoesWebPage> {
 
   @override
   void initState() {
-    getAllInteracoesCubit.getAllInteracoes();
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      final args = ModalRoute.of(context)!.settings.arguments as PacienteEntity;
+      getAllInteracoesCubit.getAllInteracoes(args);
+    });
     super.initState();
   }
 
@@ -97,7 +100,7 @@ class _EscolherInteracoesWebPageState extends State<EscolherInteracoesWebPage> {
               return ErrorViewWidget(
                 errorMessage: state.failure.errorMessage,
                 actionButton: () async =>
-                    getAllInteracoesCubit.getAllInteracoes(),
+                    getAllInteracoesCubit.getAllInteracoes(args),
               );
             }
             if (state is GetAllInteracoeSucess) {

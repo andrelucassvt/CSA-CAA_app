@@ -196,6 +196,7 @@ class _CadastrarPacienteWebPageState extends State<CadastrarPacienteWebPage> {
                       cpf: cpf.text.replaceAll(RegExp(r'[.-]'), ""),
                       nome: nomePaciente.text,
                       responsavel: nomeResponsavel.text,
+                      fase: 'fase$fasesDoPaciente',
                       idInteracoes: []
                     )
                   );

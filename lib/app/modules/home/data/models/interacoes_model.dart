@@ -25,7 +25,7 @@ class InteracoesModel extends InteracaoEntity {
   factory InteracoesModel.fromJson(Map<String, dynamic> map) {
     return InteracoesModel(
       id: map['id'],
-      nome: map['name'],
+      nome: map['nome'],
       foto: map['foto'],
     );
   }

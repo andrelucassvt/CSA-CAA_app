@@ -8,6 +8,7 @@ class PacienteEntity implements DadosSemelhantesCardGridInterface{
   String? foto;
   String? sexo;
   String? responsavel;
+  String? fase;
   List<int>? idInteracoes;
 
   PacienteEntity({
@@ -18,6 +19,7 @@ class PacienteEntity implements DadosSemelhantesCardGridInterface{
     this.sexo,
     this.responsavel,
     this.idInteracoes,
+    this.fase,
   });
 
   PacienteEntity copyWith({
@@ -27,6 +29,7 @@ class PacienteEntity implements DadosSemelhantesCardGridInterface{
     String? foto,
     String? sexo,
     String? responsavel,
+    String? fase,
     List<int>? idInteracoes,
   }) {
     return PacienteEntity(
@@ -36,6 +39,7 @@ class PacienteEntity implements DadosSemelhantesCardGridInterface{
       foto: foto ?? this.foto,
       sexo: sexo ?? this.sexo,
       responsavel: responsavel ?? this.responsavel,
+      fase: fase ?? this.fase,
       idInteracoes: idInteracoes ?? this.idInteracoes,
     );
   }

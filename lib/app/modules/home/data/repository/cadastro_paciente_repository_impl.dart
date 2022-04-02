@@ -21,9 +21,9 @@ class CadastroPacienteRepositoryImpl implements CadastroPacienteRepository {
   }
 
   @override
-  Future<Either<Failure, List<InteracaoEntity>>> getAllInteracoes() async {
+  Future<Either<Failure, List<InteracaoEntity>>> getAllInteracoes(PacienteEntity pacienteEntity) async {
     try {
-      var result = await cadastroPacienteDatasource.getAllInteracoes();
+      var result = await cadastroPacienteDatasource.getAllInteracoes(pacienteEntity);
       return Right(result);
     } on Failure catch (e) {
       return Left(e);

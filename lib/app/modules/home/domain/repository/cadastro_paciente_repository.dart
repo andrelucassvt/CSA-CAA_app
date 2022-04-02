@@ -5,5 +5,5 @@ import 'package:projeto_csa_app/app/shared/error/failure.dart';
 
 abstract class CadastroPacienteRepository {
   Future<Either<Failure,void>> cadastroDePaciente(PacienteEntity pacienteEntity);
-  Future<Either<Failure,List<InteracaoEntity>>> getAllInteracoes();
+  Future<Either<Failure,List<InteracaoEntity>>> getAllInteracoes(PacienteEntity pacienteEntity);
 }

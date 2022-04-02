@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
-import 'package:projeto_csa_app/app/modules/home/data/datasource/cadastro_paciente_datasource_impl.dart';
-import 'package:projeto_csa_app/app/modules/home/data/datasource/home_datasource_impl.dart';
+import 'package:projeto_csa_app/app/modules/home/data/datasource/cadastro_paciente_firebase.dart';
+import 'package:projeto_csa_app/app/modules/home/data/datasource/home_datasource_firebase.dart';
 import 'package:projeto_csa_app/app/modules/home/data/repository/cadastro_paciente_repository_impl.dart';
 import 'package:projeto_csa_app/app/modules/home/data/repository/home_repository_impl.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/datasource/cadastro_paciente_datasource.dart';
@@ -22,8 +22,8 @@ class HomeDependencies {
   static void init(GetIt getIt){
     
     //Datasource
-    getIt.registerFactory<HomeDatasource>(() => HomeDatasourceImpl(getIt()));
-    getIt.registerFactory<CadastroPacienteDatasource>(() => CadastroPacienteDatasourceImpl(getIt()));
+    getIt.registerFactory<HomeDatasource>(() => HomeDataSourceFirebase());
+    getIt.registerFactory<CadastroPacienteDatasource>(() => CadastroPacienteDatasourceFirebase());
 
     //Repository
     getIt.registerFactory<HomeRepository>(

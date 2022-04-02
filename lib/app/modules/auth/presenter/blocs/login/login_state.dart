@@ -11,6 +11,8 @@ class LoginSucess extends LoginState {}
 
 class LoginDataisEmpty extends LoginState {}
 
+class LoginEmailInvalid extends LoginState {}
+
 class LoginFailure extends LoginState {
   final Failure error;
   LoginFailure(this.error);
