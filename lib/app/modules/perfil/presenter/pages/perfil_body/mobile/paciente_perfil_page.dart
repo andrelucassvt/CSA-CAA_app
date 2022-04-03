@@ -81,7 +81,7 @@ class _PacientePerfilPageState extends State<PacientePerfilPage> {
                         subtitle: dados.responsavel ?? 'Sem informação',
                       ),
                       InfoUserTitleSubTitleWidget(
-                        title: 'Médico:',
+                        title: 'E-mail do Médico:',
                         subtitle: dados.medico ?? 'Sem informação',
                       ),
                       const SizedBox(

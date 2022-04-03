@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/medico.dart';
 
 class MedicoModel extends MedicoEntity {
@@ -25,5 +24,4 @@ class MedicoModel extends MedicoEntity {
       phone: map['phone']
     );
   }
-  factory MedicoModel.fromJson(String source) => MedicoModel.fromMap(json.decode(source));
 }

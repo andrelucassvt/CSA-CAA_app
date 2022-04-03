@@ -1,4 +1,3 @@
-import 'package:projeto_csa_app/app/modules/home/data/models/interacoes_model.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
 
 class PacienteModel extends PacienteEntity {

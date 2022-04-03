@@ -18,9 +18,7 @@ class LoginDataSourceFirebase implements LoginDatasource {
         email:'andre@email.com',
         password: senha,
       );
-      userCredential.user?.getIdToken().then((value) {
-        dioBuilder.saveKeys.saveToken(value);
-      });
+      dioBuilder.saveKeys.saveInfoUser(userCredential.user!.email.toString());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         throw CommonNoDataFoundError(message: 'Usuário não encontrado');

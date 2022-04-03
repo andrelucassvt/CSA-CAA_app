@@ -22,8 +22,8 @@ class HomeDependencies {
   static void init(GetIt getIt){
     
     //Datasource
-    getIt.registerFactory<HomeDatasource>(() => HomeDataSourceFirebase());
-    getIt.registerFactory<CadastroPacienteDatasource>(() => CadastroPacienteDatasourceFirebase());
+    getIt.registerFactory<HomeDatasource>(() => HomeDataSourceFirebase(getIt()));
+    getIt.registerFactory<CadastroPacienteDatasource>(() => CadastroPacienteDatasourceFirebase(getIt()));
 
     //Repository
     getIt.registerFactory<HomeRepository>(

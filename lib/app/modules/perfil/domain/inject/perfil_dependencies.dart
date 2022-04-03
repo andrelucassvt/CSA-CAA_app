@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:projeto_csa_app/app/modules/perfil/data/datasource/perfil_datasource_impl.dart';
+import 'package:projeto_csa_app/app/modules/perfil/data/datasource/perfil_datasource_firebase.dart';
 import 'package:projeto_csa_app/app/modules/perfil/data/repository/perfil_repository_impl.dart';
 import 'package:projeto_csa_app/app/modules/perfil/domain/datasource/perfil_datasource.dart';
 import 'package:projeto_csa_app/app/modules/perfil/domain/repository/perfil_repository.dart';
@@ -12,7 +12,7 @@ class PerfilDependecies {
   static void init(GetIt getIt){
 
     //Datasource
-    getIt.registerFactory<PerfilDatasource>(() => PerfilDatasourceImpl(getIt()));
+    getIt.registerFactory<PerfilDatasource>(() => PerfilDatasourceFirebase(getIt()));
 
     //Repository
     getIt.registerFactory<PerfilRepository>(() => PerfilRepositoryImpl(getIt()));

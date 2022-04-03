@@ -1,6 +1,4 @@
-import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:projeto_csa_app/app/modules/auth/presenter/blocs/login/login_cubit.dart';
