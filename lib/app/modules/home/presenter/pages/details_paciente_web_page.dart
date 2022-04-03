@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:projeto_csa_app/app/modules/home/domain/entity/interacao.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/home_interacoes/home_interacoes_cubit.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/widgets/card_grid_add_e_remover.dart';
@@ -74,8 +73,8 @@ class _DetailsPacienteWebPageState extends State<DetailsPacienteWebPage> {
             bloc: controller,
             builder: (context, state) {
               if (state is HomeInteracoesLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
+                return const Expanded(
+                  child: Center(child: CircularProgressIndicator()),
                 );
               }
               if (state is HomeInteracoesFailure){
@@ -86,9 +85,10 @@ class _DetailsPacienteWebPageState extends State<DetailsPacienteWebPage> {
               }
 
               if (state is HomeInteracoesSucess) {
+                final data = state.list;
                 return Expanded(
                   child: GridView.builder(
-                    itemCount: 15,
+                    itemCount: data.length,
                     gridDelegate:
                         const SliverGridDelegateWithMaxCrossAxisExtent(
                             maxCrossAxisExtent: 200,
@@ -97,7 +97,7 @@ class _DetailsPacienteWebPageState extends State<DetailsPacienteWebPage> {
                             mainAxisSpacing: 20),
                     itemBuilder: (context, index) {
                       return CardGridAddeRemoverWidget(
-                        interacao: InteracaoEntity(nome: 'testee'),
+                        interacao: data[index],
                         actionButton: () {},
                       );
                     }),

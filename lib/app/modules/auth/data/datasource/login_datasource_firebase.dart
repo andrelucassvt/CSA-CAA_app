@@ -5,11 +5,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:projeto_csa_app/app/modules/auth/domain/datasource/login_datasource.dart';
 import 'package:projeto_csa_app/app/modules/auth/domain/error/senha_errada_error.dart';
 import 'package:projeto_csa_app/app/shared/common/error/common_errors.dart';
-import 'package:projeto_csa_app/app/shared/interceptors/dio_builder.dart';
+import 'package:projeto_csa_app/app/shared/database/manager_keys.dart';
 
 class LoginDataSourceFirebase implements LoginDatasource {
-  final DioBuilder dioBuilder;
-  LoginDataSourceFirebase(this.dioBuilder);
+  final ManagerKeys managerKeys;
+  LoginDataSourceFirebase(this.managerKeys);
 
   @override
   Future<void> loginMedico({required String email, required String senha}) async {
@@ -18,7 +18,7 @@ class LoginDataSourceFirebase implements LoginDatasource {
         email:'andre@email.com',
         password: senha,
       );
-      dioBuilder.saveKeys.saveInfoUser(userCredential.user!.email.toString());
+      managerKeys.saveInfoUser(userCredential.user!.email.toString());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         throw CommonNoDataFoundError(message: 'Usuário não encontrado');
@@ -37,7 +37,7 @@ class LoginDataSourceFirebase implements LoginDatasource {
           if (!value.exists) {
             throw CommonNoDataFoundError(message: 'Usuário não encontrado');
           }
-          dioBuilder.saveKeys.saveInfoUser(json.encode(value.data()));
+          managerKeys.saveInfoUser(json.encode(value.data()));
         });
   }
   
