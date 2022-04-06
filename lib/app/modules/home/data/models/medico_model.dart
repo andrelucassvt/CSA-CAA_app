@@ -17,9 +17,9 @@ class MedicoModel extends MedicoEntity {
 
   factory MedicoModel.fromMap(Map<String, dynamic> map) {
     return MedicoModel(
-      nome: map['name'],
+      nome: map['nome'],
       cpf: map['cpf'],
-      afiliacao: map['affiliation'],
+      afiliacao: map['afiliacao'],
       email: map['email'],
       phone: map['phone']
     );

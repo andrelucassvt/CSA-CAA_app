@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/home_interacoes/home_interacoes_cubit.dart';
-import 'package:projeto_csa_app/app/modules/home/presenter/widgets/card_grid_add_e_remover.dart';
+import 'package:projeto_csa_app/app/modules/home/presenter/widgets/card_grid_widget.dart';
 import 'package:projeto_csa_app/app/shared/widget/error_view_widget.dart';
 import 'package:projeto_csa_app/app/shared/widget/info_user_title_subtitle.dart';
 
@@ -41,6 +41,11 @@ class _DetailsPacienteWebPageState extends State<DetailsPacienteWebPage> {
         centerTitle: true,
         elevation: 0.0,
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: (){},
+        label: const Text('Editar'),
+        icon: const Icon(Icons.edit),
+      ),
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -64,6 +69,10 @@ class _DetailsPacienteWebPageState extends State<DetailsPacienteWebPage> {
                 InfoUserTitleSubTitleWidget(
                   title: 'Responsável:',
                   subtitle: args.responsavel!,
+                ),
+                InfoUserTitleSubTitleWidget(
+                  title: 'Fase:',
+                  subtitle: args.fase!,
                 ),
               ],
             ),
@@ -96,9 +105,9 @@ class _DetailsPacienteWebPageState extends State<DetailsPacienteWebPage> {
                             crossAxisSpacing: 20,
                             mainAxisSpacing: 20),
                     itemBuilder: (context, index) {
-                      return CardGridAddeRemoverWidget(
-                        interacao: data[index],
-                        actionButton: () {},
+                      return CardGridWidget(
+                        dados: data[index],
+                        actionCard: (){},
                       );
                     }),
                 );

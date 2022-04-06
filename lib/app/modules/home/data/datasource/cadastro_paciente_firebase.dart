@@ -5,7 +5,7 @@ import 'package:projeto_csa_app/app/modules/home/domain/datasource/cadastro_paci
 import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/interacao.dart';
 import 'package:projeto_csa_app/app/shared/database/manager_keys.dart';
-import 'package:projeto_csa_app/app/shared/interceptors/dio_builder.dart';
+
 
 class CadastroPacienteDatasourceFirebase implements CadastroPacienteDatasource {
   final ManagerKeys managerKeys;

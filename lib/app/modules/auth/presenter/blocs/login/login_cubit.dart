@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:projeto_csa_app/app/modules/auth/domain/usecases/login_medico_usecase.dart';
 import 'package:projeto_csa_app/app/modules/auth/domain/usecases/login_paciente_usecase.dart';
-import 'package:projeto_csa_app/app/shared/error/failure.dart';
+import 'package:projeto_csa_app/app/shared/common/error/failure.dart';
 
 part 'login_state.dart';
 

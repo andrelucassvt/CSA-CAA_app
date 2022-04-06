@@ -5,7 +5,7 @@ import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
 
 import 'package:projeto_csa_app/app/modules/perfil/domain/usecases/get_perfil_medico.dart';
 import 'package:projeto_csa_app/app/modules/perfil/domain/usecases/get_perfil_paciente.dart';
-import 'package:projeto_csa_app/app/shared/error/failure.dart';
+import 'package:projeto_csa_app/app/shared/common/error/failure.dart';
 
 part 'perfil_state.dart';
 

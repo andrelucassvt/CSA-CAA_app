@@ -1,4 +1,4 @@
-import 'package:projeto_csa_app/app/shared/error/failure.dart';
+import 'package:projeto_csa_app/app/shared/common/error/failure.dart';
 
 class PasswordNoFoundError extends Failure {
   PasswordNoFoundError({

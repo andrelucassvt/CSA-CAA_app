@@ -2,6 +2,7 @@ import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
+import 'package:projeto_csa_app/app/modules/home/presenter/components/text_field_common.dart';
 import 'package:projeto_csa_app/app/shared/common/snackbar_common/snackbar_common.dart';
 import 'package:projeto_csa_app/app/shared/routes/routes.dart';
 import 'package:projeto_csa_app/app/shared/widget/default_button.dart';
@@ -41,50 +42,16 @@ class _CadastrarPacienteWebPageState extends State<CadastrarPacienteWebPage> {
             
             Row(
               children: [
-                SizedBox(
-                  width: 500,
-                  child: TextFormField(
-                    controller: nomePaciente,
-                    decoration: const InputDecoration(
-                      labelText: 'Nome do paciente',
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.blue, 
-                          width: 2.0
-                        ),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.grey, 
-                          width: 1.0
-                        ),
-                      ),
-                    ),
-                  ),
+                TextFieldCommon(
+                  label: 'Nome do paciente', 
+                  controller: nomePaciente,
                 ),
                 const SizedBox(
                   width: 100,
                 ),
-               SizedBox(
-                  width: 500,
-                  child: TextFormField(
-                    controller: nomeResponsavel,
-                    decoration: const InputDecoration(
-                      labelText: 'Nome do responsável',
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.blue, 
-                          width: 2.0
-                        ),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.grey, 
-                          width: 1.0
-                        ),
-                      ),
-                    ),
-                  ),
+                TextFieldCommon(
+                  label: 'Nome do responsável', 
+                  controller: nomeResponsavel,
                 ),
               ],
             ),
@@ -93,50 +60,16 @@ class _CadastrarPacienteWebPageState extends State<CadastrarPacienteWebPage> {
             ),
             Row(
               children: [
-                SizedBox(
-                  width: 500,
-                  child: TextFormField(
-                    controller: email,
-                    decoration: const InputDecoration(
-                      labelText: 'E-mail para contato',
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.blue, 
-                          width: 2.0
-                        ),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.grey, 
-                          width: 1.0
-                        ),
-                      ),
-                    ),
-                  ),
+                TextFieldCommon(
+                  label: 'E-mail para contato', 
+                  controller: email,
                 ),
                 const SizedBox(
                   width: 100,
                 ),
-               SizedBox(
-                  width: 500,
-                  child: TextFormField(
-                    controller: telefone,
-                    decoration: const InputDecoration(
-                      labelText: 'Telefone para contato',
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.blue, 
-                          width: 2.0
-                        ),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.grey, 
-                          width: 1.0
-                        ),
-                      ),
-                    ),
-                  ),
+                TextFieldCommon(
+                  label: 'Telefone para contato', 
+                  controller: telefone,
                 ),
               ],
             ),
