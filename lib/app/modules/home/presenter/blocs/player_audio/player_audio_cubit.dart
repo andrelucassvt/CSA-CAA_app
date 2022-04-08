@@ -15,16 +15,7 @@ class PlayerAudioCubit extends Cubit<PlayerAudioState> {
     final tratamentoPath = removeDiacritics(path);
     try {
       emit(PlayerAudioLoading());
-      switch (tratamentoPath) {
-        case 'bom dia':
-          await playerAudioLocal.playerAudio(tratamentoPath);
-          break;
-        case 'boa tarde':
-          await playerAudioLocal.playerAudio(tratamentoPath);
-          break;
-        default:
-      }
-      await playerAudioLocal.playerAudio(tratamentoPath);
+      await playerAudioLocal.escolherAudio(tratamentoPath.toLowerCase().trim());
       emit(PlayerAudioSucess());
     } catch (e) {
       emit(PlayerAudioFailure(error: e.toString()));

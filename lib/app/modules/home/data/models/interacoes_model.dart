@@ -2,17 +2,17 @@ import 'package:projeto_csa_app/app/modules/home/domain/entity/interacao.dart';
 
 class InteracoesModel extends InteracaoEntity {
   
-  
   InteracoesModel({
-    this.id,
-    this.nome,
-    this.foto,
-    this.isSelect = false,
-  });
-  final int? id;
-  final String? nome;
-  final String? foto;
-  final bool isSelect;
+    int? id,
+    String? nome,
+    String? foto,
+    bool isSelect = false,
+  }) : super(
+    id: id,
+    nome: nome,
+    foto: foto,
+    isSelect: isSelect,
+  );
 
   Map<String, dynamic> toMap() {
     return {

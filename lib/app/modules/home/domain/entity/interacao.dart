@@ -2,17 +2,17 @@ import 'package:projeto_csa_app/app/modules/home/domain/interface/dados_semelhan
 
 class InteracaoEntity implements DadosSemelhantesCardGridInterface{
 
-  int? id;
-  String? nome;
-  String? foto;
-  bool isSelect;
-
   InteracaoEntity({
     this.id,
     this.nome,
     this.foto,
     this.isSelect = false,
   });
+
+  final int? id;
+  final String? nome;
+  final String? foto;
+  final bool isSelect;
 
   InteracaoEntity copyWith({
     int? id,

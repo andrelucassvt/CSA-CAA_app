@@ -71,7 +71,7 @@ class _PacienteInteracoesBodyState extends State<PacienteInteracoesBody> {
                   scrollDirection: Axis.horizontal,
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 200,
-                    mainAxisExtent: 150,
+                    mainAxisExtent: 190,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 20
                   ),
