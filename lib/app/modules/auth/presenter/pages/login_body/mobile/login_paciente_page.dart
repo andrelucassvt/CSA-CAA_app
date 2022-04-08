@@ -9,14 +9,14 @@ import 'package:projeto_csa_app/app/shared/routes/routes.dart';
 import 'package:projeto_csa_app/app/shared/util/core/logos_app.dart';
 import 'package:projeto_csa_app/app/shared/widget/default_button.dart';
 
-class AuthPacienteCpfPage extends StatefulWidget {
-  const AuthPacienteCpfPage({Key? key}) : super(key: key);
+class LoginPacientePage extends StatefulWidget {
+  const LoginPacientePage({Key? key}) : super(key: key);
 
   @override
-  _AuthPacienteCpfPageState createState() => _AuthPacienteCpfPageState();
+  _LoginPacientePageState createState() => _LoginPacientePageState();
 }
 
-class _AuthPacienteCpfPageState extends State<AuthPacienteCpfPage> {
+class _LoginPacientePageState extends State<LoginPacientePage> {
   TextEditingController cpfText = TextEditingController();
   final controller = GetIt.I.get<LoginCubit>();
   @override

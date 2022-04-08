@@ -6,14 +6,14 @@ import 'package:projeto_csa_app/app/shared/common/snackbar_common/snackbar_commo
 import 'package:projeto_csa_app/app/shared/routes/routes.dart';
 import 'package:projeto_csa_app/app/shared/widget/default_button.dart';
 
-class AuthMedicoLoginPage extends StatefulWidget {
-  const AuthMedicoLoginPage({Key? key}) : super(key: key);
+class LoginMedicoPage extends StatefulWidget {
+  const LoginMedicoPage({Key? key}) : super(key: key);
 
   @override
-  _AuthMedicoLoginPageState createState() => _AuthMedicoLoginPageState();
+  _LoginMedicoPageState createState() => _LoginMedicoPageState();
 }
 
-class _AuthMedicoLoginPageState extends State<AuthMedicoLoginPage> {
+class _LoginMedicoPageState extends State<LoginMedicoPage> {
   TextEditingController textEmail = TextEditingController();
   TextEditingController textSenha = TextEditingController();
   bool showObscureText = true;
