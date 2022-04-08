@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:projeto_csa_app/app/modules/home/coordinator/home_coordinator.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/home_interacoes/home_interacoes_cubit.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/player_audio/player_audio_cubit.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/widgets/card_grid_widget.dart';
@@ -25,6 +26,9 @@ class _PacienteInteracoesBodyState extends State<PacienteInteracoesBody> {
     super.initState();
     SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight,DeviceOrientation.landscapeLeft]);
     controller.getInteracoesDoPaciente();
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      HomeCoordinator.mostrarBottomSheetPrimeiroAcesso(context);
+    });
   }
   @override
   Widget build(BuildContext context) {

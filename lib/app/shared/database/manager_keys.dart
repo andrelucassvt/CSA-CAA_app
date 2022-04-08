@@ -3,4 +3,6 @@ abstract class ManagerKeys {
   Future<String> getToken();
   Future<void> saveInfoUser(String data);
   Future<String> getInfoUser();
+  Future<void> saveAcesso();
+  Future<bool> getPrimeiroAcesso();
 } 

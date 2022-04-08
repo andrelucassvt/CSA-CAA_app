@@ -33,7 +33,7 @@ class _AuthPacienteCpfPageState extends State<AuthPacienteCpfPage> {
             begin: Alignment.bottomCenter,
             end: Alignment.centerLeft,
             colors: [
-              Colors.white,
+              Color.fromARGB(152, 25, 233, 126),
               Colors.blue,
             ]
           )
@@ -69,6 +69,16 @@ class _AuthPacienteCpfPageState extends State<AuthPacienteCpfPage> {
                       child: SizedBox(
                         height: 150,
                         child: Image.asset(LogosApp.logoApp),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const Text('Bem vindo ao CSA',
+                      style: TextStyle(
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white
                       ),
                     ),
                     const Spacer(),
