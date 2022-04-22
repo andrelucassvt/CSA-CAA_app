@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:projeto_csa_app/app/modules/auth/coordinator/auth_coordinator.dart';
 import 'package:projeto_csa_app/app/modules/auth/presenter/blocs/validar_acesso/validar_acesso_cubit.dart';
-import 'package:projeto_csa_app/app/shared/routes/routes.dart';
+import 'package:projeto_csa_app/app/shared/util/core/logos_app.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -25,9 +26,9 @@ class _SplashPageState extends State<SplashPage> {
       bloc: controller,
       listener: (context, state) {
         if (state is ValidarAcessoTelaDeLogin) {
-          Navigator.pushReplacementNamed(context, RoutesApp.auth);
+          AuthCoordinator.irParaTelaDeLogin(context);
         } else if (state is ValidarAcessoHome){
-          Navigator.pushReplacementNamed(context, RoutesApp.home);
+         AuthCoordinator.irParaHomePage(context);
         }
       },
       builder: (context, state) {
@@ -35,16 +36,17 @@ class _SplashPageState extends State<SplashPage> {
           color: Colors.white,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Center(
-                child: FlutterLogo(
-                  size: 100,
+                child: SizedBox(
+                  height: 150,
+                  child: Image.asset(LogosApp.logoApp),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 200,
               ),
-              CircularProgressIndicator()
+              const CircularProgressIndicator()
             ],
           ),
         );

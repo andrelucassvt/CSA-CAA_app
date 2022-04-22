@@ -2,7 +2,7 @@
     package="com.example.projeto_csa_app">
    <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="projeto_csa_app"
+        android:label="Talk to help"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

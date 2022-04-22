@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_csa_app/app/shared/routes/routes.dart';
 import 'package:projeto_csa_app/app/shared/widget/default_button.dart';
 
 class HomeCoordinator {
+
+  static Future<void> navegarParaCadastrarPaciente(BuildContext context) async {
+    await Navigator.of(context).pushNamed(RoutesApp.homeCadastrarPaciente);
+  }
+
+  static Future<void> navegarParaPerfil(BuildContext context) async {
+    await Navigator.of(context).pushNamed(RoutesApp.homePerfil);
+  }
 
   static Future<void> mostrarBottomSheetPrimeiroAcesso(BuildContext context) async {
     return await showModalBottomSheet(
@@ -15,7 +24,7 @@ class HomeCoordinator {
                 height: 20,
               ),
               const Text(
-                'Bem vindo ao CSA, você está a um passo de começar a usar o aplicativo!',
+                'Bem vindo ao Talk to help, você está a um passo de começar a usar o aplicativo!',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20

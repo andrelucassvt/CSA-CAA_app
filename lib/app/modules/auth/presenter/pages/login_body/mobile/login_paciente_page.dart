@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:projeto_csa_app/app/modules/auth/coordinator/auth_coordinator.dart';
 import 'package:projeto_csa_app/app/modules/auth/presenter/blocs/login/login_cubit.dart';
 import 'package:projeto_csa_app/app/shared/common/snackbar_common/snackbar_common.dart';
-import 'package:projeto_csa_app/app/shared/routes/routes.dart';
 import 'package:projeto_csa_app/app/shared/util/core/logos_app.dart';
 import 'package:projeto_csa_app/app/shared/widget/default_button.dart';
 
@@ -55,7 +55,7 @@ class _LoginPacientePageState extends State<LoginPacientePage> {
                     context: context
                   );
                 } else if (state is LoginSucess) {
-                  Navigator.of(context).pushReplacementNamed(RoutesApp.home);
+                  AuthCoordinator.irParaHomePage(context);
                 }
               },
               builder: (context, state) {
@@ -74,7 +74,8 @@ class _LoginPacientePageState extends State<LoginPacientePage> {
                     const SizedBox(
                       height: 20,
                     ),
-                    const Text('Bem vindo ao CSA',
+                    const Text('Bem vindo ao Talk to help',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 35,
                         fontWeight: FontWeight.bold,

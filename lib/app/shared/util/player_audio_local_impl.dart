@@ -1,16 +1,22 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:projeto_csa_app/app/shared/util/player_audio_local.dart';
 
-class PlayerAudioLocalImpl implements PlayerAudioLocal{
+class PlayerAudioLocalImpl implements PlayerAudioLocal {
+
   @override
   Future<void> playerAudio(String path) async {
     final audioPlayer = AudioPlayer();
     final audioCache = AudioCache(fixedPlayer: audioPlayer);
     try {
-      await audioCache.play(path,volume: 100);
+      final result = pathAudioMP3(path);
+      await audioCache.play(result,volume: 100);
     } catch (e) {
       rethrow;
     }
+  }
+
+  String pathAudioMP3(String namePath) {
+    return 'audio/$namePath.mp3';
   }
 
   @override

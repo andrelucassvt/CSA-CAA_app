@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:projeto_csa_app/app/modules/home/coordinator/home_coordinator.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/home_interacoes/home_interacoes_cubit.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/widgets/card_grid_widget.dart';
 import 'package:projeto_csa_app/app/shared/routes/routes.dart';
@@ -31,7 +32,7 @@ class _MedicoComandosBodyState extends State<MedicoComandosBody> {
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            onPressed: () => Navigator.pushNamed(context, RoutesApp.homePerfil), 
+            onPressed: () => HomeCoordinator.navegarParaPerfil(context), 
             icon: const Icon(Icons.person),
           ),
           IconButton(

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:projeto_csa_app/app/modules/auth/coordinator/auth_coordinator.dart';
 import 'package:projeto_csa_app/app/modules/auth/presenter/blocs/login/login_cubit.dart';
 import 'package:projeto_csa_app/app/shared/common/snackbar_common/snackbar_common.dart';
-import 'package:projeto_csa_app/app/shared/routes/routes.dart';
 import 'package:projeto_csa_app/app/shared/widget/default_button.dart';
 
 class LoginMedicoPage extends StatefulWidget {
@@ -58,7 +58,7 @@ class _LoginMedicoPageState extends State<LoginMedicoPage> {
         } else if (state is LoginEmailInvalid){
           SnackbarCommon.chamarSnackBarWeb(text: 'Digite o email corretamente', context: context);
         } else if (state is LoginSucess) {
-          Navigator.of(context).pushReplacementNamed(RoutesApp.home);
+          AuthCoordinator.irParaHomePage(context);
         }
       },
       builder: (context, state) {

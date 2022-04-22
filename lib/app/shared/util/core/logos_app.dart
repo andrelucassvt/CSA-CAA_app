@@ -1,3 +1,3 @@
 class LogosApp {
-  static String logoApp = "assets/images/autismo_icon.png";
+  static String logoApp = "assets/images/logo_familia.png";
 }
