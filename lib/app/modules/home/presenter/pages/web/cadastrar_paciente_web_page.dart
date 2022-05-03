@@ -1,10 +1,10 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:projeto_csa_app/app/modules/home/coordinator/home_coordinator.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
-import 'package:projeto_csa_app/app/modules/home/presenter/components/text_field_common.dart';
+import 'package:projeto_csa_app/app/shared/common/components/text_field_common.dart';
 import 'package:projeto_csa_app/app/shared/common/snackbar_common/snackbar_common.dart';
-import 'package:projeto_csa_app/app/shared/routes/routes.dart';
 import 'package:projeto_csa_app/app/shared/widget/default_button.dart';
 
 enum SexoDoPaciente { masculino, feminino }
@@ -121,10 +121,9 @@ class _CadastrarPacienteWebPageState extends State<CadastrarPacienteWebPage> {
               textColor: Colors.white, 
               actionButton: () {
                 if (cpf.text.isNotEmpty && nomePaciente.text.isNotEmpty && nomeResponsavel.text.isNotEmpty && email.text.isNotEmpty && telefone.text.isNotEmpty) {
-                  Navigator.pushNamed(
-                    context, 
-                    RoutesApp.homeEscolherInteracoes,
-                    arguments: PacienteEntity(
+                  HomeCoordinator.navegarParaEscolherInteracoes(
+                    context: context,
+                    pacienteEntity: PacienteEntity(
                       sexo: _character == SexoDoPaciente.masculino ? 'Masculino' : 'Feminino',
                       cpf: cpf.text.replaceAll(RegExp(r'[.-]'), ""),
                       nome: nomePaciente.text,

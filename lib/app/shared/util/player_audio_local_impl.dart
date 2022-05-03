@@ -21,8 +21,6 @@ class PlayerAudioLocalImpl implements PlayerAudioLocal {
 
   @override
   Future<void> escolherAudio(String path) async{
-    print('========');
-    print('path: $path');
     switch (path) {
       //Fase 1
       case 'chuveiro':

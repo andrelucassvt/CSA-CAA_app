@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:projeto_csa_app/app/modules/home/coordinator/home_coordinator.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/home_interacoes/home_interacoes_cubit.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/widgets/card_grid_widget.dart';
+import 'package:projeto_csa_app/app/shared/util/core/logos_app.dart';
 import 'package:projeto_csa_app/app/shared/widget/error_view_widget.dart';
 import 'package:projeto_csa_app/app/shared/widget/info_user_title_subtitle.dart';
 
@@ -42,7 +44,10 @@ class _DetailsPacienteWebPageState extends State<DetailsPacienteWebPage> {
         elevation: 0.0,
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: (){},
+        onPressed: () => HomeCoordinator.navegarParaEscolherInteracoes(
+          context: context, 
+          pacienteEntity: args,
+        ),
         label: const Text('Editar'),
         icon: const Icon(Icons.edit),
       ),
@@ -56,8 +61,11 @@ class _DetailsPacienteWebPageState extends State<DetailsPacienteWebPage> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const CircleAvatar(
-                  radius: 70,
+                Center(
+                  child: SizedBox(
+                    height: 150,
+                    child: Image.asset(LogosApp.logoApp),
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
@@ -100,7 +108,7 @@ class _DetailsPacienteWebPageState extends State<DetailsPacienteWebPage> {
                     itemCount: data.length,
                     gridDelegate:
                         const SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent: 200,
+                            maxCrossAxisExtent: 250,
                             childAspectRatio: 3 / 2,
                             crossAxisSpacing: 20,
                             mainAxisSpacing: 20),
@@ -112,7 +120,6 @@ class _DetailsPacienteWebPageState extends State<DetailsPacienteWebPage> {
                     }),
                 );
               }
-
               return SizedBox.fromSize();
             },
           ),

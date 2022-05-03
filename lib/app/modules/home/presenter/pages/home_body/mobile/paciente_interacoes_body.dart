@@ -28,13 +28,6 @@ class _PacienteInteracoesBodyState extends State<PacienteInteracoesBody> {
     super.initState();
     SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight,DeviceOrientation.landscapeLeft]);
     controller.getInteracoesDoPaciente();
-    WidgetsBinding.instance!.addPostFrameCallback((_) async {
-      final result = await managerKeys.getPrimeiroAcesso();
-      if (result) {
-        await managerKeys.saveAcesso();
-        await HomeCoordinator.mostrarBottomSheetPrimeiroAcesso(context);
-      }
-    });
   }
   @override
   Widget build(BuildContext context) {

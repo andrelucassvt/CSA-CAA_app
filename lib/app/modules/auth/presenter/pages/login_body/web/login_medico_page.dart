@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:projeto_csa_app/app/modules/auth/coordinator/auth_coordinator.dart';
 import 'package:projeto_csa_app/app/modules/auth/presenter/blocs/login/login_cubit.dart';
 import 'package:projeto_csa_app/app/shared/common/snackbar_common/snackbar_common.dart';
+import 'package:projeto_csa_app/app/shared/util/core/logos_app.dart';
 import 'package:projeto_csa_app/app/shared/widget/default_button.dart';
 
 class LoginMedicoPage extends StatefulWidget {
@@ -71,9 +72,10 @@ class _LoginMedicoPageState extends State<LoginMedicoPage> {
               const SizedBox(
                 height: 30,
               ),
-              const Center(
-                child: FlutterLogo(
-                  size: 100,
+              Center(
+                child: SizedBox(
+                  height: 200,
+                  child: Image.asset(LogosApp.logoApp),
                 ),
               ),
               const Spacer(),

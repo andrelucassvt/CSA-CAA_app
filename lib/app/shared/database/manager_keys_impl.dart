@@ -34,20 +34,4 @@ class ManagerKeysImpl implements ManagerKeys {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('info-user', data);
   }
-
-  @override
-  Future<bool> getPrimeiroAcesso() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    var result = prefs.getBool('primeiro-acesso');
-    if (result != null) {
-      return result;
-    }
-    return true;
-  }
-
-  @override
-  Future<void> saveAcesso() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('primeiro-acesso',false);
-  }
 }
