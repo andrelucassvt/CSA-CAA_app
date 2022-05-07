@@ -36,7 +36,7 @@ class _MedicoComandosBodyState extends State<MedicoComandosBody> {
           ),
           IconButton(
             onPressed: () async => controller.getPacientes(), 
-            icon: const Icon(Icons.restart_alt_outlined),
+            icon: const Icon(Icons.replay_outlined),
           ),
         ],
       ),
