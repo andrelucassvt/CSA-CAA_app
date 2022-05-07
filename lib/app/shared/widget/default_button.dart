@@ -47,7 +47,7 @@ class DefaultButtonApp extends StatelessWidget {
           textButton,
           style: TextStyle(
             fontSize: 16,
-            color: textColor ?? Colors.black,
+            color: textColor ?? Colors.white,
             fontWeight: FontWeight.bold
           ),
         ),

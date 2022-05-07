@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:projeto_csa_app/app/modules/home/coordinator/home_coordinator.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/pages/home_body/mobile/paciente_interacoes_body.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/pages/home_body/web/medico_comandos_body.dart';
-import 'package:projeto_csa_app/app/shared/routes/routes.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
 
       floatingActionButton: kIsWeb 
         ? FloatingActionButton(
-          onPressed: () => Navigator.pushNamed(context, RoutesApp.homeCadastrarPaciente),
+          onPressed: () => HomeCoordinator.navegarParaCadastrarPaciente(context),
           child: const Icon(Icons.add),
         )
         : null

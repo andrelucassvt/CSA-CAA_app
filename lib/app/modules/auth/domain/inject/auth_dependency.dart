@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:projeto_csa_app/app/modules/auth/data/datasource/login_datasource_impl.dart';
+import 'package:projeto_csa_app/app/modules/auth/data/datasource/login_datasource_firebase.dart';
 import 'package:projeto_csa_app/app/modules/auth/data/repository/login_repository_impl.dart';
 import 'package:projeto_csa_app/app/modules/auth/domain/datasource/login_datasource.dart';
 import 'package:projeto_csa_app/app/modules/auth/domain/repository/login_repository.dart';
@@ -14,7 +14,7 @@ class AuthDependencies {
 
     //Datasource
     getIt.registerFactory<LoginDatasource>(
-      () => LoginDatasourceImpl(getIt()));
+      () => LoginDataSourceFirebase(getIt()));
 
     //Repository
     getIt.registerFactory<LoginRepository>(

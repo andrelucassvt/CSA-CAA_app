@@ -30,12 +30,14 @@ class CardGridAddeRemoverWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const FlutterLogo(
-                size: 40,
+              SizedBox(
+                height: 40,
+                child: Image.network(interacao.foto!),
               ),
               const Spacer(),
               Text(
                 interacao.nome ?? "Nome",
+                textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),

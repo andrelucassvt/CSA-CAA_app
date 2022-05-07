@@ -34,5 +34,4 @@ class ManagerKeysImpl implements ManagerKeys {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('info-user', data);
   }
-  
 }

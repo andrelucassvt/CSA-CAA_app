@@ -3,7 +3,7 @@ import 'package:projeto_csa_app/app/modules/home/domain/entity/interacao.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
 import 'package:dartz/dartz.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/repository/cadastro_paciente_repository.dart';
-import 'package:projeto_csa_app/app/shared/error/failure.dart';
+import 'package:projeto_csa_app/app/shared/common/error/failure.dart';
 
 class CadastroPacienteRepositoryImpl implements CadastroPacienteRepository {
   final CadastroPacienteDatasource cadastroPacienteDatasource;
@@ -21,9 +21,9 @@ class CadastroPacienteRepositoryImpl implements CadastroPacienteRepository {
   }
 
   @override
-  Future<Either<Failure, List<InteracaoEntity>>> getAllInteracoes() async {
+  Future<Either<Failure, List<InteracaoEntity>>> getAllInteracoes(PacienteEntity pacienteEntity) async {
     try {
-      var result = await cadastroPacienteDatasource.getAllInteracoes();
+      var result = await cadastroPacienteDatasource.getAllInteracoes(pacienteEntity);
       return Right(result);
     } on Failure catch (e) {
       return Left(e);

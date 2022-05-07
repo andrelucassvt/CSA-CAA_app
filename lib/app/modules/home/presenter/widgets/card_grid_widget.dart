@@ -32,8 +32,11 @@ class CardGridWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const FlutterLogo(
-                size: 40,
+              SizedBox(
+                height: 40,
+                child: dados.fotoCard != ''
+                   ? Image.network(dados.fotoCard)
+                   : const Icon(Icons.person_outline, size: 40, color: Colors.grey),
               ),
               const SizedBox(
                 height: 20,

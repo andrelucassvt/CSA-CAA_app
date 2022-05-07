@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:projeto_csa_app/app/shared/error/failure.dart';
+import 'package:projeto_csa_app/app/shared/common/error/failure.dart';
 
 abstract class LoginRepository {
   Future<Either<Failure,void>> loginPaciente(String cpf);

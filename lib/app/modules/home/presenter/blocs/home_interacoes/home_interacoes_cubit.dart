@@ -5,7 +5,7 @@ import 'package:projeto_csa_app/app/modules/home/domain/entity/interacao.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/paciente.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/usecases/get_interacoes_do_paciente.dart';
 import 'package:projeto_csa_app/app/modules/home/domain/usecases/get_pacientes.dart';
-import 'package:projeto_csa_app/app/shared/error/failure.dart';
+import 'package:projeto_csa_app/app/shared/common/error/failure.dart';
 
 part 'home_interacoes_state.dart';
 

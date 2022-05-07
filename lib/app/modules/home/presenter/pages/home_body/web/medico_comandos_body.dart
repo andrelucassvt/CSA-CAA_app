@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:projeto_csa_app/app/modules/home/coordinator/home_coordinator.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/home_interacoes/home_interacoes_cubit.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/widgets/card_grid_widget.dart';
-import 'package:projeto_csa_app/app/shared/routes/routes.dart';
 import 'package:projeto_csa_app/app/shared/widget/error_view_widget.dart';
 
 class MedicoComandosBody extends StatefulWidget {
@@ -31,12 +31,12 @@ class _MedicoComandosBodyState extends State<MedicoComandosBody> {
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            onPressed: () => Navigator.pushNamed(context, RoutesApp.homePerfil), 
+            onPressed: () => HomeCoordinator.navegarParaPerfil(context), 
             icon: const Icon(Icons.person),
           ),
           IconButton(
             onPressed: () async => controller.getPacientes(), 
-            icon: const Icon(Icons.restart_alt_outlined),
+            icon: const Icon(Icons.replay_outlined),
           ),
         ],
       ),
@@ -64,7 +64,7 @@ class _MedicoComandosBodyState extends State<MedicoComandosBody> {
               return GridView.builder(
                 itemCount: dados.length,
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 200,
+                  maxCrossAxisExtent: 250,
                   childAspectRatio: 3 / 2,
                   crossAxisSpacing: 20,
                   mainAxisSpacing: 20
@@ -72,11 +72,10 @@ class _MedicoComandosBodyState extends State<MedicoComandosBody> {
                 itemBuilder: (context, index) {
                   return CardGridWidget(
                     dados: dados[index],
-                    actionCard: () => Navigator.pushNamed(
-                      context, 
-                      RoutesApp.homeDetalhesPaciente,
-                      arguments: dados[index]
-                    ),
+                    actionCard: () => HomeCoordinator.navegarParaDetalhesPaciente(
+                      context: context,
+                      pacienteEntity: dados[index],
+                    )
                   );
                 }
               );

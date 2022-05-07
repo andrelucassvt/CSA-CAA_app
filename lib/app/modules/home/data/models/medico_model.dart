@@ -1,29 +1,29 @@
-import 'dart:convert';
 import 'package:projeto_csa_app/app/modules/home/domain/entity/medico.dart';
 
 class MedicoModel extends MedicoEntity {
-  String? nome;
-  String? cpf;
-  String? afiliacao;
-	String? email;
-	String? phone;
+
 
   MedicoModel({
-    this.nome,
-    this.cpf,
-    this.afiliacao,
-    this.email,
-    this.phone
-  });
+    String? nome,
+    String? cpf,
+    String? afiliacao,
+    String? email,
+    String? phone,
+  }) : super (
+    nome: nome,
+    cpf: cpf,
+    afiliacao: afiliacao,
+    email: email,
+    phone: phone,
+  );
 
   factory MedicoModel.fromMap(Map<String, dynamic> map) {
     return MedicoModel(
-      nome: map['name'],
+      nome: map['nome'],
       cpf: map['cpf'],
-      afiliacao: map['affiliation'],
+      afiliacao: map['afiliacao'],
       email: map['email'],
       phone: map['phone']
     );
   }
-  factory MedicoModel.fromJson(String source) => MedicoModel.fromMap(json.decode(source));
 }
