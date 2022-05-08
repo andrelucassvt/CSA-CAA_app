@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto_csa_app/app/modules/auth/presenter/pages/login_page.dart';
 import 'package:projeto_csa_app/app/modules/auth/presenter/pages/splash_page.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/pages/home_page.dart';
+import 'package:projeto_csa_app/app/modules/home/presenter/pages/mobile/frases_personalizadas_page.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/pages/web/cadastrar_paciente_web_page.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/pages/web/details_paciente_web_page.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/pages/web/escolher_interacoes_web_page.dart';
@@ -35,6 +36,7 @@ class AppWidget extends StatelessWidget {
         RoutesApp.inicial: (BuildContext context) => kIsWeb ? const LoginPage() : const SplashPage(),
         RoutesApp.auth: (BuildContext context) => const LoginPage(),
         RoutesApp.home: (BuildContext context) => const HomePage(),
+        RoutesApp.homeFrasesPersonalizadas: (BuildContext context) => const FrasesPersonalizadasPage(),
         RoutesApp.homeDetalhesPaciente: (BuildContext context) => const DetailsPacienteWebPage(),
         RoutesApp.homePerfil: (BuildContext context) => const PerfilPage(),
         RoutesApp.homePerfilAjuda: (BuildContext context) => const AjudaPage(),

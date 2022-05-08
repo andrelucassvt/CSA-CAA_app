@@ -8,6 +8,10 @@ class HomeCoordinator {
     await Navigator.of(context).pushNamed(RoutesApp.homeCadastrarPaciente);
   }
 
+  static Future<void> navegarParaFrasesPersonalizadas(BuildContext context) async {
+    await Navigator.of(context).pushNamed(RoutesApp.homeFrasesPersonalizadas);
+  }
+
   static Future<void> navegarParaPerfil(BuildContext context) async {
     await Navigator.of(context).pushNamed(RoutesApp.homePerfil);
   }
