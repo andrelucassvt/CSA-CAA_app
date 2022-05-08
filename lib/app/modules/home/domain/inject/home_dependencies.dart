@@ -15,7 +15,7 @@ import 'package:projeto_csa_app/app/modules/home/presenter/blocs/cadastro_pacien
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/get_all_interacoes/get_all_interacoes_cubit.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/home_interacoes/home_interacoes_cubit.dart';
 import 'package:projeto_csa_app/app/modules/home/presenter/blocs/player_audio/player_audio_cubit.dart';
-import 'package:projeto_csa_app/app/shared/util/player_audio_local_impl.dart';
+import 'package:projeto_csa_app/app/shared/util/player_text_to_voice.dart';
 
 class HomeDependencies {
   
@@ -59,7 +59,7 @@ class HomeDependencies {
       () => GetAllInteracoesCubit(getIt())
     );
     getIt.registerFactory<PlayerAudioCubit>(
-      () => PlayerAudioCubit(PlayerAudioLocalImpl())
+      () => PlayerAudioCubit(PlayerTextToVoice(flutterTts: getIt()))
     );
   }
 }
