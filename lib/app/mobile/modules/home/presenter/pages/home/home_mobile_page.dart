@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:projeto_csa_app/app/common/entities/interacao.dart';
 import 'package:projeto_csa_app/app/common/error/common_errors.dart';
+import 'package:projeto_csa_app/app/common/models/interacoes_model.dart';
+import 'package:projeto_csa_app/app/common/strings_app.dart';
 import 'package:projeto_csa_app/app/common/widget/card_grid_widget.dart';
 import 'package:projeto_csa_app/app/common/widget/error_view_widget.dart';
 import 'package:projeto_csa_app/app/mobile/modules/home/coordinator/home_mobile_coordinator.dart';
 import 'package:projeto_csa_app/app/mobile/modules/home/presenter/pages/home/cubit/home_mobile_cubit.dart';
 import 'package:projeto_csa_app/app/common/audio_player/player_text_to_voice.dart';
+import 'package:projeto_csa_app/app/mobile/modules/home/presenter/widgets/card_grid_frases_personalizadas.dart';
 
 class HomeMobilePage extends StatefulWidget {
   const HomeMobilePage({ Key? key }) : super(key: key);
@@ -37,7 +42,11 @@ class _HomeMobilePageState extends State<HomeMobilePage> {
           IconButton(
             onPressed: () => HomeMobileCoordinator.navegarParaPerfil(context),
             icon: const Icon(Icons.person),
-          )
+          ),
+          IconButton(
+            onPressed: () => HomeMobileCoordinator.navegarParaFrasesPersonalizadas(context),
+            icon: const Icon(Icons.edit),
+          ),
         ],
       ),
       body: SafeArea(
@@ -66,21 +75,49 @@ class _HomeMobilePageState extends State<HomeMobilePage> {
 
               if (state is HomeMobileSucess) {
                 var dados = state.list;
-                return GridView.builder(
-                  itemCount: dados.length,
-                  scrollDirection: Axis.horizontal,
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 200,
-                    mainAxisExtent: 190,
-                    crossAxisSpacing: 1,
-                    mainAxisSpacing: 20
-                  ),
-                  itemBuilder: (context, index) {
-                    return CardGridWidget(
-                      dados: dados[index],
-                      actionCard: () async => await PlayerTextToVoice.playerAudio(dados[index].nome!),
+                return ValueListenableBuilder(
+                  valueListenable: Hive.box<InteracaoEntity>(nametable).listenable(),
+                  builder: (context,Box<InteracaoEntity> box, _){
+                    if (box.values.isEmpty) {
+                      return GridView.builder(
+                          itemCount: dados.length,
+                          scrollDirection: Axis.horizontal,
+                          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                              maxCrossAxisExtent: 200,
+                              mainAxisExtent: 190,
+                              crossAxisSpacing: 1,
+                              mainAxisSpacing: 20
+                          ),
+                          itemBuilder: (context, index) {
+                            return CardGridWidget(
+                              dados: dados[index],
+                              actionCard: () async => await PlayerTextToVoice.playerAudio(dados[index].nome!),
+                            );
+                          }
+                      );
+                    }
+                    dados.insert(0, InteracoesModel(
+                        nome: 'Frases Personalizadas',
+                        foto: ''
+                      )
                     );
-                  }
+                    return GridView.builder(
+                        itemCount: dados.length,
+                        scrollDirection: Axis.horizontal,
+                        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: 200,
+                            mainAxisExtent: 190,
+                            crossAxisSpacing: 1,
+                            mainAxisSpacing: 20
+                        ),
+                        itemBuilder: (context, index) {
+                          return CardGridWidget(
+                            dados: dados[index],
+                            actionCard: () async => await PlayerTextToVoice.playerAudio(dados[index].nome!),
+                          );
+                        }
+                    );
+                  },
                 );
               }
               return const SizedBox.shrink();

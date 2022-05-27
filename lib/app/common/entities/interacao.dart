@@ -1,6 +1,9 @@
 
+import 'package:hive/hive.dart';
 import 'package:projeto_csa_app/app/common/interface/dados_semelhantes_card_grid_interface.dart';
+part 'interacao.g.dart';
 
+@HiveType(typeId: 0)
 class InteracaoEntity implements DadosSemelhantesCardGridInterface{
 
   InteracaoEntity({
@@ -10,9 +13,16 @@ class InteracaoEntity implements DadosSemelhantesCardGridInterface{
     this.isSelect = false,
   });
 
+  @HiveField(0)
   final int? id;
+
+  @HiveField(1)
   final String? nome;
+
+  @HiveField(2)
   final String? foto;
+
+  @HiveField(3)
   final bool isSelect;
 
   InteracaoEntity copyWith({
