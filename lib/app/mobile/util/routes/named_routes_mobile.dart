@@ -4,6 +4,7 @@ import 'package:projeto_csa_app/app/mobile/modules/auth/presenter/pages/login/lo
 import 'package:projeto_csa_app/app/mobile/modules/auth/presenter/pages/splash/splash_page.dart';
 import 'package:projeto_csa_app/app/mobile/modules/home/presenter/pages/frases_personalizadas/frases_personalizadas_mobile.dart';
 import 'package:projeto_csa_app/app/mobile/modules/home/presenter/pages/home/home_mobile_page.dart';
+import 'package:projeto_csa_app/app/mobile/modules/home/presenter/pages/listar_frases_personalizadas/listar_frases_personalizadas.dart';
 import 'package:projeto_csa_app/app/mobile/modules/perfil/presenter/pages/perfil_mobile_page.dart';
 
 class NamedRoutesMobile {
@@ -11,6 +12,7 @@ class NamedRoutesMobile {
   static const login = '/auth';
   static const home = '/home';
   static const homeFrasesPersonalizadas = '/home/frases-personalizadas';
+  static const homeListagemDeFrasesPersonalizadas = '/home/frases-personalizadas/listagem';
   static const homePerfil = '/home/perfil';
   static const homePerfilAjuda = '/home/perfil/ajuda';
 
@@ -20,6 +22,7 @@ class NamedRoutesMobile {
     login: (BuildContext context) => const LoginMobilePage(),
     home: (BuildContext context) => const HomeMobilePage(),
     homeFrasesPersonalizadas: (BuildContext context) => const FrasesPersonalizadasMobilePage(),
+    homeListagemDeFrasesPersonalizadas : (BuildContext context) => const ListarFrasesPersonalizadasPage(),
     homePerfil: (BuildContext context) => const PerfilMobilePage(),
     homePerfilAjuda: (BuildContext context) => const AjudaPage(),
   };

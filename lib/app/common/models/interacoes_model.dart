@@ -27,7 +27,7 @@ class InteracoesModel extends InteracaoEntity {
     return InteracoesModel(
       id: map['id'],
       nome: map['nome'],
-      foto: map['foto'],
+      foto: map['foto'] ?? '',
     );
   }
   static List<InteracoesModel> fromJsonList(List lista){

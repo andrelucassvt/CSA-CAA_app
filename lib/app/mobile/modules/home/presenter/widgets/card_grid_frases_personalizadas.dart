@@ -8,7 +8,7 @@ class CardGridFrasesPersonalizadas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => HomeMobileCoordinator.navegarParaFrasesPersonalizadas(context),
+      onTap: () => HomeMobileCoordinator.navegarParaListagemDeFrasesPersonalizadas(context),
       child: Card(
         color: Colors.yellow,
         elevation: 10.0,
@@ -29,7 +29,7 @@ class CardGridFrasesPersonalizadas extends StatelessWidget {
             children: const [
               SizedBox(
                 height: 40,
-                child: Icon(Icons.star, size: 40, color: Colors.white),
+                child: Icon(Icons.star, size: 40, color: Colors.blue),
               ),
               SizedBox(
                 height: 20,

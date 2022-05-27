@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_csa_app/app/common/interface/dados_semelhantes_card_grid_interface.dart';
+import 'package:projeto_csa_app/app/mobile/modules/home/presenter/widgets/card_grid_frases_personalizadas.dart';
 
 class CardGridWidget extends StatelessWidget {
   final DadosSemelhantesCardGridInterface dados;
@@ -14,6 +15,9 @@ class CardGridWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (dados.nomeCard == 'Frases Personalizadas'){
+      return const CardGridFrasesPersonalizadas();
+    }
     return InkWell(
       onTap: actionCard,
       child: Card(
