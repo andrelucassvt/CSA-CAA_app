@@ -13,23 +13,31 @@ class InfoUserTitleSubTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
+    return Row(
       children: [
-        Text(
-          title,
-          style: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold
-          ),
+        Column(
+          crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold
+              ),
+            ),
+            Text(
+              subtitle,
+              style: TextStyle(
+                color: Colors.grey[700]
+              ),
+            ),
+            const Divider(),
+          ],
         ),
-        Text(
-          subtitle,
-          style: TextStyle(
-            color: Colors.grey[700]
-          ),
-        ),
-        const Divider(),
+        IconButton(
+            onPressed: (){},
+            icon: const Icon(Icons.edit),
+        )
       ],
     );
   }

@@ -5,11 +5,13 @@ import 'package:projeto_csa_app/app/common/entities/interacao.dart';
 
 class CardGridAddeRemoverWidget extends StatelessWidget {
   final InteracaoEntity interacao;
+  final bool isSelected;
   final VoidCallback actionButton;
   const CardGridAddeRemoverWidget({
     Key? key,
     required this.interacao,
     required this.actionButton,
+    required this.isSelected,
   }) : super(key: key);
 
   @override
@@ -22,10 +24,11 @@ class CardGridAddeRemoverWidget extends StatelessWidget {
             minWidth: 400
           ),
           decoration: BoxDecoration(
+            color: Colors.white,
             borderRadius: BorderRadius.circular(22),
             border: Border.all(
               width: 2,
-              color: interacao.isSelect ? Colors.green : Colors.blue
+              color: isSelected ? Colors.red : Colors.green
             )
           ),
           child: Column(
@@ -53,11 +56,11 @@ class CardGridAddeRemoverWidget extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
-                color: interacao.isSelect? Colors.green : Colors.blue,
+                color: isSelected ? Colors.red : Colors.green,
                 borderRadius: BorderRadius.circular(30)
               ),
               child: Text(
-                interacao.isSelect ?  'Remover' : 'Adicionar',
+                isSelected ?  'Remover' : 'Adicionar',
                 style: const TextStyle(
                   color: Colors.white
                 ),

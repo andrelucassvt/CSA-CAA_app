@@ -112,6 +112,7 @@ class _EscolherInteracoesWebPageState extends State<EscolherInteracoesWebPage> {
                   itemBuilder: (context, index) {
                     return CardGridAddeRemoverWidget(
                         interacao: dados[index],
+                        isSelected: dados[index].isSelect,
                         actionButton: () => marcarInteracoes(dados[index]));
                   });
             }

@@ -1,13 +1,18 @@
+import 'package:dartz/dartz_unsafe.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:projeto_csa_app/app/common/entities/interacao.dart';
 import 'package:projeto_csa_app/app/common/entities/paciente.dart';
 import 'package:projeto_csa_app/app/common/images/images_app.dart';
+import 'package:projeto_csa_app/app/common/widget/card_grid_add_e_remover.dart';
 import 'package:projeto_csa_app/app/common/widget/card_grid_widget.dart';
+import 'package:projeto_csa_app/app/common/widget/default_button.dart';
 import 'package:projeto_csa_app/app/common/widget/error_view_widget.dart';
 import 'package:projeto_csa_app/app/common/widget/info_user_title_subtitle.dart';
 import 'package:projeto_csa_app/app/web/modules/home/coordinator/home_web_coordinator.dart';
 import 'package:projeto_csa_app/app/web/modules/home/presenter/pages/detalhes_paciente/cubit/detalhes_paciente_cubit.dart';
+import 'package:projeto_csa_app/app/web/modules/home/presenter/pages/escolher_interacoes/cubit/escolher_interacoes_cubit.dart';
 
 class DetalhesPacienteWebPage extends StatefulWidget {
   const DetalhesPacienteWebPage({Key? key}) : super(key: key);
@@ -18,10 +23,17 @@ class DetalhesPacienteWebPage extends StatefulWidget {
 
 class _DetalhesPacienteWebPageState extends State<DetalhesPacienteWebPage> {
   final controller = GetIt.I.get<DetalhesPacienteCubit>();
+  final interacoesCubit = GetIt.I.get<EscolherInteracoesCubit>();
+
+  // Listas de interacoes que serão modificadas
+  List<InteracaoEntity> listaInteracoesAtuais = [];
+  List<InteracaoEntity> listaInteracoesComplementares = [];
+
   @override
   void initState() {
     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
       final args = ModalRoute.of(context)!.settings.arguments as PacienteEntity;
+      //interacoesCubit.getAllInteracoes(args);
       controller.getInteracoesPaciente(args.cpf!);
     });
     super.initState();
@@ -45,7 +57,7 @@ class _DetalhesPacienteWebPageState extends State<DetalhesPacienteWebPage> {
           context: context,
           pacienteEntity: args,
         ),
-        label: const Text('Editar'),
+        label: const Text('Salvar alterações'),
         icon: const Icon(Icons.edit),
       ),
       body: Row(
@@ -83,42 +95,157 @@ class _DetalhesPacienteWebPageState extends State<DetalhesPacienteWebPage> {
             ),
           ),
           const VerticalDivider(),
-          BlocBuilder<DetalhesPacienteCubit, DetalhesPacienteState>(
-            bloc: controller,
-            builder: (context, state) {
-              if (state is DetalhesPacienteLoading) {
-                return const Expanded(
-                  child: Center(child: CircularProgressIndicator()),
-                );
-              }
-              if (state is DetalhesPacienteFailure){
-                return ErrorViewWidget(
-                    errorMessage: state.error.errorMessage,
-                    actionButton: () async => controller.getInteracoesPaciente(args.cpf!)
-                );
-              }
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  color: Colors.green,
+                  height: 500,
+                  width: 400,
+                  child: Column(
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 10
+                        ),
+                        child: Text(
+                            "Interações atuais",
+                          style: TextStyle(
+                              color: Colors.white
+                          ),
+                        ),
+                      ),
+                      const Divider(),
+                      BlocConsumer<DetalhesPacienteCubit, DetalhesPacienteState>(
+                        bloc: controller,
+                        listener: (context,state){
+                          if(state is DetalhesPacienteSucess){
+                            listaInteracoesAtuais = state.interacoes;
+                          }
+                        },
+                        builder: (context, state) {
+                          if (state is DetalhesPacienteLoading) {
+                            return const Expanded(
+                              child: Center(child: CircularProgressIndicator()),
+                            );
+                          }
+                          if (state is DetalhesPacienteFailure){
+                            return ErrorViewWidget(
+                                errorMessage: state.error.errorMessage,
+                                actionButton: () async => controller.getInteracoesPaciente(args.cpf!)
+                            );
+                          }
 
-              if (state is DetalhesPacienteSucess) {
-                final data = state.interacoes;
-                return Expanded(
-                  child: GridView.builder(
-                      itemCount: data.length,
-                      gridDelegate:
-                      const SliverGridDelegateWithMaxCrossAxisExtent(
-                          maxCrossAxisExtent: 250,
-                          childAspectRatio: 3 / 2,
-                          crossAxisSpacing: 20,
-                          mainAxisSpacing: 20),
-                      itemBuilder: (context, index) {
-                        return CardGridWidget(
-                          dados: data[index],
-                          actionCard: (){},
-                        );
-                      }),
-                );
-              }
-              return SizedBox.fromSize();
-            },
+                          if (state is DetalhesPacienteSucess) {
+                            return Expanded(
+                              child: GridView.builder(
+                                  itemCount: listaInteracoesAtuais.length,
+                                  gridDelegate:
+                                  const SliverGridDelegateWithMaxCrossAxisExtent(
+                                      maxCrossAxisExtent: 370,
+                                      childAspectRatio: 3 / 2,
+                                      crossAxisSpacing: 20,
+                                      mainAxisSpacing: 20),
+                                  itemBuilder: (context, index) {
+                                    return CardGridAddeRemoverWidget(
+                                      interacao: listaInteracoesAtuais[index],
+                                      isSelected: true,
+                                      actionButton: (){},
+                                    );
+                                  }),
+                            );
+                          }
+                          return SizedBox.fromSize();
+                        },
+                      ),
+
+                    ],
+                  ),
+                ),
+                Container(
+                  color: Colors.blue,
+                  height: 500,
+                  width: 400,
+                  child: Column(
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 10,
+                        ),
+                        child: Text(
+                            "Interações complementares",
+                          style: TextStyle(
+                            color: Colors.white
+                          ),
+                        ),
+                      ),
+                      const Divider(),
+                      BlocConsumer<EscolherInteracoesCubit, EscolherInteracoesState>(
+                        bloc: interacoesCubit,
+                        listener: (context,state){
+                          if(state is EscolherInteracoesLoaded){
+                            listaInteracoesComplementares = state.interacoes;
+                            listaInteracoesComplementares.removeWhere((element) {
+                              return listaInteracoesAtuais.any((element2) => element2.id == element.id);
+                            });
+                          }
+                        },
+                        builder: (context, state) {
+                          if (state is EscolherInteracoesInitial){
+                            return Padding(
+                              padding: const EdgeInsets.only(
+                                top: 50,
+                              ),
+                              child: Center(
+                                child: DefaultButtonApp(
+                                  actionButton: () => interacoesCubit.getAllInteracoes(args),
+                                  textButton: 'Carregar interações',
+                                ),
+                              ),
+                            );
+                          }
+                          if (state is EscolherInteracoesLoading) {
+                            return const Expanded(
+                              child: Center(child: CircularProgressIndicator(
+                                color: Colors.red,
+                              )),
+                            );
+                          }
+                          if (state is EscolherInteracoesFailure){
+                            return ErrorViewWidget(
+                                errorMessage: state.failure.errorMessage,
+                                actionButton: () async => controller.getInteracoesPaciente(args.cpf!)
+                            );
+                          }
+
+                          if (state is EscolherInteracoesLoaded) {
+                            return Expanded(
+                              child: GridView.builder(
+                                  itemCount: listaInteracoesComplementares.length,
+                                  gridDelegate:
+                                  const SliverGridDelegateWithMaxCrossAxisExtent(
+                                      maxCrossAxisExtent: 370,
+                                      childAspectRatio: 3 / 2,
+                                      crossAxisSpacing: 20,
+                                      mainAxisSpacing: 20),
+                                  itemBuilder: (context, index) {
+                                    return CardGridAddeRemoverWidget(
+                                      interacao: listaInteracoesComplementares[index],
+                                      isSelected: false,
+                                      actionButton: (){},
+                                    );
+                                  }),
+                            );
+                          }
+                          return SizedBox.fromSize();
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
