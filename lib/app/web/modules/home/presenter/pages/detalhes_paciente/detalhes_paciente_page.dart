@@ -1,4 +1,3 @@
-import 'package:dartz/dartz_unsafe.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -6,7 +5,6 @@ import 'package:projeto_csa_app/app/common/entities/interacao.dart';
 import 'package:projeto_csa_app/app/common/entities/paciente.dart';
 import 'package:projeto_csa_app/app/common/images/images_app.dart';
 import 'package:projeto_csa_app/app/common/widget/card_grid_add_e_remover.dart';
-import 'package:projeto_csa_app/app/common/widget/card_grid_widget.dart';
 import 'package:projeto_csa_app/app/common/widget/default_button.dart';
 import 'package:projeto_csa_app/app/common/widget/error_view_widget.dart';
 import 'package:projeto_csa_app/app/common/widget/info_user_title_subtitle.dart';
@@ -38,6 +36,21 @@ class _DetalhesPacienteWebPageState extends State<DetalhesPacienteWebPage> {
     });
     super.initState();
   }
+
+  _adicionarNaListaInteracoesAtuais(InteracaoEntity interacao) {
+    setState(() {
+      listaInteracoesComplementares.remove(interacao);
+      listaInteracoesAtuais.insert(0, interacao);
+    });
+  }
+
+  _adicionarNaListaInteracoesComplementares(InteracaoEntity interacao) {
+    setState(() {
+      listaInteracoesAtuais.remove(interacao);
+      listaInteracoesComplementares.insert(0, interacao);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)!.settings.arguments as PacienteEntity;
@@ -151,7 +164,7 @@ class _DetalhesPacienteWebPageState extends State<DetalhesPacienteWebPage> {
                                     return CardGridAddeRemoverWidget(
                                       interacao: listaInteracoesAtuais[index],
                                       isSelected: true,
-                                      actionButton: (){},
+                                      actionButton: () => _adicionarNaListaInteracoesComplementares(listaInteracoesAtuais[index]),
                                     );
                                   }),
                             );
@@ -233,7 +246,7 @@ class _DetalhesPacienteWebPageState extends State<DetalhesPacienteWebPage> {
                                     return CardGridAddeRemoverWidget(
                                       interacao: listaInteracoesComplementares[index],
                                       isSelected: false,
-                                      actionButton: (){},
+                                      actionButton: () => _adicionarNaListaInteracoesAtuais(listaInteracoesComplementares[index]),
                                     );
                                   }),
                             );
