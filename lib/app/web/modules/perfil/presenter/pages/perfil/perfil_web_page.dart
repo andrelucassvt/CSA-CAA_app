@@ -67,12 +67,12 @@ class _PerfilWebPageState extends State<PerfilWebPage> {
                 InfoUserTitleSubTitleWidget(
                   title: 'Nome:',
                   subtitle: dados.nome ?? 'Sem informação',
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  //crossAxisAlignment: CrossAxisAlignment.center,
                 ),
                 InfoUserTitleSubTitleWidget(
                   title: 'Afiliação:',
                   subtitle: dados.afiliacao ?? 'Sem informação',
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  //crossAxisAlignment: CrossAxisAlignment.center,
                 ),
                 const SizedBox(
                   height: 50,

@@ -30,8 +30,7 @@ class _DetalhesPacienteWebPageState extends State<DetalhesPacienteWebPage> {
   @override
   void initState() {
     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-      final args = ModalRoute.of(context)!.settings.arguments as PacienteEntity;
-      //interacoesCubit.getAllInteracoes(args);
+      final args = ModalRoute.of(context)!.settings.arguments as PacienteEntity;;
       controller.getInteracoesPaciente(args.cpf!);
     });
     super.initState();
@@ -66,10 +65,7 @@ class _DetalhesPacienteWebPageState extends State<DetalhesPacienteWebPage> {
         elevation: 0.0,
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => HomeWebCoordinator.navegarParaEscolherInteracoes(
-          context: context,
-          pacienteEntity: args,
-        ),
+        onPressed: () {},
         label: const Text('Salvar alterações'),
         icon: const Icon(Icons.edit),
       ),
@@ -104,6 +100,21 @@ class _DetalhesPacienteWebPageState extends State<DetalhesPacienteWebPage> {
                   title: 'Fase:',
                   subtitle: args.fase!,
                 ),
+                const SizedBox(
+                  height: 50,
+                ),
+                Row(
+                  children: const [
+                    Icon(
+                      Icons.warning_amber,
+                      color: Colors.red,
+                    ),
+                    Text(
+                      'Sua assinatura expira em: 30 dias',
+                      style: TextStyle(color: Colors.red),
+                    )
+                  ],
+                )
               ],
             ),
           ),
@@ -114,7 +125,7 @@ class _DetalhesPacienteWebPageState extends State<DetalhesPacienteWebPage> {
               children: [
                 Container(
                   color: Colors.green,
-                  height: 500,
+                  height: double.infinity,
                   width: 400,
                   child: Column(
                     children: [
@@ -178,7 +189,7 @@ class _DetalhesPacienteWebPageState extends State<DetalhesPacienteWebPage> {
                 ),
                 Container(
                   color: Colors.blue,
-                  height: 500,
+                  height: double.infinity,
                   width: 400,
                   child: Column(
                     children: [

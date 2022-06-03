@@ -9,10 +9,10 @@ import 'package:projeto_csa_app/app/web/modules/perfil/presenter/pages/perfil/pe
 class NamedRoutesWeb {
   static const String inicial = '/';
   static const String home = '/home';
-  static const String cadastrarPaciente = 'home/cadastrarPaciente';
-  static const String detalhesPaciente = 'home/detalhesPaciente';
-  static const String escolherInteracoes = 'home/escolherInteracoes';
-  static const String perfil = '/perfil';
+  static const String cadastrarPaciente = '/home/cadastrarPaciente';
+  static const String detalhesPaciente = '/home/detalhesPaciente';
+  static const String escolherInteracoes = '/home/escolherInteracoes';
+  static const String perfil = '/home/perfil';
 
 
   static final routesWeb = <String, WidgetBuilder>{
