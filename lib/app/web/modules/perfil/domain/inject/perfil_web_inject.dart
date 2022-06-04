@@ -5,7 +5,7 @@ import 'package:projeto_csa_app/app/web/modules/perfil/domain/datasource/perfil_
 import 'package:projeto_csa_app/app/web/modules/perfil/domain/repository/perfil_web_repository.dart';
 import 'package:projeto_csa_app/app/web/modules/perfil/domain/usecase/get_perfil_web_usecase.dart';
 import 'package:projeto_csa_app/app/web/modules/perfil/presenter/pages/perfil/cubit/perfil_web_cubit.dart';
-import '';
+
 class PerfilWebInject {
 
   static void init(GetIt getIt) {

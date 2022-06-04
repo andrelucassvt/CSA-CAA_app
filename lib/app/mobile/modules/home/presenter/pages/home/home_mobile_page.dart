@@ -12,7 +12,6 @@ import 'package:projeto_csa_app/app/common/widget/error_view_widget.dart';
 import 'package:projeto_csa_app/app/mobile/modules/home/coordinator/home_mobile_coordinator.dart';
 import 'package:projeto_csa_app/app/mobile/modules/home/presenter/pages/home/cubit/home_mobile_cubit.dart';
 import 'package:projeto_csa_app/app/common/audio_player/player_text_to_voice.dart';
-import 'package:projeto_csa_app/app/mobile/modules/home/presenter/widgets/card_grid_frases_personalizadas.dart';
 
 class HomeMobilePage extends StatefulWidget {
   const HomeMobilePage({ Key? key }) : super(key: key);
