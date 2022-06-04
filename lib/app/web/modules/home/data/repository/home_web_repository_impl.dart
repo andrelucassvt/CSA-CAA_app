@@ -21,6 +21,19 @@ class HomeWebRepositoryImpl implements HomeWebRepository {
   }
 
   @override
+  Future<Either<Failure, void>> atualizarInteracoesPaciente({required PacienteEntity pacienteEntity, required List<int> idInteracoes}) async{
+    try {
+      var result = await homeWebDatasource.atualizarInteracoesPaciente(
+        idInteracoes: idInteracoes,
+        pacienteEntity: pacienteEntity,
+      );
+      return Right(result);
+    } on Failure catch (e) {
+      return Left(e);
+    }
+  }
+
+  @override
   Future<Either<Failure, List<InteracaoEntity>>> getAllInteracoes(PacienteEntity pacienteEntity) async {
     try {
       var result = await homeWebDatasource.getAllInteracoes(pacienteEntity);
@@ -49,6 +62,5 @@ class HomeWebRepositoryImpl implements HomeWebRepository {
       return Left(e);
     }
   }
-
 
 }

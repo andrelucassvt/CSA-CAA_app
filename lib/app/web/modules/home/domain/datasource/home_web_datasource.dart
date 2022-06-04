@@ -6,5 +6,6 @@ abstract class HomeWebDatasource {
   Future<List<PacienteEntity>> getPacientes();
 
   Future<void> cadastroDePaciente(PacienteEntity pacienteEntity);
+  Future<void> atualizarInteracoesPaciente({required PacienteEntity pacienteEntity, required List<int> idInteracoes});
   Future<List<InteracaoEntity>> getAllInteracoes(PacienteEntity pacienteEntity);
 }

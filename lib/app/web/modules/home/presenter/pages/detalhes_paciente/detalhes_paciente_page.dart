@@ -8,9 +8,10 @@ import 'package:projeto_csa_app/app/common/widget/card_grid_add_e_remover.dart';
 import 'package:projeto_csa_app/app/common/widget/default_button.dart';
 import 'package:projeto_csa_app/app/common/widget/error_view_widget.dart';
 import 'package:projeto_csa_app/app/common/widget/info_user_title_subtitle.dart';
-import 'package:projeto_csa_app/app/web/modules/home/coordinator/home_web_coordinator.dart';
+import 'package:projeto_csa_app/app/web/modules/home/presenter/pages/cadastrar_paciente/cubit/cadastrar_paciente_cubit.dart';
 import 'package:projeto_csa_app/app/web/modules/home/presenter/pages/detalhes_paciente/cubit/detalhes_paciente_cubit.dart';
 import 'package:projeto_csa_app/app/web/modules/home/presenter/pages/escolher_interacoes/cubit/escolher_interacoes_cubit.dart';
+import 'package:projeto_csa_app/app/web/util/snackbar/snackbar_web.dart';
 
 class DetalhesPacienteWebPage extends StatefulWidget {
   const DetalhesPacienteWebPage({Key? key}) : super(key: key);
@@ -22,6 +23,7 @@ class DetalhesPacienteWebPage extends StatefulWidget {
 class _DetalhesPacienteWebPageState extends State<DetalhesPacienteWebPage> {
   final controller = GetIt.I.get<DetalhesPacienteCubit>();
   final interacoesCubit = GetIt.I.get<EscolherInteracoesCubit>();
+  final atualizarIntecoesPaciente = GetIt.I.get<CadastrarPacienteCubit>();
 
   // Listas de interacoes que serão modificadas
   List<InteracaoEntity> listaInteracoesAtuais = [];
@@ -64,10 +66,38 @@ class _DetalhesPacienteWebPageState extends State<DetalhesPacienteWebPage> {
         centerTitle: true,
         elevation: 0.0,
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
-        label: const Text('Salvar alterações'),
-        icon: const Icon(Icons.edit),
+      floatingActionButton: BlocConsumer<CadastrarPacienteCubit, CadastrarPacienteState>(
+        bloc: atualizarIntecoesPaciente,
+        listener: (context, state) {
+          if (state is CadastrarPacienteFailure) {
+            SnackBarWeb.chamarSnackBarWeb(
+              text: state.failure.errorMessage,
+              context: context,
+            );
+          }
+          if (state is CadastrarPacienteSucess) {
+            SnackBarWeb.chamarSnackBarWeb(
+              text: 'Dados atualizados com sucesso', 
+              context: context,
+              backgroundColor: Colors.blue,
+            );
+            controller.getInteracoesPaciente(args.cpf!);
+            interacoesCubit.getAllInteracoes(args);
+          }
+        },
+        builder: (context, state) {
+          if (state is CadastrarPacienteLoading) {
+            return const CircularProgressIndicator();
+          }
+          return FloatingActionButton.extended(
+            onPressed: () => atualizarIntecoesPaciente.atualizarInteracoesPaciente(
+              pacienteEntity: args, 
+              idInteracoes: listaInteracoesAtuais.map((interacao) => interacao.id!).toList(),
+            ),
+            label: const Text('Salvar paciente'),
+            icon: const Icon(Icons.save),
+          );
+        },
       ),
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,

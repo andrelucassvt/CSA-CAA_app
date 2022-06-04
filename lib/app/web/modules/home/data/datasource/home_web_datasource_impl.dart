@@ -20,6 +20,13 @@ class HomeWebDatasourceImpl implements HomeWebDatasource {
     String emailMedico = await managerKeys.getInfoUser();
     await FirebaseFirestore.instance.collection('pacientes').doc(pacienteEntity.cpf).set(PacienteModel.toJson(pacienteEntity.copyWith(medico: emailMedico)));
   }
+  @override
+  Future<void> atualizarInteracoesPaciente({
+    required PacienteEntity pacienteEntity, 
+    required List<int> idInteracoes,
+  }) async {
+    await FirebaseFirestore.instance.collection('pacientes').doc(pacienteEntity.cpf).update(PacienteModel.toJson(pacienteEntity.copyWith(idInteracoes: idInteracoes)));
+  }
 
   @override
   Future<List<InteracaoEntity>> getAllInteracoes(PacienteEntity pacienteEntity) async {

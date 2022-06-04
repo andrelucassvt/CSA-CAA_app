@@ -5,6 +5,7 @@ import 'package:projeto_csa_app/app/common/widget/card_grid_widget.dart';
 import 'package:projeto_csa_app/app/common/widget/error_view_widget.dart';
 import 'package:projeto_csa_app/app/web/modules/home/coordinator/home_web_coordinator.dart';
 import 'package:projeto_csa_app/app/web/modules/home/presenter/pages/home/cubit/home_web_cubit.dart';
+import 'package:projeto_csa_app/app/web/util/snackbar/snackbar_web.dart';
 
 class HomeWebPage extends StatefulWidget {
   const HomeWebPage({Key? key}) : super(key: key);

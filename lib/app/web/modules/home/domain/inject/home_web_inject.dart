@@ -3,6 +3,7 @@ import 'package:projeto_csa_app/app/web/modules/home/data/datasource/home_web_da
 import 'package:projeto_csa_app/app/web/modules/home/data/repository/home_web_repository_impl.dart';
 import 'package:projeto_csa_app/app/web/modules/home/domain/datasource/home_web_datasource.dart';
 import 'package:projeto_csa_app/app/web/modules/home/domain/repository/home_web_repository.dart';
+import 'package:projeto_csa_app/app/web/modules/home/domain/usecase/atualizar_interacoes_paciente_usecase.dart';
 import 'package:projeto_csa_app/app/web/modules/home/domain/usecase/cadastro_do_paciente_usecase.dart';
 import 'package:projeto_csa_app/app/web/modules/home/domain/usecase/get_all_interacoes_usecase.dart';
 import 'package:projeto_csa_app/app/web/modules/home/domain/usecase/get_interacoes_do_paciente_usecase.dart';
@@ -34,6 +35,8 @@ class HomeWebInject {
             () => GetAllInteracoesUsecase(getIt()));
     getIt.registerFactory<CadastroDoPacienteUsecase>(
             () => CadastroDoPacienteUsecase(getIt()));
+    getIt.registerFactory<AtualizarInteracoesPacienteUsecase>(
+            () => AtualizarInteracoesPacienteUsecase(getIt()));
     
     //controllers
     getIt.registerFactory<HomeWebCubit>(
@@ -43,7 +46,10 @@ class HomeWebInject {
     getIt.registerFactory<EscolherInteracoesCubit>(
         () => EscolherInteracoesCubit(getAllInteracoesUsecase: getIt()));
     getIt.registerFactory<CadastrarPacienteCubit>(
-            () => CadastrarPacienteCubit(cadastroDoPacienteUsecase: getIt()));
+            () => CadastrarPacienteCubit(
+              cadastroDoPacienteUsecase: getIt(),
+              atualizarInteracoesPacienteUsecase: getIt(),
+            ));
 
   }
 }

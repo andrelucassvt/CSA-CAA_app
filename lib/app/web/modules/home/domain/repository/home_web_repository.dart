@@ -8,5 +8,6 @@ abstract class HomeWebRepository {
   Future<Either<Failure, List<PacienteEntity>>> getPacientes();
 
   Future<Either<Failure, void>> cadastroDoPaciente(PacienteEntity pacienteEntity);
+  Future<Either<Failure, void>> atualizarInteracoesPaciente({required PacienteEntity pacienteEntity, required List<int> idInteracoes});
   Future<Either<Failure, List<InteracaoEntity>>> getAllInteracoes(PacienteEntity pacienteEntity);
 }
